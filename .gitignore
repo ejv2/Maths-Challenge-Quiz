@@ -1,0 +1,8 @@
+# Maths Challenge Quiz - GITIGNORE file
+# Copyright 2019 - Ethan Marshall
+
+# Ignore build files
+build/
+build/Maths Challenge Quiz
+*.exe
+*.o

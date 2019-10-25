@@ -1,0 +1,178 @@
+/* Maths challenge quiz
+   Copyright Ethan Marshall - 2019
+
+   Licensed under the GPL V.3.0
+*/
+
+#include <vector>
+#include <string>
+#include <iostream>
+
+#include "Startup.h"
+#include "Util.h"
+
+namespace startup
+{
+
+const int tut_max = 12;
+const int tut_min = 1;
+
+std::vector<std::string> *parseCmdLine(char *argv[], int count)
+{
+
+    std::vector<std::string> *vector = new std::vector<std::string>();
+
+    for (int i = 1; i < count; i++)
+    {
+    }
+
+    return vector;
+}
+
+void handleCmdLine(std::vector<std::string> *cmds)
+{
+
+    // Free the allocated startup options
+    delete cmds;
+}
+
+void handleDifficultyEnter(startup_information *info)
+{
+    bool success = false;
+    while (!success)
+    {
+        std::string difficulty;
+        std::cout << "Enter your difficulty, 1-4 (1=Easy, 4=Very hard)\n";
+        std::cout << "Enter difficulty:";
+        std::getline(std::cin, difficulty);
+
+        if (difficulty.empty())
+        {
+            std::cout << "Please enter a valid difficulty\n\n";
+            continue;
+        }
+
+        try
+        {
+            info->difficulty = std::stoi(difficulty);
+        }
+        catch (const std::invalid_argument &e)
+        {
+            std::cout << "Please enter a valid difficulty\n\n";
+            continue;
+        }
+        success = true;
+        std::cout << "Your difficulty has been set to " << info->difficulty << "\n\n";
+    }
+}
+
+void runTutorial()
+{
+    std::cout << std::endl;
+    std::cout << "Welcome to the Maths Challenge Quiz!\n";
+    std::cout << "In this game you stay ahead of the game by answering maths problems correctly\n";
+    std::cout << "You can select any difficulty to cater to your mathematical ability\n";
+    std::cout << "\n";
+    std::cout << "Let's try out a simple tutorial\n";
+    std::cout << "\n";
+
+    int randint1 = std::rand() % (tut_max - tut_min) + tut_min;
+    int randint2 = std::rand() % (tut_max - tut_min) + tut_min;
+
+    std::string randstr1 = std::to_string(randint1);
+    std::string randstr2 = std::to_string(randint2);
+
+    std::string input;
+    int answer;
+    int correct_answer = randint1 * randint2;
+
+    while (true)
+    {
+        std::cout << "Please enter the answer to " + randstr1 + "x" + randstr2 + ":";
+        std::getline(std::cin, input);
+
+        if (!util::isValidNumber(input))
+        {
+            std::cout << "Please enter a valid answer\n";
+            continue;
+        }
+
+        answer = std::stoi(input);
+
+        if (answer == correct_answer)
+        {
+            std::cout << "Correct, you've got the idea\n";
+            std::cout << "You will now play the real game which will get you a score\n";
+            std::cout << "Good luck\n";
+            std::cout.flush();
+            util::sleep(2);
+            std::cout.clear();
+            break;
+        }
+        else
+        {
+            std::cout << "Incorrect, please try again\n\n";
+        }
+    }
+}
+
+bool askFirstTime()
+{
+    std::string input;
+    bool first = false;
+
+    std::cout << "Is this your first time playing? [Y/N]";
+    std::getline(std::cin, input);
+
+    util::stringLower(&input);
+
+    if (input == "y")
+    {
+        runTutorial();
+        first = true;
+    }
+
+    return first;
+}
+
+void handleStartQuestions(startup_information *info)
+{
+    std::cout << "Please enter your name:";
+    std::getline(std::cin, info->name);
+    std::cout << "\n";
+
+    handleDifficultyEnter(info);
+
+    bool isFirst = askFirstTime();
+    info->first = isFirst;
+}
+
+void haltPreGame()
+{
+    std::cout << "\nGame commencing in 5 seconds...\n";
+    std::cout.flush();
+    util::sleep(5);
+    std::cout.clear();
+}
+
+void printWelcome()
+{
+    std::cout << "Welcome to the Maths Challenge Quiz\n";
+    std::cout << "Copyright 2019 Ethan Marshall\n\n";
+}
+
+void printCopyright()
+{
+    std::cout << "Maths Challenge Quiz is a copyrighted work by Ethan Marshall\n";
+    std::cout << "The program is licensed under the terms of the GPL V.3.0, meaning you have certain freedoms\n";
+    std::cout << "For more information, visit https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html \n\n";
+}
+
+void printHelp()
+{
+    std::cout << "Maths Challenge Quiz - Help Menu\n\n";
+    std::cout << "The Maths Challenge Quiz is a program designed to test a person's mathematical ability in a fun way\n";
+    std::cout << "This game can be quite complicated, so help can be found in the 'readme.md' file included in the install\n\n";
+}
+
+} // namespace startup
