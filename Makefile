@@ -36,12 +36,7 @@ linux: $(main_file) $(dep_files)
 
 clean:
 	rm $(build_destination)$(executable_name_linux)
-	rm .gdb_history
+	-rm .gdb_history
+	-rm $(build_destination)$(executable_name_win)
 
 	@echo Project cleared
-
-clean_windows:
-	rm $(build_destination)$(executable_name_win)
-
-	@echo Windows executable deleted
-	@echo You may need to run "make clean" to clean up some other files
