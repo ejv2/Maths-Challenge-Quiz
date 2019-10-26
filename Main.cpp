@@ -33,17 +33,34 @@ int main(int argc, char *argv[])
 
     startup::haltPreGame();
 
+    PreviousRound prevRound = {
+        RoundType::arithmetic,
+        false,
+    };
+
     // Main game loop
     while (true)
     {
 
         // Round setup
-        GameRound *currentround = new GameRound();
-        RoundType rt = currentround->selectRoundType();
-        int questionCount = currentround->selectQuestionAmount();
+        GameRound *currentRound = new GameRound(prevRound);
+        RoundType rt = currentRound->selectRoundType();
+        int questionCount = currentRound->selectQuestionAmount();
 
-        util::sleep(5);
-        break;
+        // START OF ROUND
+        while (!currentRound->isRoundOver())
+        {
+        }
+
+        // END OF ROUND
+
+        // Fill in the prevRound information
+        currentRound->getRoundInfo(&prevRound);
+
+        // TODO: Fill in failure detection
+
+        // Free the current round
+        delete currentRound;
     }
 
     return 0;

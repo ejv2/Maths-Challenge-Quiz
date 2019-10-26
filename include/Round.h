@@ -19,11 +19,17 @@ enum RoundType
     skip = 4
 };
 
+struct PreviousRound
+{
+    RoundType previousType = arithmetic;
+    bool previousSkip = false;
+};
+
 class GameRound
 {
 
 public:
-    GameRound();
+    GameRound(PreviousRound prevround);
     ~GameRound();
 
     int current_question[1];
@@ -32,16 +38,23 @@ public:
     RoundType selectRoundType();
     const int selectQuestionAmount();
 
+    bool isRoundOver();
+
+    void getRoundInfo(PreviousRound *prevRound);
+
 private:
     int difficulty;
     int question_amount;
     int question_bounds;
+
+    int points;
+    float percent_correct;
 
     bool previousSkipRound = false;
     bool invalidRound = false;
     bool showInterlude = true;
 };
 
-} // namespace round
+} // namespace gameround
 
 #endif // End header

@@ -7,11 +7,13 @@
 #include "Round.h"
 
 #include <iostream>
+#include <string>
+#include <math.h>
 
 namespace gameround
 {
 
-GameRound::GameRound()
+GameRound::GameRound(PreviousRound prevround)
 {
 }
 
@@ -24,6 +26,10 @@ RoundType GameRound::selectRoundType()
 }
 
 const int GameRound::selectQuestionAmount()
+{
+}
+
+void GameRound::getRoundInfo(PreviousRound *prevRound)
 {
 }
 
