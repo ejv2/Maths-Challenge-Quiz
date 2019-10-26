@@ -1,6 +1,6 @@
 # Maths-Challenge-Quiz
 
-The Maths Challenge Quiz is a short, hobby command line game for testing a person's mathematical ability.
+The Maths Challenge Quiz is a short, hobby command line game for testing a person's mathematical ability. It is open source, free and always will be. Being licensed under a permissive GPL licence, you are free to change, redistribute and build the project wherever and for whatever purpose. Please read the licence text for more information.
 
 It was originally created as a school project, but quickly became a full game.
 

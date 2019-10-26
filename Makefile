@@ -10,7 +10,7 @@ build_destination = build/
 
 dep_path = include/
 main_file = Main.cpp
-dep_files = $(dep_path)Round.cpp $(dep_path)Startup.cpp $(dep_path)Util.cpp
+dep_files = $(dep_path)Round.cpp $(dep_path)Startup.cpp $(dep_path)Util.cpp $(dep_path)Scoring.cpp
 
 header_files = $(dep_path)Round.h $(dep_path)Startup.h $(dep_path)Util.h $(dep_path)Constants.h
 
