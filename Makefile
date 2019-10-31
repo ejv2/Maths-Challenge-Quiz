@@ -23,7 +23,8 @@ windows: $(main_file) $(dep_files)
 	@echo This option requires you to be on Linux, but compiles for Windows
 	@echo By default, it attempts to use MinGW cross compiler
 	@echo
-	@echo WARNING: Certain functionality, including timings and delays, is currently broken on Windows, meaning that this build may be unstable
+	@echo WARNING: UNSTABLE BUILD
+	@echo The windows build for this program is very buggy due to cross compile issues. Please expect crashes and issues with timing. Please report any issues you find nevertheless.
 
 	$(windows_compiler) $(main_file) $(dep_files) -g -o $(executable_name_win) -DCOMP_WINDOWS=1 -static-libgcc -static-libstdc++
 	mv $(executable_name_win) $(build_destination)$(executable_name_win)
