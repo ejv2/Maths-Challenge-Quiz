@@ -48,7 +48,7 @@ GameRound::GameRound(PreviousRound prevround, int difficulty)
 
     if (this->type == RoundType::speed)
     {
-	this->runSpeedIntro();
+        this->runSpeedIntro();
     }
 }
 
@@ -308,6 +308,16 @@ void GameRound::runSpeedIntro()
 
         util::sleep(1);
     }
+}
+
+int GameRound::getPoints()
+{
+    return this->points;
+}
+
+const int GameRound::getQuestionAmount()
+{
+    return this->question_amount;
 }
 
 } // namespace gameround
