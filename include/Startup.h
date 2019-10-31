@@ -16,7 +16,7 @@ namespace startup
 struct startup_information
 {
     std::string name = "";
-    unsigned int difficulty = 1;
+    int difficulty = 1;
     bool first = false;
 };
 

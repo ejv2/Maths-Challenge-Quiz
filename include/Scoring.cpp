@@ -62,7 +62,17 @@ void run_roundFailureCutscene()
     std::cout.flush();
 }
 
-void displayResults(GameStatus state)
+void handlePracticeWatermark(int difficulty)
+{
+    if (difficulty)
+    {
+        std::cout << "PRACTICE MODE\n\n";
+        std::cout << "The game is currently in practice mode, making whatever score was achieved non-genuine\n";
+        std::cout << "This score does not affect the user's mathematical ability and should be treated as such\n\n";
+    }
+}
+
+void displayResults(GameStatus state, int difficulty)
 {
     int finalResult = getFinalResult(state.overall_points, state.questions_answered);
     std::string finalResultString = resultMessages[finalResult];
@@ -70,7 +80,9 @@ void displayResults(GameStatus state)
     util::clearScreen();
 
     std::cout << "Game over\n";
-    std::cout << "=========\n";
+    std::cout << "=========\n\n";
+
+    handlePracticeWatermark(difficulty);
 
     std::cout << "Rounds you lasted: " << state.rounds_completed << "\n";
     std::cout << "Points earned: " << state.overall_points << "\n";
