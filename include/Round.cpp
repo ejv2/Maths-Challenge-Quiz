@@ -39,16 +39,17 @@ GameRound::GameRound(PreviousRound prevround, int difficulty)
     {
         this->setupSkipRound();
     }
-    else if (this->type == RoundType::speed)
-    {
-        this->runSpeedIntro();
-    }
 
     // Intro text
     std::string intro = this->getIntroText();
 
     std::cout << intro << "\n";
     std::cout << "You will answer " << this->question_amount << " questions this round\n\n";
+
+    if (this->type == RoundType::speed)
+    {
+	this->runSpeedIntro();
+    }
 }
 
 GameRound::~GameRound()
