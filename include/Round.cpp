@@ -241,6 +241,13 @@ void GameRound::handleSpeedReward()
 
 void GameRound::generateQuestion()
 {
+    if (this->difficulty <= TRAINING_DIFFICULTY_THRESHOLD)
+    {
+        this->current_question[0], this->current_question[1] = 1;
+        this->current_question_string = "1" + this->getOperatorString() + "1";
+        return;
+    }
+
     int randint1 = std::rand() % (this->question_bounds - 1) + 1;
     int randint2 = std::rand() % (this->question_bounds - 1) + 1;
 
@@ -294,6 +301,9 @@ void GameRound::runSkipRound()
 
         util::sleep(1);
     }
+
+    std::cout << "Stand by: Questions are resuming now...";
+    util::sleep(3);
 }
 
 void GameRound::runSpeedIntro()
@@ -308,6 +318,8 @@ void GameRound::runSpeedIntro()
 
         util::sleep(1);
     }
+
+    util::clearScreen();
 }
 
 int GameRound::getPoints()

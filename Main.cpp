@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
         if (!scoring::shouldPassRound(currentRound))
         {
             scoring::run_roundFailureCutscene();
-            scoring::displayResults(game_state);
+            scoring::displayResults(game_state, info.difficulty);
             scoring::resultAcceptance(info.difficulty);
             break;
         }

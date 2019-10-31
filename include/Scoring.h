@@ -42,7 +42,7 @@ struct GameStatus
 bool shouldPassRound(gameround::GameRound *round);
 
 void run_roundFailureCutscene();
-void displayResults(GameStatus state);
+void displayResults(GameStatus state, int difficulty);
 void resultAcceptance(int difficulty);
 
 OverallResult getFinalResult(int points, int rounds);
