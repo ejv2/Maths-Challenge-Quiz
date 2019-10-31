@@ -8,3 +8,6 @@ build/.gdb_history
 
 *.exe
 *.o
+
+# Ignore language configuration files
+.vscode/settings.json
