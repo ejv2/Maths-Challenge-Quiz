@@ -37,11 +37,11 @@ struct PreviousRound
 
 static const std::string intro_texts[5] = {"Arithmetic round\n\nAdd or subtract the numbers shown to gain points. Incorrect answers may result in an unsatisfactory mark on your official testing record.",
                                            "Multiplication round\n\nMultiply the numbers shown to gain points.\nIncorrect answers will result in permanent data loss and system destruction.",
-                                           "Division round\n\nDivide the numbers shown to gain points\nIn the case of long, recurring or irrational decimals, you may truncate the decimal to a whole.",
+                                           "Division round\n\nDivide the numbers shown to gain points\nIn the case of a non-whole answer, you may truncate the decimal to a whole.",
                                            "Speed round\n\nYou will be asked regular multiplication questions, but the speed at which you answer will be measured.\nPoints will be awarded for fast answers, but slow answers may result in deduction.",
                                            "Skip round\n\nYou have been blessed with a skip round\nYou will not be asked any questions for 10 seconds\nRegular questions will resume next round."};
 
-static const int bounds[6][5] = {{1, 1, 1, 1, 0},
+static const int bounds[6][5] = {{2, 2, 2, 2, 0},
                                  {100, 12, 12, 12, 0},
                                  {250, 20, 15, 15, 0},
                                  {1000, 25, 25, 20, 0},
@@ -74,6 +74,8 @@ public:
     void creditAnswer(bool correct);
 
     void getRoundInfo(PreviousRound *prevRound);
+
+    int getPoints();
 
 private:
     void handleSpeedReward();

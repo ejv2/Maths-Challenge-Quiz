@@ -48,7 +48,7 @@ GameRound::GameRound(PreviousRound prevround, int difficulty)
 
     if (this->type == RoundType::speed)
     {
-	this->runSpeedIntro();
+        this->runSpeedIntro();
     }
 }
 
@@ -241,6 +241,13 @@ void GameRound::handleSpeedReward()
 
 void GameRound::generateQuestion()
 {
+    if (this->difficulty <= TRAINING_DIFFICULTY_THRESHOLD)
+    {
+        this->current_question[0], this->current_question[1] = 1;
+        this->current_question_string = "1" + this->getOperatorString() + "1";
+        return;
+    }
+
     int randint1 = std::rand() % (this->question_bounds - 1) + 1;
     int randint2 = std::rand() % (this->question_bounds - 1) + 1;
 
@@ -287,13 +294,16 @@ void GameRound::setupSkipRound()
 
 void GameRound::runSkipRound()
 {
-    for (int i = 0; i < 10; i++)
+    for (int i = 10; i > 0; i--)
     {
         std::cout << i << "\n";
         std::cout.flush();
 
         util::sleep(1);
     }
+
+    std::cout << "Stand by: Questions are resuming now...";
+    util::sleep(3);
 }
 
 void GameRound::runSpeedIntro()
@@ -301,13 +311,25 @@ void GameRound::runSpeedIntro()
     std::cout << "\n\nPress enter when you are ready to play the round...";
     std::getchar();
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 5; i > 0; i--)
     {
         std::cout << i << "\n";
         std::cout.flush();
 
         util::sleep(1);
     }
+
+    util::clearScreen();
+}
+
+int GameRound::getPoints()
+{
+    return this->points;
+}
+
+const int GameRound::getQuestionAmount()
+{
+    return this->question_amount;
 }
 
 } // namespace gameround

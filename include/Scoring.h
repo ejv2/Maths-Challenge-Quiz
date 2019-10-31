@@ -23,12 +23,31 @@ enum OverallResult
 
 };
 
+const std::string resultMessages[6] = {"Awful",
+                                       "Bad",
+                                       "Ok",
+                                       "Good",
+                                       "Great",
+                                       "Perfect"};
+
+struct GameStatus
+{
+    int rounds_completed = 0;
+    int overall_points = 0;
+    int questions_answered = 0;
+
+    double percent_correct;
+};
+
 bool shouldPassRound(gameround::GameRound *round);
 
 void run_roundFailureCutscene();
-void displayResults();
+void displayResults(GameStatus state, int difficulty);
+void resultAcceptance(int difficulty);
 
 OverallResult getFinalResult(int points, int rounds);
+
+void processGameStatus(GameStatus *state, gameround::GameRound *round);
 
 } // namespace scoring
 

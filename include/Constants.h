@@ -31,10 +31,10 @@
 
 #define INVALID_ANSWER_FLOAT -1.5f // The answer that will be returned if an invalid answer was given
 
-#define QUESTION_FORMAT_BEGINNING "Please enter the answer to " // The format that all questions will be delivered in
-#define QUESTION_FORMAT_ENDING ":"                              // The end of the question string
+#define QUESTION_FORMAT_BEGINNING "Enter the answer to " // The format that all questions will be delivered in
+#define QUESTION_FORMAT_ENDING ":"                       // The end of the question string
 
-// Speed round scoring boundries (the time to nearest whole to get boundry along with the associated points)
+// Speed round scoring boundaries (the time to nearest whole to get boundary along with the associated points)
 #define EXCELLENT 0
 #define EXCELLENT_POINTS 4
 

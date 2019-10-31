@@ -26,6 +26,10 @@ static PreviousRound prevRound = {
     false,
 };
 
+static scoring::GameStatus game_state = {
+
+};
+
 int main(int argc, char *argv[])
 {
     // Setup random behaviour seed based on system time
@@ -62,10 +66,13 @@ int main(int argc, char *argv[])
         // Fill in the previous round's information
         currentRound->getRoundInfo(&prevRound);
 
+        scoring::processGameStatus(&game_state, currentRound);
+
         if (!scoring::shouldPassRound(currentRound))
         {
             scoring::run_roundFailureCutscene();
-            scoring::displayResults();
+            scoring::displayResults(game_state, info.difficulty);
+            scoring::resultAcceptance(info.difficulty);
             break;
         }
 
@@ -73,7 +80,6 @@ int main(int argc, char *argv[])
 
         // Free the current round
         delete currentRound;
-
         std::memset(currentRound, 0, sizeof(GameRound));
     }
 
