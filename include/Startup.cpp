@@ -10,6 +10,7 @@
 
 #include "Startup.h"
 #include "Util.h"
+#include "Constants.h"
 
 namespace startup
 {
@@ -36,9 +37,60 @@ void handleCmdLine(std::vector<std::string> *cmds)
     delete cmds;
 }
 
+bool warnImpossibleDifficulty()
+{
+    std::cout << "\nWARNING: Impossible difficulty selected\n";
+    std::cout << "You have selected impossible difficulty, which removes the limit for how high question amounts can be\n";
+    std::cout << "You may encounter impossible to calculate values, extremely long questions or numbers larger than the program can handle\n";
+    std::cout << "You proceed at your own risk\n\n";
+
+    std::string choice;
+    std::cout << "Do you wish to continue? [Y/N]";
+    std::getline(std::cin, choice);
+
+    util::stringLower(&choice);
+
+    if (choice == "y")
+    {
+        std::cout << "Good luck, padawan\n\n";
+        return true;
+    }
+    else
+    {
+        std::cout << "\n\n";
+        return false;
+    }
+}
+
+bool warnTrainingDifficulty()
+{
+    std::cout << "\nWARNING: Training difficulty selected\n";
+    std::cout << "You have selected training difficulty, meaning that all questions will only contain the number 1\n";
+    std::cout << "This mode is designed to be a trial run of the game and will not give a true reflection of your mathamatical ability.\n";
+    std::cout << "Your score in this mode is considered non-genuine and certain features of the game may be altered to reflect that.\n\n";
+
+    std::string choice;
+    std::cout << "Do you wish to continue? [Y/N]";
+    std::getline(std::cin, choice);
+
+    util::stringLower(&choice);
+
+    if (choice == "y")
+    {
+        std::cout << "Training mode has been applied for this round, and your score is not genuine from this point forward\n\n";
+        return true;
+    }
+    else
+    {
+        std::cout << "\n\n";
+        return false;
+    }
+}
+
 void handleDifficultyEnter(startup_information *info)
 {
     bool success = false;
+
     while (!success)
     {
         std::string difficulty;
@@ -61,6 +113,18 @@ void handleDifficultyEnter(startup_information *info)
             std::cout << "Please enter a valid difficulty\n\n";
             continue;
         }
+
+        if (info->difficulty <= TRAINING_DIFFICULTY_THRESHOLD)
+        {
+            success = warnTrainingDifficulty();
+            continue;
+        }
+        else if (info->difficulty >= IMPOSSIBLE_DIFFICULTY_THRESHOLD)
+        {
+            success = warnImpossibleDifficulty();
+            continue;
+        }
+
         success = true;
         std::cout << "Your difficulty has been set to " << info->difficulty << "\n\n";
     }
