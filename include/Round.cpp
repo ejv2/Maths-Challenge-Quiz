@@ -287,7 +287,7 @@ void GameRound::setupSkipRound()
 
 void GameRound::runSkipRound()
 {
-    for (int i = 0; i < 10; i++)
+    for (int i = 10; i > 0; i--)
     {
         std::cout << i << "\n";
         std::cout.flush();
@@ -301,7 +301,7 @@ void GameRound::runSpeedIntro()
     std::cout << "\n\nPress enter when you are ready to play the round...";
     std::getchar();
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 5; i > 0; i--)
     {
         std::cout << i << "\n";
         std::cout.flush();

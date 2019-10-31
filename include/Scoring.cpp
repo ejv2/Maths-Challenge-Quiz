@@ -129,6 +129,8 @@ void resultAcceptance(int difficulty)
     while (input != acceptanceString)
     {
 
+        counter++;
+
         acceptanceString = getAcceptanceString(difficulty);
 
         std::tuple<std::string, std::string> promptString = getPromptString(counter);
