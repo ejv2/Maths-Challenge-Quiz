@@ -60,4 +60,21 @@ void exitProgram(int exitCode, std::string message)
     std::cout << exitMessage;
 }
 
+/* ALERT - HACKY METHOD WARNING
+   
+   This method is a quick, dirty method of clearing the screen that should never be used
+   in a real application.
+
+   However, this is currently the best method available to me that does what I want
+
+*/
+void clearScreen()
+{
+#ifdef COMP_WINDOWS
+    system("cls");
+#else
+    system("clear");
+#endif
+}
+
 } // namespace util

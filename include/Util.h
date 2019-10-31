@@ -23,6 +23,8 @@ void setupRandomSeed();
 
 void exitProgram(int exitCode, std::string message);
 
+void clearScreen();
+
 } // namespace util
 
 #endif // End header

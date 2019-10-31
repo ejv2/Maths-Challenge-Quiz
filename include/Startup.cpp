@@ -152,7 +152,7 @@ void haltPreGame()
     std::cout << "\nGame commencing in 5 seconds...\n";
     std::cout.flush();
     util::sleep(5);
-    std::cout.clear();
+    util::clearScreen();
 }
 
 void printWelcome()

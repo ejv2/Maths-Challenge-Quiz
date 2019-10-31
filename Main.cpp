@@ -14,9 +14,17 @@
 #include "include/Startup.h"
 #include "include/Util.h"
 #include "include/Round.h"
+#include "include/Scoring.h"
+#include "include/GameOver.h"
 
 using namespace gameround;
+using namespace game_over;
 using namespace std;
+
+static PreviousRound prevRound = {
+    RoundType::arithmetic,
+    false,
+};
 
 int main(int argc, char *argv[])
 {
@@ -33,35 +41,44 @@ int main(int argc, char *argv[])
 
     startup::haltPreGame();
 
-    PreviousRound prevRound = {
-        RoundType::arithmetic,
-        false,
-    };
-
     // Main game loop
     while (true)
     {
 
-        // Round setup
-        GameRound *currentRound = new GameRound(prevRound);
-        RoundType rt = currentRound->selectRoundType();
-        int questionCount = currentRound->selectQuestionAmount();
+        GameRound *currentRound = new GameRound(prevRound, info.difficulty);
 
-        // START OF ROUND
+        // ==================== [START OF ROUND] ====================
+
         while (!currentRound->isRoundOver())
         {
+
+            float ans = currentRound->askQuestion();
+            bool correct = currentRound->verifyAnswer(ans);
+            currentRound->creditAnswer(correct);
         }
 
-        // END OF ROUND
+        // ==================== [END OF ROUND] ====================
 
-        // Fill in the prevRound information
+        // Fill in the previous round's information
         currentRound->getRoundInfo(&prevRound);
 
-        // TODO: Fill in failure detection
+        if (!scoring::shouldPassRound(currentRound))
+        {
+            scoring::run_roundFailureCutscene();
+            scoring::displayResults();
+            break;
+        }
+
+        currentRound->runInterlude();
 
         // Free the current round
         delete currentRound;
+
+        std::memset(currentRound, 0, sizeof(GameRound));
     }
+
+    // When we reach this point, the game is over
+    gameExiting();
 
     return 0;
 }

@@ -21,3 +21,31 @@
 #define ENCOURAGING false         // Disable random insults, and make the game more encouraging
 #define DISABLE_SKIP_ROUNDS false // Disable skip rounds, making the game faster and more challenging
 #define NO_ROUND_WAIT false       // Disable the 5 second wait between rounds
+
+// General constants
+#define MAX_QUESTION_AMOUNT 15 // The maximum amount of questions possible in a round
+#define MAX_ROUND_TYPES 4      // The amount of round types that can be selected
+
+#define IMPOSSIBLE_DIFFICULTY_THRESHOLD 5 // The amount at which impossible difficulty will be applied
+#define TRAINING_DIFFICULTY_THRESHOLD 0   // The amount at which the training difficulty will be applied
+
+#define INVALID_ANSWER_FLOAT -1.5f // The answer that will be returned if an invalid answer was given
+
+#define QUESTION_FORMAT_BEGINNING "Please enter the answer to " // The format that all questions will be delivered in
+#define QUESTION_FORMAT_ENDING ":"                              // The end of the question string
+
+// Speed round scoring boundries (the time to nearest whole to get boundry along with the associated points)
+#define EXCELLENT 0
+#define EXCELLENT_POINTS 4
+
+#define GREAT 1
+#define GREAT_POINTS 2
+
+#define OK 2
+#define OK_POINTS 1
+
+#define POOR 3
+#define POOR_POINTS 0
+
+#define BAD
+#define BAD_POINTS -1
