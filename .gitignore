@@ -2,7 +2,12 @@
 # Copyright 2019 - Ethan Marshall
 
 # Ignore build files
-build/
 build/Maths Challenge Quiz
+build/Maths Challenge Quiz.exe
+build/.gdb_history
+
 *.exe
 *.o
+
+# Ignore language configuration files
+.vscode/settings.json

@@ -10,7 +10,7 @@ build_destination = build/
 
 dep_path = include/
 main_file = Main.cpp
-dep_files = $(dep_path)Round.cpp $(dep_path)Startup.cpp $(dep_path)Util.cpp
+dep_files = $(dep_path)Round.cpp $(dep_path)Startup.cpp $(dep_path)Util.cpp $(dep_path)Scoring.cpp $(dep_path)GameOver.cpp
 
 header_files = $(dep_path)Round.h $(dep_path)Startup.h $(dep_path)Util.h $(dep_path)Constants.h
 
@@ -23,20 +23,21 @@ windows: $(main_file) $(dep_files)
 	@echo This option requires you to be on Linux, but compiles for Windows
 	@echo By default, it attempts to use MinGW cross compiler
 	@echo
-	@echo WARNING: Certain functionality, including timings and delays, is currently broken on Windows, meaning that this build may be unstable
+	@echo WARNING: UNSTABLE BUILD
+	@echo The windows build for this program is very buggy due to cross compile issues. Please expect crashes and issues with timing. Please report any issues you find nevertheless.
 
-	$(windows_compiler) $(main_file) $(dep_files) -o $(executable_name_win) -DCOMP_WINDOWS=1 -static-libgcc -static-libstdc++
+	$(windows_compiler) $(main_file) $(dep_files) -g -o $(executable_name_win) -DCOMP_WINDOWS=1 -static-libgcc -static-libstdc++
 	mv $(executable_name_win) $(build_destination)$(executable_name_win)
 	@echo Build succeeded
 
 linux: $(main_file) $(dep_files)
-	$(linux_compiler) -o $(executable_name_linux) $(main_file) $(dep_files)
+	$(linux_compiler) -g -o $(executable_name_linux) $(main_file) $(dep_files)
 	mv $(executable_name_linux) $(build_destination)$(executable_name_linux)
 	@echo Build succeeded
 
 clean:
 	rm $(build_destination)$(executable_name_linux)
-	-rm .gdb_history
+	-rm $(build_destination).gdb_history
 	-rm $(build_destination)$(executable_name_win)
 
 	@echo Project cleared
