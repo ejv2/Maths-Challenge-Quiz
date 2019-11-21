@@ -17,7 +17,7 @@ namespace gameround
 class BaseRound
 {
 public:
-    BaseRound(PrevRound previousRound);
+    BaseRound(PreviousRound previousRound);
     ~BaseRound();
 
     virtual double askQuestion() = 0;
@@ -58,7 +58,7 @@ private:
     virtual inline std::string getOperator() = 0;
     virtual std::string getQuestionString() = 0;
 
-    virtual double generateQuestion();
+    virtual void generateQuestion();
 };
 
 } // namespace gameround

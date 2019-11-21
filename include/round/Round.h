@@ -4,14 +4,6 @@
    Licensed under the GPL V.3.0
 */
 
-#include "BaseRound.h"
-
-#include "ArithmeticRound.h"
-#include "MultiplicationRound.h"
-#include "DivisionRound.h"
-#include "SpeedRound.h"
-#include "SkipRound.h"
-
 #ifndef ROUND_HEADER
 #define ROUND_HEADER
 

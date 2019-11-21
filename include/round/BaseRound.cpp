@@ -21,7 +21,7 @@ bool BaseRound::isRoundOver()
 void BaseRound::runInterlude()
 {
 
-    util::ClearScreen();
+    util::clearScreen();
 
     std::cout << "You have completed this round";
     std::cout << "The next round will begin shortly...";
@@ -38,18 +38,15 @@ bool BaseRound::shouldPassRound()
     return ((this->points / this->amount_questions) > 0.5);
 }
 
-void BaseRound::updateGameState(PreviousRound *prevRound)
+bool BaseRound::checkRoundValidity()
 {
-    if (!this->previousSkipRound && this->amount_questions >= 1)
-        return true;
+    return true;
 }
 
-double BaseRound::generateQuestion()
+void BaseRound::generateQuestion()
 {
-    this->current_question[0] = 1;
-    this->current_question[1] = 1;
-
-    return {1, 1};
+    this->currentQuestion[0] = 1;
+    this->currentQuestion[1] = 1;
 }
 
 } // namespace gameround

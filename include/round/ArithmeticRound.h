@@ -39,7 +39,7 @@ private:
     inline std::string getOperator() override;
     std::string getQuestionString() override;
 
-    double generateQuestion() override;
+    void generateQuestion() override;
 };
 
 } // namespace gameround
