@@ -4,8 +4,8 @@
    Licensed under the GPL V.3.0
 */
 
-#ifndef ROUND_HEADER
-#define ROUND_HEADER
+#ifndef ROUND_SYSTEM_HEADER
+#define ROUND_SYSTEM_HEADER
 
 namespace gameround
 {

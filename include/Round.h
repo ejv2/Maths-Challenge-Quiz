@@ -48,59 +48,6 @@ static const int bounds[6][5] = {{2, 2, 2, 2, 0},
                                  {1000, 50, 50, 25, 0},
                                  {100000000, 100000000, 100000000, 100000000, 100000000}};
 
-class GameRound
-{
-
-public:
-    GameRound(PreviousRound prevround, int difficulty);
-    ~GameRound();
-
-    int difficulty;
-
-    int current_question[2];
-    std::string current_question_string;
-    int type;
-
-    RoundType getRoundType();
-    const int getQuestionAmount();
-
-    double getPercentCorrect();
-
-    bool isRoundOver();
-    void runInterlude();
-
-    float askQuestion();
-    bool verifyAnswer(float answer);
-    void creditAnswer(bool correct);
-
-    void getRoundInfo(PreviousRound *prevRound);
-
-    int getPoints();
-
-private:
-    void handleSpeedReward();
-    void generateQuestion();
-
-    void setupSkipRound();
-    void runSkipRound();
-
-    void runSpeedIntro();
-
-    std::string getIntroText();
-    std::string getOperatorString();
-
-    int question_amount;
-    int question_bounds;
-
-    int question_number;
-    int question_time;
-
-    int points;
-
-    bool previousSkipRound = false;
-    bool invalidRound = false;
-    bool showInterlude = true;
-};
 
 } // namespace gameround
 

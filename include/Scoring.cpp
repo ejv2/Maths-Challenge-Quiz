@@ -4,14 +4,13 @@
    Licensed under the GPL V.3.0
 */
 
-#include "Scoring.h"
-#include "Round.h"
-#include "Util.h"
-#include "Constants.h"
-
 #include <iostream>
 #include <string>
 #include <tuple>
+
+#include "Scoring.h"
+#include "Util.h"
+#include "Constants.h"
 
 #define QUICK_PRINT(msg)      \
     std::cout << msg << "\n"; \
@@ -19,22 +18,6 @@
 
 namespace scoring
 {
-
-bool shouldPassRound(gameround::GameRound *round)
-{
-#if ALWAYS_PASS != true
-
-    if (round->type == gameround::RoundType::skip)
-        return true;
-
-    double percentCorrect = round->getPercentCorrect();
-    float requiredPercent = 0.5 + ((round->difficulty / 10) - 0.1);
-
-    return percentCorrect >= requiredPercent;
-#else
-    return true;
-#endif
-}
 
 void run_roundFailureCutscene()
 {
@@ -195,18 +178,6 @@ OverallResult getFinalResult(int points, int questions)
 #else
     return OverallResult::great;
 #endif
-}
-
-void processGameStatus(GameStatus *state, gameround::GameRound *round)
-{
-    state->overall_points += round->getPoints();
-    state->questions_answered += round->getQuestionAmount();
-    state->rounds_completed++;
-
-    double overall_points_dec = (double)state->overall_points;
-    double questions_answered_dec = (double)state->questions_answered;
-
-    state->percent_correct = (overall_points_dec / questions_answered_dec) * 100;
 }
 
 } // namespace scoring

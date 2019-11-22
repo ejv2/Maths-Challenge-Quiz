@@ -16,7 +16,7 @@ class ArithmeticRound : public BaseRound
 {
 
 public:
-    ArithmeticRound();
+    ArithmeticRound(PreviousRound *prevround);
     ~ArithmeticRound();
 
     double askQuestion() override;
@@ -28,13 +28,17 @@ public:
     void runIntro() override;
     void runInterlude() override;
 
+    int getRoundType() override;
+
+    int getSize() override;
+
 private:
     bool checkRoundValidity() override;
 
     inline std::string getRoundName() override;
     inline std::string getIntroText() override;
 
-    bool verifyAnswer() override;
+    bool verifyAnswer(double answer) override;
 
     inline std::string getOperator() override;
     std::string getQuestionString() override;

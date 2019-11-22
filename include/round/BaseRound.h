@@ -5,6 +5,7 @@
 */
 
 #include "Round.h"
+#include "../Scoring.h"
 
 #include <string>
 
@@ -17,24 +18,30 @@ namespace gameround
 class BaseRound
 {
 public:
+    BaseRound();
     BaseRound(PreviousRound previousRound);
     ~BaseRound();
 
-    virtual double askQuestion() = 0;
-    virtual void handleAnswer(double answer) = 0;
+    virtual double askQuestion();
+    virtual void handleAnswer(double answer);
 
     virtual bool isRoundOver();
-    virtual bool questionsRequired() = 0;
+    virtual bool questionsRequired();
 
-    virtual void runIntro() = 0;
+    virtual void runIntro();
     virtual void runInterlude();
 
-    virtual int getPoints();
+    int getPoints();
+    double getPercentCorrect();
+    virtual int getRoundType();
     virtual bool shouldPassRound();
 
-    void updateGameState(PreviousRound *prevRound);
+    virtual int getSize();
 
-private:
+    void getRoundInfo(PreviousRound *prevround);
+    void updateGameState(scoring::GameStatus *status);
+
+protected:
     int difficulty;
 
     int points;
@@ -50,13 +57,13 @@ private:
 
     virtual bool checkRoundValidity();
 
-    virtual inline std::string getRoundName() = 0;
-    virtual inline std::string getIntroText() = 0;
+    virtual inline std::string getRoundName();
+    virtual inline std::string getIntroText();
 
-    virtual bool verifyAnswer() = 0;
+    virtual bool verifyAnswer(double answer);
 
-    virtual inline std::string getOperator() = 0;
-    virtual std::string getQuestionString() = 0;
+    virtual inline std::string getOperator();
+    virtual std::string getQuestionString();
 
     virtual void generateQuestion();
 };
