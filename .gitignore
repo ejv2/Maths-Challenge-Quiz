@@ -6,8 +6,13 @@ build/Maths Challenge Quiz
 build/Maths Challenge Quiz.exe
 build/.gdb_history
 
+# Ignore all executables
 *.exe
 *.o
+
+# Ignore the contents of the private directory
+# Use this for what you want
+private/*
 
 # Ignore language configuration files
 .vscode/settings.json
