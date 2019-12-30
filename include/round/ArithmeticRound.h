@@ -5,6 +5,9 @@
 */
 
 #include "BaseRound.h"
+#include "../Startup.h"
+
+using namespace startup;
 
 #ifndef ARITHMETIC_ROUND
 #define ARITHMETIC_ROUND
@@ -16,7 +19,7 @@ class ArithmeticRound : public BaseRound
 {
 
 public:
-    ArithmeticRound(PreviousRound *prevround);
+    ArithmeticRound(PreviousRound *prevround, startup_information info);
     ~ArithmeticRound();
 
     double askQuestion() override;
@@ -26,7 +29,6 @@ public:
     bool questionsRequired() override;
 
     void runIntro() override;
-    void runInterlude() override;
 
     int getRoundType() override;
 
@@ -44,6 +46,9 @@ private:
     std::string getQuestionString() override;
 
     void generateQuestion() override;
+
+    int getMaxQuestions() override;
+    int getMaxQuestionValue() override;
 };
 
 } // namespace gameround

@@ -6,8 +6,11 @@
 
 #include "Round.h"
 #include "../Scoring.h"
+#include "../Startup.h"
 
 #include <string>
+
+using namespace startup;
 
 #ifndef BASE_ROUND
 #define BASE_ROUND
@@ -19,7 +22,7 @@ class BaseRound
 {
 public:
     BaseRound();
-    BaseRound(PreviousRound previousRound);
+    BaseRound(PreviousRound previousRound, startup_information info);
     ~BaseRound();
 
     virtual double askQuestion();
@@ -66,6 +69,9 @@ protected:
     virtual std::string getQuestionString();
 
     virtual void generateQuestion();
+
+    virtual int getMaxQuestions();
+    virtual int getMaxQuestionValue();
 };
 
 } // namespace gameround

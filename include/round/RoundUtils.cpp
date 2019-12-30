@@ -6,13 +6,14 @@
 
 #include "BaseRound.h"
 #include "ArithmeticRound.h"
+#include "../Startup.h"
 
 namespace gameround
 {
 
-BaseRound *constructRound(int randint, PreviousRound *previousRound)
+BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info)
 {
-    return new ArithmeticRound(previousRound);
+    return new ArithmeticRound(previousRound, info);
 }
 
 } // namespace gameround

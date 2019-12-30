@@ -47,7 +47,7 @@ void run_roundFailureCutscene()
 
 void handlePracticeWatermark(int difficulty)
 {
-    if (difficulty)
+    if (difficulty < 1)
     {
         std::cout << "PRACTICE MODE\n\n";
         std::cout << "The game is currently in practice mode, making whatever score was achieved non-genuine\n";

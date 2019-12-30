@@ -24,11 +24,7 @@ using namespace gameround;
 using namespace game_over;
 using namespace std;
 
-static PreviousRound prevRound = {
-    RoundType::arithmetic,
-    false,
-};
-
+static PreviousRound prevRound;
 static scoring::GameStatus game_state;
 
 int main(int argc, char *argv[])
@@ -52,14 +48,14 @@ int main(int argc, char *argv[])
 
         // Construct round
         int roundType = std::rand() % MAX_ROUND_TYPES;
-        BaseRound *currentRound = gameround::constructRound(roundType, &prevRound);
+        BaseRound *currentRound = gameround::constructRound(roundType, &prevRound, info);
 
         // ==================== [START OF ROUND] ====================
 
         while (!currentRound->isRoundOver())
         {
 
-            float ans = currentRound->askQuestion();
+            double ans = currentRound->askQuestion();
             currentRound->handleAnswer(ans);
         }
 

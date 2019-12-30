@@ -7,19 +7,24 @@
 #include "BaseRound.h"
 #include "../Util.h"
 #include "../Scoring.h"
+#include "../Constants.h"
+#include "../Startup.h"
 #include "Round.h"
 
 #include <iostream>
 
+using namespace startup;
+
 namespace gameround
 {
 
-BaseRound::BaseRound(PreviousRound previousRound)
+BaseRound::BaseRound(PreviousRound previousRound, startup_information info)
 {
 }
 
 BaseRound::BaseRound()
 {
+    util::clearScreen();
 }
 
 BaseRound::~BaseRound()
@@ -36,7 +41,7 @@ void BaseRound::handleAnswer(double answer)
 
 bool BaseRound::isRoundOver()
 {
-    return (this->current_question_number >= this->amount_questions);
+    return (this->current_question_number > this->amount_questions);
 }
 
 bool BaseRound::questionsRequired()
@@ -49,13 +54,21 @@ void BaseRound::runInterlude()
 
     util::clearScreen();
 
-    std::cout << "You have completed this round";
-    std::cout << "The next round will begin shortly...";
-    std::cout << "This round's points total: " << this->points;
+    std::cout << "You have completed this round\n";
+    std::cout << "The next round will begin shortly...\n\n";
+
+    std::cout << "This round's points total: " << this->points << "\n";
+    std::cout << "Percentage of answers correct: " << this->getPercentCorrect() * 100 << "%\n";
+
+    util::sleep(5);
 }
 
 void BaseRound::runIntro()
 {
+    std::cout << "[INSERT ROUND NAME HERE]\n";
+    std::cout << "[INSERT ROUND DESCRIPTION HERE]\n";
+    std::cout << "You will answer " << this->amount_questions << " questions this round\n";
+    std::cout << "Good luck!\n\n";
 }
 
 int BaseRound::getPoints()
@@ -65,7 +78,7 @@ int BaseRound::getPoints()
 
 double BaseRound::getPercentCorrect()
 {
-    return this->points / this->amount_questions;
+    return (double)this->points / (double)this->amount_questions;
 }
 
 int BaseRound::getRoundType()
@@ -75,7 +88,7 @@ int BaseRound::getRoundType()
 
 bool BaseRound::shouldPassRound()
 {
-    return ((this->points / this->amount_questions) > 0.5);
+    return (((double)this->points / (double)this->amount_questions) > 0.5);
 }
 
 bool BaseRound::checkRoundValidity()
@@ -96,7 +109,7 @@ void BaseRound::updateGameState(scoring::GameStatus *status)
 
     status->overall_points += this->points;
 
-    status->percent_correct = (status->overall_points / status->questions_answered) * 100;
+    status->percent_correct = ((double)status->overall_points / (double)status->questions_answered) * 100;
 }
 
 void BaseRound::getRoundInfo(PreviousRound *prevround)
@@ -112,10 +125,12 @@ int BaseRound::getSize()
 
 inline std::string BaseRound::getRoundName()
 {
+    return "[INSERT ROUND NAME HERE]";
 }
 
 inline std::string BaseRound::getIntroText()
 {
+    return "[INSERT DESCRIPTION HERE]";
 }
 
 bool BaseRound::verifyAnswer(double answer)
@@ -124,10 +139,21 @@ bool BaseRound::verifyAnswer(double answer)
 
 inline std::string BaseRound::getOperator()
 {
+    return "?";
 }
 
 std::string BaseRound::getQuestionString()
 {
+}
+
+int BaseRound::getMaxQuestions()
+{
+    return BASE_MAX_QUESTIONS;
+}
+
+int BaseRound::getMaxQuestionValue()
+{
+    return 100;
 }
 
 } // namespace gameround

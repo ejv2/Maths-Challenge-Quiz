@@ -6,7 +6,7 @@
 
 // General constants
 #define PROGRAM_NAME "Maths Challenge Quiz"
-#define PROGRAM_DESCRIPTION "Maths Challenge Quiz is a multi-stage, multi-ability level gague of mathematical ability\nIt is open source and free for all, forever.\n"
+#define PROGRAM_DESCRIPTION "Maths Challenge Quiz is a multi-stage, multi-ability level gauge of mathematical ability\nIt is open source and free for all, forever.\n"
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
@@ -23,16 +23,13 @@
 #define NO_ROUND_WAIT false       // Disable the 5 second wait between rounds
 
 // General constants
-#define MAX_QUESTION_AMOUNT 15 // The maximum amount of questions possible in a round
-#define MAX_ROUND_TYPES 4      // The amount of round types that can be selected
+#define BASE_MAX_QUESTIONS 15 // Suggestion as to how many questions should be in a round
+#define MAX_ROUND_TYPES 5     // The number of rounds that should be accounted for in RNG calculations
 
 #define IMPOSSIBLE_DIFFICULTY_THRESHOLD 5 // The amount at which impossible difficulty will be applied
 #define TRAINING_DIFFICULTY_THRESHOLD 0   // The amount at which the training difficulty will be applied
 
-#define INVALID_ANSWER_FLOAT -1.5f // The answer that will be returned if an invalid answer was given
-
-#define QUESTION_FORMAT_BEGINNING "Enter the answer to " // The format that all questions will be delivered in
-#define QUESTION_FORMAT_ENDING ":"                       // The end of the question string
+#define INVALID_ANSWER -1.5 // The answer that will be returned if an invalid answer was given
 
 // Speed round scoring boundaries (the time to nearest whole to get boundary along with the associated points)
 #define EXCELLENT 0

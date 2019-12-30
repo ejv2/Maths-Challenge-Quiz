@@ -5,6 +5,7 @@
 */
 
 #include "BaseRound.h"
+#include "../Startup.h"
 
 #ifndef ROUND_UTILS_HEADER
 #define ROUND_UTILS_HEADER
@@ -12,7 +13,7 @@
 namespace gameround
 {
 
-BaseRound *constructRound(int randint, PreviousRound *previousRound);
+BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info);
 
 } // namespace gameround
 
