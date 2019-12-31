@@ -47,8 +47,10 @@ int main(int argc, char *argv[])
     {
 
         // Construct round
-        int roundType = std::rand() % MAX_ROUND_TYPES;
+        int roundType = (std::rand() % (MAX_ROUND_TYPES - 1)) + 1;
         BaseRound *currentRound = gameround::constructRound(roundType, &prevRound, info);
+
+        std::cout << "Debug: " << roundType << "\n\n";
 
         // ==================== [START OF ROUND] ====================
 

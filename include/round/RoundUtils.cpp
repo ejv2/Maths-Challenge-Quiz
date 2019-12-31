@@ -6,6 +6,11 @@
 
 #include "BaseRound.h"
 #include "ArithmeticRound.h"
+#include "MultiplicationRound.h"
+#include "DivisionRound.h"
+#include "SpeedRound.h"
+#include "SkipRound.h"
+
 #include "../Startup.h"
 
 namespace gameround
@@ -13,7 +18,28 @@ namespace gameround
 
 BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info)
 {
-    return new ArithmeticRound(previousRound, info);
+    switch (randint)
+    {
+
+    case 1:
+        return new ArithmeticRound(previousRound, info);
+        break;
+    case 2:
+        return new MultiplicationRound(previousRound, info);
+        break;
+    case 3:
+        return new DivisionRound(previousRound, info);
+        break;
+    case 4:
+        return new DivisionRound(previousRound, info);
+        break;
+    case 5:
+        return new DivisionRound(previousRound, info);
+        break;
+    default:
+        return new BaseRound(previousRound, info);
+        break;
+    }
 }
 
 } // namespace gameround
