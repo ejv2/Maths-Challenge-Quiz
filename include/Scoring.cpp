@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <tuple>
+#include <math.h>
 
 #include "Scoring.h"
 #include "Util.h"
@@ -70,7 +71,7 @@ void displayResults(GameStatus state, int difficulty)
     std::cout << "Rounds you lasted: " << state.rounds_completed << "\n";
     std::cout << "Points earned: " << state.overall_points << "\n";
     std::cout << "Questions answered: " << state.questions_answered << "\n";
-    std::cout << "Percentage of answers correct: " << state.percent_correct << "%\n";
+    std::cout << "Percentage of answers correct: " << std::floor(state.percent_correct) << "%\n";
 
     std::cout << "\n";
     std::cout << "Your result: " << finalResultString << "\n\n";

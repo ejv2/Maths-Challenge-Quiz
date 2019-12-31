@@ -12,6 +12,7 @@
 #include "Round.h"
 
 #include <iostream>
+#include <math.h>
 
 using namespace startup;
 
@@ -58,7 +59,7 @@ void BaseRound::runInterlude()
     std::cout << "The next round will begin shortly...\n\n";
 
     std::cout << "This round's points total: " << this->points << "\n";
-    std::cout << "Percentage of answers correct: " << this->getPercentCorrect() * 100 << "%\n";
+    std::cout << "Percentage of answers correct: " << std::floor(this->getPercentCorrect() * 100) << "%\n";
 
     util::sleep(5);
 }

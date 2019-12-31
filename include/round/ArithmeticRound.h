@@ -49,6 +49,8 @@ private:
 
     int getMaxQuestions() override;
     int getMaxQuestionValue() override;
+
+    std::string current_operator;
 };
 
 } // namespace gameround

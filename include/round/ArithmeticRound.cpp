@@ -22,6 +22,7 @@ ArithmeticRound::ArithmeticRound(PreviousRound *prevround, startup_information i
     this->difficulty = info.difficulty;
     this->current_question_number = 1;
     this->points = 0;
+    this->current_operator = "+";
 
     this->currentQuestion[0] = 1;
     this->currentQuestion[1] = 1;
@@ -125,12 +126,19 @@ inline std::string ArithmeticRound::getIntroText()
 
 bool ArithmeticRound::verifyAnswer(double answer)
 {
-    return answer == (this->currentQuestion[0] + this->currentQuestion[1]);
+    if (this->current_operator == "+")
+    {
+        return answer == (this->currentQuestion[0] + this->currentQuestion[1]);
+    }
+    else
+    {
+        return answer == (this->currentQuestion[0] - this->currentQuestion[1]);
+    }
 }
 
 inline std::string ArithmeticRound::getOperator()
 {
-    return "+";
+    return this->current_operator;
 }
 
 std::string ArithmeticRound::getQuestionString()
@@ -144,6 +152,18 @@ std::string ArithmeticRound::getQuestionString()
 
 void ArithmeticRound::generateQuestion()
 {
+
+    int randint0 = std::rand() % 2;
+
+    if (randint0)
+    {
+        this->current_operator = "+";
+    }
+    else
+    {
+        this->current_operator = "-";
+    }
+
     if (this->difficulty < 0)
     {
         this->currentQuestion[0] = 1;
