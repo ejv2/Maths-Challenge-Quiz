@@ -89,7 +89,7 @@ int BaseRound::getRoundType()
 
 bool BaseRound::shouldPassRound()
 {
-    return (((double)this->points / (double)this->amount_questions) > 0.5);
+    return (((double)this->points / (double)this->amount_questions) >= 0.5);
 }
 
 bool BaseRound::checkRoundValidity()

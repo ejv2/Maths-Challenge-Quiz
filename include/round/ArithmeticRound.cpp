@@ -27,7 +27,7 @@ ArithmeticRound::ArithmeticRound(PreviousRound *prevround, startup_information i
     this->currentQuestion[0] = 1;
     this->currentQuestion[1] = 1;
 
-    this->amount_questions = std::rand() % this->getMaxQuestions();
+    this->amount_questions = std::rand() % this->getMaxQuestions() + 1;
 
     this->runIntro();
 }
