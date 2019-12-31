@@ -22,7 +22,7 @@ class BaseRound
 {
 public:
     BaseRound();
-    BaseRound(PreviousRound previousRound, startup_information info);
+    BaseRound(PreviousRound *previousRound, startup_information info);
     ~BaseRound();
 
     virtual double askQuestion();

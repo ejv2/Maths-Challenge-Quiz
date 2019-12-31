@@ -19,7 +19,7 @@ using namespace startup;
 namespace gameround
 {
 
-BaseRound::BaseRound(PreviousRound previousRound, startup_information info)
+BaseRound::BaseRound(PreviousRound *previousRound, startup_information info)
 {
 }
 

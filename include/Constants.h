@@ -24,7 +24,7 @@
 
 // General constants
 #define BASE_MAX_QUESTIONS 15 // Suggestion as to how many questions should be in a round
-#define MAX_ROUND_TYPES 5     // The number of rounds that should be accounted for in RNG calculations
+#define MAX_ROUND_TYPES 6     // The number of rounds that should be accounted for in RNG calculations
 
 #define IMPOSSIBLE_DIFFICULTY_THRESHOLD 5 // The amount at which impossible difficulty will be applied
 #define TRAINING_DIFFICULTY_THRESHOLD 0   // The amount at which the training difficulty will be applied

@@ -12,7 +12,7 @@ dep_path = include/
 dep_rpath = include/round/
 main_file = Main.cpp
 
-round_files = $(dep_rpath)BaseRound.cpp $(dep_rpath)ArithmeticRound.cpp $(dep_rpath)MultiplicationRound.cpp $(dep_rpath)DivisionRound.h $(dep_rpath)SpeedRound.cpp $(dep_rpath)SkipRound.cpp $(dep_rpath)RoundUtils.cpp
+round_files = $(dep_rpath)BaseRound.cpp $(dep_rpath)ArithmeticRound.cpp $(dep_rpath)MultiplicationRound.cpp $(dep_rpath)DivisionRound.cpp $(dep_rpath)SpeedRound.cpp $(dep_rpath)SkipRound.cpp $(dep_rpath)RoundUtils.cpp
 dep_files = $(dep_path)Round.cpp $(dep_path)Startup.cpp $(dep_path)Util.cpp $(dep_path)Scoring.cpp $(dep_path)GameOver.cpp $(round_files)
 
 header_files = $(dep_path)Round.h $(dep_path)Startup.h $(dep_path)Util.h $(dep_path)Constants.h
