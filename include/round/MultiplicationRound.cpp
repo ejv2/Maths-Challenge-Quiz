@@ -100,7 +100,7 @@ void MultiplicationRound::runIntro()
 
 int MultiplicationRound::getRoundType()
 {
-    return RoundType::arithmetic;
+    return RoundType::multiplication;
 }
 
 int MultiplicationRound::getSize()

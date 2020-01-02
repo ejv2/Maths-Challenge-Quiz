@@ -101,7 +101,7 @@ void DivisionRound::runIntro()
 
 int DivisionRound::getRoundType()
 {
-    return RoundType::arithmetic;
+    return RoundType::division;
 }
 
 int DivisionRound::getSize()
