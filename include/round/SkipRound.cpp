@@ -32,8 +32,16 @@ SkipRound::SkipRound(PreviousRound *prevround, startup_information info)
 
     this->skipEnded = false;
 
-    this->runIntro();
-    this->runSkip();
+    this->previousSkipRound = prevround->previousSkip;
+    this->invalidRound = !this->checkRoundValidity();
+
+    if (!invalidRound)
+    {
+        this->runIntro();
+        this->runSkip();
+    }
+
+    this->skipEnded = true;
 }
 
 SkipRound::~SkipRound()
@@ -73,7 +81,7 @@ int SkipRound::getSize()
 
 bool SkipRound::checkRoundValidity()
 {
-    return true;
+    return !this->previousSkipRound;
 }
 
 inline std::string SkipRound::getRoundName()
@@ -99,8 +107,6 @@ void SkipRound::runSkip()
     {
         this->printCounterText(i);
     }
-
-    this->skipEnded = true;
 
     std::cout << "\nQuestions resuming now...";
     std::cout.flush();
