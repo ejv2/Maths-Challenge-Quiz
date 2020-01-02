@@ -97,18 +97,29 @@ inline std::string SkipRound::getOperator()
 
 void SkipRound::runSkip()
 {
-    for (int i = 1; i < SKIP_ROUND_TIME; i++)
+    this->currentCounterText = "";
+
+    for (int i = SKIP_ROUND_TIME; i > 0; i--)
     {
-        std::cout << i << "\n";
-        std::cout.flush();
-        util::sleep(1);
+        this->printCounterText(i);
     }
 
     this->skipEnded = true;
 
-    std::cout << "Questions resuming now...";
+    std::cout << "\nQuestions resuming now...";
     std::cout.flush();
     util::sleep(2);
+}
+
+void SkipRound::printCounterText(int counterValue)
+{
+    std::cout << std::string(this->currentCounterText.length(), '\b');
+
+    this->currentCounterText = "Time remaining: " + std::to_string(counterValue) + "s ";
+    std::cout << this->currentCounterText;
+
+    std::cout.flush();
+    util::sleep(1);
 }
 
 } // namespace gameround

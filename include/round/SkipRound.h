@@ -43,6 +43,9 @@ private:
 
     void runSkip();
 
+    std::string currentCounterText;
+    void printCounterText(int counterValue);
+
     bool skipEnded;
 };
 
