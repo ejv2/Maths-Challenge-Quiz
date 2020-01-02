@@ -82,11 +82,6 @@ double BaseRound::getPercentCorrect()
     return (double)this->points / (double)this->amount_questions;
 }
 
-int BaseRound::getRoundType()
-{
-    return RoundType::arithmetic;
-}
-
 bool BaseRound::shouldPassRound()
 {
     return (((double)this->points / (double)this->amount_questions) >= 0.5);
@@ -115,8 +110,8 @@ void BaseRound::updateGameState(scoring::GameStatus *status)
 
 void BaseRound::getRoundInfo(PreviousRound *prevround)
 {
-    prevround->previousType = this->getRoundType();
-    prevround->previousSkip = (this->getRoundType() == RoundType::skip);
+    prevround->previousType = this->roundType;
+    prevround->previousSkip = (this->roundType == RoundType::skip);
 }
 
 int BaseRound::getSize()

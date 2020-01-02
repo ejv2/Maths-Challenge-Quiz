@@ -30,8 +30,6 @@ public:
     void runIntro() override;
     void runInterlude() override;
 
-    int getRoundType() override;
-
     int getSize() override;
 
 private:

@@ -18,6 +18,7 @@ namespace gameround
 
 ArithmeticRound::ArithmeticRound(PreviousRound *prevround, startup_information info)
 {
+    this->roundType = RoundType::arithmetic;
 
     this->difficulty = info.difficulty;
     this->current_question_number = 1;
@@ -97,11 +98,6 @@ void ArithmeticRound::runIntro()
     std::cout << this->getIntroText() << "\n";
     std::cout << "You will answer " << this->amount_questions << " questions this round\n";
     std::cout << "Good luck!\n\n";
-}
-
-int ArithmeticRound::getRoundType()
-{
-    return RoundType::arithmetic;
 }
 
 int ArithmeticRound::getSize()

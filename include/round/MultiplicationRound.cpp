@@ -18,6 +18,7 @@ namespace gameround
 
 MultiplicationRound::MultiplicationRound(PreviousRound *prevround, startup_information info)
 {
+    this->roundType = RoundType::multiplication;
 
     this->difficulty = info.difficulty;
     this->current_question_number = 1;
@@ -96,11 +97,6 @@ void MultiplicationRound::runIntro()
     std::cout << this->getIntroText() << "\n";
     std::cout << "You will answer " << this->amount_questions << " questions this round\n";
     std::cout << "Good luck!\n\n";
-}
-
-int MultiplicationRound::getRoundType()
-{
-    return RoundType::multiplication;
 }
 
 int MultiplicationRound::getSize()

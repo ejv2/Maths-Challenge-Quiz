@@ -36,7 +36,6 @@ public:
 
     int getPoints();
     double getPercentCorrect();
-    virtual int getRoundType();
     virtual bool shouldPassRound();
 
     virtual int getSize();
@@ -57,6 +56,8 @@ protected:
     bool previousSkipRound = false;
     bool invalidRound = false;
     bool showInterlude = true;
+
+    RoundType roundType;
 
     virtual bool checkRoundValidity();
 

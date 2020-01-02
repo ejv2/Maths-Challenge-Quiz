@@ -19,6 +19,7 @@ namespace gameround
 
 SkipRound::SkipRound(PreviousRound *prevround, startup_information info)
 {
+    this->roundType = RoundType::skip;
 
     this->difficulty = info.difficulty;
     this->current_question_number = 1;
@@ -63,11 +64,6 @@ void SkipRound::runIntro()
 void SkipRound::runInterlude()
 {
     util::clearScreen();
-}
-
-int SkipRound::getRoundType()
-{
-    return RoundType::skip;
 }
 
 int SkipRound::getSize()
