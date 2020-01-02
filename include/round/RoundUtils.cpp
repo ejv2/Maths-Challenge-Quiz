@@ -31,13 +31,13 @@ BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::st
         return new DivisionRound(previousRound, info);
         break;
     case 4:
-        return new DivisionRound(previousRound, info);
+        return new SkipRound(previousRound, info);
         break;
     case 5:
-        return new DivisionRound(previousRound, info);
+        return new SkipRound(previousRound, info);
         break;
     default:
-        return new BaseRound(previousRound, info);
+        return new ArithmeticRound(previousRound, info);
         break;
     }
 }
