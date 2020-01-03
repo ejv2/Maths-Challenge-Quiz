@@ -31,7 +31,7 @@ BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::st
         return new DivisionRound(previousRound, info);
         break;
     case 4:
-        return new SkipRound(previousRound, info);
+        return new SpeedRound(previousRound, info);
         break;
     case 5:
         return new SkipRound(previousRound, info);

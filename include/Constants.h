@@ -31,7 +31,8 @@
 
 #define INVALID_ANSWER -1.5 // The answer that will be returned if an invalid answer was given
 
-#define SKIP_ROUND_TIME 10 // The number of seconds that a skip round will last for
+#define SKIP_ROUND_TIME 10      // The number of seconds that a skip round will last for
+#define SPEED_ROUND_COUNTDOWN 5 // The number of seconds countdown before the beginning of a speed round
 
 // Speed round scoring boundaries (the time to nearest whole to get boundary along with the associated points)
 #define EXCELLENT 0
