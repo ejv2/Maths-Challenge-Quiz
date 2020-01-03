@@ -1,0 +1,13 @@
+language: bash
+dist: bionic
+
+addons:
+    apt:
+        update: true
+
+script:
+    - echo "Building using make"
+    - make
+
+notifications:
+    email: false
