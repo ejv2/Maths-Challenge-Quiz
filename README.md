@@ -1,5 +1,13 @@
 # Maths Challenge Quiz
 
+[![Build Status](https://travis-ci.org/OverEngineeredCode/Maths-Challenge-Quiz.svg?branch=master)](https://travis-ci.org/OverEngineeredCode/Maths-Challenge-Quiz)
+[![Build Status](https://travis-ci.org/OverEngineeredCode/Maths-Challenge-Quiz.svg?branch=dev)](https://travis-ci.org/OverEngineeredCode/Maths-Challenge-Quiz)
+![GitHub issues](https://img.shields.io/github/issues/OverEngineeredCode/Maths-Challenge-Quiz)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/OverEngineeredCode/Maths-Challenge-Quiz)
+![GitHub](https://img.shields.io/github/license/OverEngineeredCode/Maths-Challenge-Quiz)
+
+<hr>
+
 The Maths Challenge Quiz is a short, hobby command line game for testing a person's mathematical ability. It is open source, free and always will be. Being licensed under a permissive GPL licence, you are free to change, redistribute and build the project wherever and for whatever purpose. Please read the licence text for more information.
 
 It was originally created as a school project, but quickly became a full game.
@@ -21,12 +29,12 @@ To build the program, you must be running on Linux (you can cross compile for wi
 To build:
 
 1. Navigate to the project root
-1. Execute ``make`` on Linux or mac, or ``make windows`` to build for windows
+1. Execute `make` on Linux or mac, or `make windows` to build for windows
 1. You will find the appropriate executable under **/build**
 
 ## Playing the game
 
-More detailed instructions can be found in ``Instructions.md``
+More detailed instructions can be found in `Instructions.md`
 
 # Contributing
 
@@ -53,8 +61,8 @@ If you want to make a PR on the repository, please make your changes on the dev 
 
 This project is under active development, meaning that it will not reach end-of-life or end development any time soon. Even if no commits have come in for a while, the project is most likely just waiting to be pushed (or something big is coming).
 
-I will perform regular maintainence on the codebase. For example, the testing framework used may need to be updated, or a new default compiler may be enabled in the makefile. This will be handled *solely by the owner*. No PRs will be merged that change this. Issues that remind about this may also be closed without action.
+I will perform regular maintainence on the codebase. For example, the testing framework used may need to be updated, or a new default compiler may be enabled in the makefile. This will be handled _solely by the owner_. No PRs will be merged that change this. Issues that remind about this may also be closed without action.
 
 <hr>
 
-*Maths challenge quiz, By Ethan Marshall* Copyright 2019, Licensed under GNU public license
+_Maths challenge quiz, By Ethan Marshall_ Copyright 2019, Licensed under GNU public license
