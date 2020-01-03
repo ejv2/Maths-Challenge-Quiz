@@ -13,22 +13,19 @@
 #include "include/Constants.h"
 #include "include/Startup.h"
 #include "include/Util.h"
-#include "include/Round.h"
 #include "include/Scoring.h"
 #include "include/GameOver.h"
+
+#include "include/round/Round.h"
+#include "include/round/BaseRound.h"
+#include "include/round/RoundUtils.h"
 
 using namespace gameround;
 using namespace game_over;
 using namespace std;
 
-static PreviousRound prevRound = {
-    RoundType::arithmetic,
-    false,
-};
-
-static scoring::GameStatus game_state = {
-
-};
+static PreviousRound prevRound;
+static scoring::GameStatus game_state;
 
 int main(int argc, char *argv[])
 {
@@ -49,26 +46,26 @@ int main(int argc, char *argv[])
     while (true)
     {
 
-        GameRound *currentRound = new GameRound(prevRound, info.difficulty);
+        // Construct round
+        int roundType = (std::rand() % (MAX_ROUND_TYPES - 1)) + 1;
+        BaseRound *currentRound = gameround::constructRound(roundType, &prevRound, info);
 
         // ==================== [START OF ROUND] ====================
 
         while (!currentRound->isRoundOver())
         {
 
-            float ans = currentRound->askQuestion();
-            bool correct = currentRound->verifyAnswer(ans);
-            currentRound->creditAnswer(correct);
+            double ans = currentRound->askQuestion();
+            currentRound->handleAnswer(ans);
         }
 
         // ==================== [END OF ROUND] ====================
 
         // Fill in the previous round's information
         currentRound->getRoundInfo(&prevRound);
+        currentRound->updateGameState(&game_state);
 
-        scoring::processGameStatus(&game_state, currentRound);
-
-        if (!scoring::shouldPassRound(currentRound))
+        if (!currentRound->shouldPassRound())
         {
             scoring::run_roundFailureCutscene();
             scoring::displayResults(game_state, info.difficulty);
@@ -80,7 +77,7 @@ int main(int argc, char *argv[])
 
         // Free the current round
         delete currentRound;
-        std::memset(currentRound, 0, sizeof(GameRound));
+        std::memset(currentRound, 0, sizeof(currentRound->getSize()));
     }
 
     // When we reach this point, the game is over

@@ -4,10 +4,10 @@
    Licensed under the GPL V.3.0
 */
 
+#include <string>
+
 #ifndef SCORING_HEADER
 #define SCORING_HEADER
-
-#include "Round.h"
 
 namespace scoring
 {
@@ -39,15 +39,11 @@ struct GameStatus
     double percent_correct;
 };
 
-bool shouldPassRound(gameround::GameRound *round);
-
 void run_roundFailureCutscene();
 void displayResults(GameStatus state, int difficulty);
 void resultAcceptance(int difficulty);
 
 OverallResult getFinalResult(int points, int rounds);
-
-void processGameStatus(GameStatus *state, gameround::GameRound *round);
 
 } // namespace scoring
 
