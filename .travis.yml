@@ -1,0 +1,12 @@
+language: bash
+
+addons:
+    apt:
+        update: true
+
+script:
+    - echo "Building using make"
+    - make
+
+notifications:
+    email: false
