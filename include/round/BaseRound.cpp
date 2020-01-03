@@ -52,6 +52,7 @@ bool BaseRound::questionsRequired()
 
 void BaseRound::runInterlude()
 {
+    util::sleep(3);
 
     util::clearScreen();
 
