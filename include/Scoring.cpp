@@ -71,7 +71,16 @@ void displayResults(GameStatus state, int difficulty)
     std::cout << "Rounds you lasted: " << state.rounds_completed << "\n";
     std::cout << "Points earned: " << state.overall_points << "\n";
     std::cout << "Questions answered: " << state.questions_answered << "\n";
-    std::cout << "Percentage of answers correct: " << std::floor(state.percent_correct) << "%\n";
+
+    if (std::floor(state.percent_correct) >= 100)
+    {
+        std::cout << "Percentage of answers correct: 100%\n";
+        std::cout << "Percent extra points: " << std::floor(state.percent_correct) - 100 << "%";
+    }
+    else
+    {
+        std::cout << "Percentage of answers correct: " << std::floor(state.percent_correct) << "%\n";
+    }
 
     std::cout << "\n";
     std::cout << "Your result: " << finalResultString << "\n\n";
