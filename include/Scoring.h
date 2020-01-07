@@ -45,6 +45,8 @@ void resultAcceptance(int difficulty);
 
 OverallResult getFinalResult(int points, int rounds);
 
+void gameExiting();
+
 } // namespace scoring
 
 #endif

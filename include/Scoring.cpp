@@ -190,4 +190,21 @@ OverallResult getFinalResult(int points, int questions)
 #endif
 }
 
+void pausePriorExit()
+{
+    std::cout << "Press any key to continue...";
+    std::getchar();
+}
+
+void gameExiting()
+{
+
+    std::cout.clear();
+
+    std::cout << "Thanks for playing!\n";
+    std::cout << "Please be sure to share the game for more players:\n https://github.com/OverEngineeredCode/Maths-Challenge-Quiz \n\n";
+
+    pausePriorExit();
+}
+
 } // namespace scoring

@@ -14,14 +14,12 @@
 #include "include/Startup.h"
 #include "include/Util.h"
 #include "include/Scoring.h"
-#include "include/GameOver.h"
 
 #include "include/round/Round.h"
 #include "include/round/BaseRound.h"
 #include "include/round/RoundUtils.h"
 
 using namespace gameround;
-using namespace game_over;
 using namespace std;
 
 static PreviousRound prevRound;
@@ -81,7 +79,7 @@ int main(int argc, char *argv[])
     }
 
     // When we reach this point, the game is over
-    gameExiting();
+    scoring::gameExiting();
 
     return 0;
 }
