@@ -83,7 +83,7 @@ void MultiplicationRound::handleAnswer(double answer)
 
 bool MultiplicationRound::isRoundOver()
 {
-    BaseRound::isRoundOver();
+    return BaseRound::isRoundOver();
 }
 
 bool MultiplicationRound::questionsRequired()

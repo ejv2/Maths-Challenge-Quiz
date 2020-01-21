@@ -129,7 +129,7 @@ void SpeedRound::handleAnswer(double answer)
 
 bool SpeedRound::isRoundOver()
 {
-    BaseRound::isRoundOver();
+    return BaseRound::isRoundOver();
 }
 
 bool SpeedRound::questionsRequired()

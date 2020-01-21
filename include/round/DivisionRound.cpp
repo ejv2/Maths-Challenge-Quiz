@@ -84,7 +84,7 @@ void DivisionRound::handleAnswer(double answer)
 
 bool DivisionRound::isRoundOver()
 {
-    BaseRound::isRoundOver();
+    return BaseRound::isRoundOver();
 }
 
 bool DivisionRound::questionsRequired()

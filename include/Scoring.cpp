@@ -26,7 +26,7 @@ void run_roundFailureCutscene()
     std::cout.flush();
 
     QUICK_PRINT("Your result that round was...");
-    util::sleep(3.5);
+    util::sleep(4);
 
     QUICK_PRINT("Unsatisfactory");
     util::sleep(5);

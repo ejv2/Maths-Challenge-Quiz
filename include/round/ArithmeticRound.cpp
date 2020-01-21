@@ -84,7 +84,7 @@ void ArithmeticRound::handleAnswer(double answer)
 
 bool ArithmeticRound::isRoundOver()
 {
-    BaseRound::isRoundOver();
+    return BaseRound::isRoundOver();
 }
 
 bool ArithmeticRound::questionsRequired()

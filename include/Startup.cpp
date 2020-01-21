@@ -108,7 +108,7 @@ void handleDifficultyEnter(startup_information *info)
         {
             info->difficulty = std::stoi(difficulty);
         }
-        catch (const std::invalid_argument &e)
+        catch (const std::invalid_argument e)
         {
             std::cout << "Please enter a valid difficulty\n\n";
             continue;

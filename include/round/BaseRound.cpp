@@ -34,6 +34,7 @@ BaseRound::~BaseRound()
 
 double BaseRound::askQuestion()
 {
+    return 1.0;
 }
 
 void BaseRound::handleAnswer(double answer)
@@ -132,6 +133,7 @@ inline std::string BaseRound::getIntroText()
 
 bool BaseRound::verifyAnswer(double answer)
 {
+    return true;
 }
 
 inline std::string BaseRound::getOperator()
@@ -141,6 +143,7 @@ inline std::string BaseRound::getOperator()
 
 std::string BaseRound::getQuestionString()
 {
+    return "x?x";
 }
 
 int BaseRound::getMaxQuestions()
