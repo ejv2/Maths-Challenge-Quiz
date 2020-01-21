@@ -9,6 +9,10 @@ build/.gdb_history
 # Ignore all executables
 *.exe
 *.o
+*.lib
+
+*.pdb
+*.ilk
 
 # Ignore the contents of the private directory
 # Use this for what you want
@@ -16,3 +20,26 @@ private/*
 
 # Ignore language configuration files
 .vscode/settings.json
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# CMake Patch
+# External projects
+*-prefix/
+
+# Ninja
+.ninja_deps
+.ninja_log
+rules.ninja
+build.ninja
