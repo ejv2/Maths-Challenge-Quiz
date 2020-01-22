@@ -41,10 +41,7 @@ bool isValidNumber(std::string str)
 
 void sleep(int seconds)
 {
-    // Due to compiler complications, this method is not compiled when compiling for windows
-#ifndef COMP_WINDOWS
     std::this_thread::sleep_for(std::chrono::milliseconds(seconds * 1000));
-#endif
 }
 
 void setupRandomSeed()

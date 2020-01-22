@@ -4,6 +4,10 @@ project(MATHS-CHALLENGE-QUIZ)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if (WIN32)
+    add_compile_definitions(COMP_WINDOWS)
+endif (WIN32)
+
 add_subdirectory(include)
 
 add_executable(Maths-Challenge-Quiz Main.cpp)
