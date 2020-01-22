@@ -2,21 +2,24 @@
 # Copyright 2019 - Ethan Marshall
 
 # Ignore build files
-build/Maths Challenge Quiz
-build/Maths Challenge Quiz.exe
-build/.gdb_history
+Maths-Challenge-Quiz
+Maths-Challenge-Quiz.exe
 
 # Ignore all executables
 *.exe
 *.o
+*.a
 *.lib
 
 *.pdb
 *.ilk
 
+# Ignore visual studio files, if used
+.vs/
+
 # Ignore the contents of the private directory
 # Use this for what you want
-private/*
+private/
 
 # Ignore language configuration files
 .vscode/settings.json
