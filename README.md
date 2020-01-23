@@ -23,13 +23,15 @@ The program does not need to be installed, and can be run by executing the execu
 
 ## Building the program
 
-To build the program, you must be running on Linux (you can cross compile for windows using the makefile). If you only have access to windows, you should consider installing WSL.
+> **Note:** Since version 1.0, the project has transitioned to `cmake` for cross-platform support. If you wish to use the legacy build system or cannot use cmake, please refer to the build guide for further instructions.
 
-To build:
+The game can be built for whatever build system you have available using `cmake`. Obviously, this means cmake is required to build. Please obtain a copy [here](https://cmake.org/download/).
 
-1. Navigate to the project root
-1. Execute `make` on Linux or mac, or `make windows` to build for windows
-1. You will find the appropriate executable under **/build**
+To generate tools for your native build system, navigate to the root of the project and run `cmake .` This will create tools required to make the project. Then, you'll have either a makefile, editor project or other build system. Use the tools installed to build. For example, on Linux, you will most likely want to run `make` next.
+
+On windows, you will require either Visual Studio 2017 or later - or the windows SDK + build tools installed.
+
+For windows, the executable will be placed in the _build_ directory. However, when using makefiles or Visual Studio, generated files will be placed either in the root or in another directory.
 
 ## Playing the game
 
