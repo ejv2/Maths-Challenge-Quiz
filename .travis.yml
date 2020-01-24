@@ -1,13 +1,17 @@
-language: bash
+language: cpp
 dist: bionic
-
-addons:
-    apt:
-        update: true
-
-script:
-    - echo "Building using make"
-    - make
+os: linux
 
 notifications:
-    email: false
+  email: false
+
+addons:
+  apt:
+    upgrade: true
+    packages: cmake
+
+install:
+  - cmake .
+
+script:
+  - make
