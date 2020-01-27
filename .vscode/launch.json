@@ -1,66 +1,19 @@
 {
-	// Use IntelliSense to learn about possible attributes.
-	// Hover to view descriptions of existing attributes.
-	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Build and Debug [linux]",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/build/Maths Challenge Quiz",
-			"args": [
-				"-debug"
-			],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "gdb",
-			"setupCommands": [
-				{
-					"description": "Enable pretty-printing for gdb",
-					"text": "-enable-pretty-printing",
-					"ignoreFailures": true
-				}
-			],
-			"preLaunchTask": "Build for Linux",
-			"miDebuggerPath": "/usr/bin/gdb"
-		},
-		{
-			"name": "Build and Launch [linux]",
-			"request": "launch",
-			"type": "cppdbg",
-			"program": "${workspaceFolder}/build/Maths Challenge Quiz",
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"preLaunchTask": "Build for Linux"
-		}
-		{
-			"name": "Build and launch [windows, WSL]",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/build/Maths Challenge Quiz.exe",
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"preLaunchTask": "Build for Windows"
-		},
-		{
-			"name": "Launch [windows]",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/build/Maths Challenge Quiz.exe",
-			"args": [],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false
-		}
-	]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(Windows) Launch",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/Maths-Challenge-Quiz.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true
+    }
+  ]
 }
