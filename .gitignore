@@ -2,8 +2,7 @@
 # Copyright 2019 - Ethan Marshall
 
 # Ignore build files
-Maths-Challenge-Quiz
-Maths-Challenge-Quiz.exe
+build/
 
 # Ignore all executables
 *.exe
