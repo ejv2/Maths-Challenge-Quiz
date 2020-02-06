@@ -9,7 +9,7 @@ matrix:
       dist: bionic
       addons:
         apt:
-          upgrade: true
+          update: true
           sources:
             - ubuntu-toolchain-r-test
           packages:
