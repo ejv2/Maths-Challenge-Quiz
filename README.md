@@ -5,21 +5,21 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/OverEngineeredCode/Maths-Challenge-Quiz)
 ![GitHub](https://img.shields.io/github/license/OverEngineeredCode/Maths-Challenge-Quiz)
 
-<hr>
+---
 
 The Maths Challenge Quiz is a short, hobby command line game for testing a person's mathematical ability. It is open source and completely free, being licensed under the GPL
 
 The game was originally written in a programming language designed for schools called *Small Basic*, a somewhat annoying Visual Basic derivative. I liked some of the parts of the game, so I decided to port it to C++. This is the result.
 
-# General usage
+## General usage
 
-## Installation/Use
+### Installation/Use
 
 To get started, you will either want to download or build the program. If you do not intend to change the code of the program and your platform is supported for official builds, you will want to download a copy. However, if you are unable to download a copy, you can download the code by cloning the repository and build using the instructions below.
 
 Your system does not require a GUI to run the game. However, a working terminal/command prompt is required.
 
-## Building the program
+### Building the program
 
 > **Note:** To build the program, you will either need to install *cmake* or refer to the legacy build instructions.
 
@@ -31,15 +31,15 @@ After this has completed, you should have an executable generated in the destina
 
 It is important to note that when contributing, *none* of your cmake files or built executable may be included in the index. For this reason, we recommend configuring cmake to write build files to the *build* directory, which is ignored in the gitignore file.
 
-## Playing the game
+### Playing the game
 
 The game is designed to have easy mechanics for anybody to play with. However, if you require extra assistance, please refer to `Instructions.md` in the root of the project.
 
-# Contributing
+## Contributing
 
 Any contributions are greatly appreciated and will most likely be accepted into the project promptly.
 
-## How to get involved
+### How to get involved
 
 Please see the contributing guidelines and code of conduct for more information on the specifics of contributing.
 
@@ -47,7 +47,7 @@ If you find an issue that you can't/don't want to fix yourself, please open an i
 
 If you find an issue that you feel like you can fix (and that you are prepared to fix), please open a pull request with the wished changes so that it can be approved and merged.
 
-## Branches
+### Branches
 
 In the project there are a few branch types and names you should be aware of:
 
@@ -58,12 +58,12 @@ In the project there are a few branch types and names you should be aware of:
 
 If you want to make a PR on the repository, please make your changes on the dev branch. If your change is a security fix, it may be merged straight to master. For more info, please see the security policy.
 
-## Support/Maintenance
+### Support/Maintenance
 
 This project is under active development, meaning that it will not reach end-of-life or end development any time soon. Even if no commits have come in for a while, the project is most likely just waiting to be pushed (or something big is coming).
 
 I will perform regular maintenance on the codebase. For example, the testing framework used may need to be updated, or a new default compiler may be enabled in the makefile. This will be handled _solely by the owner_. No PRs will be merged that change this. Issues that remind about this may also be closed without action.
 
-<hr>
+---
 
 _Maths challenge quiz, By Ethan Marshall_ Copyright 2019, Licensed under GNU public license 3.0
