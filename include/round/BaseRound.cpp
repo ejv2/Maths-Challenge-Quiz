@@ -86,7 +86,11 @@ double BaseRound::getPercentCorrect()
 
 bool BaseRound::shouldPassRound()
 {
+#if ALWAYS_PASS
+    return true;
+#else
     return (((double)this->points / (double)this->amount_questions) >= 0.5);
+#endif
 }
 
 bool BaseRound::checkRoundValidity()
