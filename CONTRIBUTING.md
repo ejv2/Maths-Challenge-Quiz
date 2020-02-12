@@ -24,7 +24,7 @@ The project is way to small to facilitate individual questions, but please ask a
 
 ## Third-party libraries and code
 
-There are certain parts of the project that are sourced from other locations. It is **very important** that you ensure that changes proposed to these parts of the code are sent to the apropriate maintainers of those projects.
+There are certain parts of the project that are sourced from other locations. It is **very important** that you ensure that changes proposed to these parts of the code are sent to the appropriate maintainers of those projects.
 
 > **Tip:** That doesn't mean don't remind us to update something! If our libraries are out of date, please tell us to update them. Security and stability is important!
 
@@ -34,7 +34,7 @@ These four elements are the main ways to contribute to the project.
 
 ## Issues
 
-If you have found a problem that fits the following criterea, please open an issue:
+If you have found a problem that fits the following criteria, please open an issue:
 
 1. You have found an issue that you cannot fix yourself
 1. You have found an issue that you do not want to fix yourself
@@ -82,7 +82,7 @@ Build output is, by default, in the build folder. If it is not, that is a bug an
 
 ## Testing
 
-We test the project by unit tests, meaing that we do have testing scripts. These scripts are written in C++, but compile cleanly as C. All of this infrastructure is contained in the test folder.
+We test the project by unit tests, meaning that we do have testing scripts. These scripts are written in C++, but compile cleanly as C. All of this infrastructure is contained in the test folder.
 
 We use a 3rd party testing framework to test. The licence for this framework is included with its source. It is contained in a single header in the test folder. Any further information can be found in that file.
 
@@ -112,8 +112,8 @@ Not PRs with syntax errors will be merged until they are resolved.
 
 ## Security flaws
 
-Security is important to us. So, if your contribution has a security flaw that is immidiately threatening, you may be asked to fix it before it can be merged.
+Security is important to us. So, if your contribution has a security flaw that is immediately threatening, you may be asked to fix it before it can be merged.
 
 ## Review process
 
-Generally, only one maintainer will review a pull request at a time. All changes are reviewed before merging and the intent of the contribution will be cross-checked with the changes themselves. This allows us to come to a decision on wether your changes are ready to be merged.
+Generally, only one maintainer will review a pull request at a time. All changes are reviewed before merging and the intent of the contribution will be cross-checked with the changes themselves. This allows us to come to a decision on whether your changes are ready to be merged.
