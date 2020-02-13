@@ -11,6 +11,7 @@
 #include "SpeedRound.h"
 #include "SkipRound.h"
 
+#include "../Constants.h"
 #include "../Startup.h"
 
 namespace gameround
@@ -18,6 +19,9 @@ namespace gameround
 
 BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info)
 {
+#if FIX_ROUND
+    return new FIX_ROUND_TYPE(previousRound, info);
+#else
     switch (randint)
     {
 
@@ -40,6 +44,7 @@ BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::st
         return new ArithmeticRound(previousRound, info);
         break;
     }
+#endif
 }
 
 } // namespace gameround
