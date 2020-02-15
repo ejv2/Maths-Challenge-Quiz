@@ -23,5 +23,4 @@ install:
     - cmake --build .
 
 script:
-    - cd build
     - ctest -T test -C debug
