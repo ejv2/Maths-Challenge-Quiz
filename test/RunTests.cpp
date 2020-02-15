@@ -22,14 +22,21 @@
 
 // Include and configure catch
 #define CATCH_CONFIG_MAIN
-#include "catch.h"
+#include "catch2/catch.h"
+
+#include <vector>
 
 // Version checks
 #if CATCH_VERSION_MAJOR < 2
 #error "MCQ Requires catch V.2 or later"
 #endif
 
-
 // ==================== [BEGIN TESTS] ====================
-
+TEST_CASE("initial test", "[initial]")
+{
+    SECTION("a value equals itself")
+    {
+        REQUIRE(1==1);
+    }
+}
 // ====================  [END TESTS]  ====================
