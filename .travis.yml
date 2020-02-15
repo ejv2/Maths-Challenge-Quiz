@@ -10,16 +10,18 @@ matrix:
       addons:
         apt:
           update: true
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
             - cmake
 
     - os: windows
 
-install:
+before_install:
     - cmake .
 
-script:
+install:
     - mkdir build
     - cmake --build .
+
+script:
+    - cd build
+    - ctest -T test -C debug
