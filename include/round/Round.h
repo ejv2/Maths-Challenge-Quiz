@@ -12,11 +12,11 @@ namespace gameround
 
 enum RoundType
 {
-    arithmetic = 0,
-    multiplication = 1,
-    division = 2,
-    speed = 3,
-    skip = 4
+    arithmetic = 1,
+    multiplication = 2,
+    division = 3,
+    speed = 4,
+    skip = 5
 };
 
 enum OperandType
