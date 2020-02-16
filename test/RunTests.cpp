@@ -25,10 +25,14 @@
 #include "catch2/catch.h"
 
 #include <tuple>
+#include <vector>
 
 #include "include/Constants.h"
 #include "include/Scoring.h"
 #include "include/Util.h"
+
+#include "include/round/Round.h"
+#include "include/round/RoundUtils.h"
 
 #define TEST_PRACTICE_ACCEPTANCE_STRING "I accept my non-genuine, training result"
 #define TEST_REGULAR_ACCEPTANCE_STRING "I accept my result"
@@ -48,6 +52,8 @@
 #define TEST_VALID_NUMBER "5"
 #define TEST_INVALID_NUMBER "test"
 #define TEST_FLOAT_NUMBER "5.5"
+
+#define RNG_SEQUENCE_CAP 10
 
 // Version checks
 #if CATCH_VERSION_MAJOR < 2
@@ -159,6 +165,38 @@ TEST_CASE("Number validation", "[util]")
     SECTION("A number containing a floating point is handled correctly")
     {
         REQUIRE(util::isValidNumber(TEST_FLOAT_NUMBER));
+    }
+}
+
+TEST_CASE("Random seeding and RNG", "[util]")
+{
+    SECTION("RNG can be seeded multiple times")
+    {
+        util::setupRandomSeed();
+
+        REQUIRE_NOTHROW(util::setupRandomSeed());
+    }
+
+    SECTION("RNG will not give the same sequence when seeded different times")
+    {
+        util::setupRandomSeed();
+        std::vector<int> origSequence;
+        for (int i = 0; i < RNG_SEQUENCE_CAP; i++)
+        {
+            origSequence.push_back(std::rand());
+        }
+
+        util::sleep(1); /* Sleep to ensure that the system time value will be different */
+
+        util::setupRandomSeed();
+        std::vector<int> newSequence;
+        for (int i = 0; i < RNG_SEQUENCE_CAP; i++)
+        {
+            newSequence.push_back(std::rand());
+        }
+
+        bool equal = std::equal(origSequence.begin(), origSequence.end(), newSequence.begin());
+        REQUIRE(!equal);
     }
 }
 // ====================  [END TESTS]  ====================
