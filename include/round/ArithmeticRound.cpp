@@ -82,11 +82,6 @@ void ArithmeticRound::handleAnswer(double answer)
     }
 }
 
-bool ArithmeticRound::isRoundOver()
-{
-    return BaseRound::isRoundOver();
-}
-
 bool ArithmeticRound::questionsRequired()
 {
     return true;

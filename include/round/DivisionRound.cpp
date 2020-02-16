@@ -82,11 +82,6 @@ void DivisionRound::handleAnswer(double answer)
     }
 }
 
-bool DivisionRound::isRoundOver()
-{
-    return BaseRound::isRoundOver();
-}
-
 bool DivisionRound::questionsRequired()
 {
     return true;

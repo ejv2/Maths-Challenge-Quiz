@@ -81,11 +81,6 @@ void MultiplicationRound::handleAnswer(double answer)
     }
 }
 
-bool MultiplicationRound::isRoundOver()
-{
-    return BaseRound::isRoundOver();
-}
-
 bool MultiplicationRound::questionsRequired()
 {
     return true;

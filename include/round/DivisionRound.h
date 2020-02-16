@@ -25,7 +25,6 @@ public:
     double askQuestion() override;
     void handleAnswer(double answer) override;
 
-    bool isRoundOver() override;
     bool questionsRequired() override;
 
     void runIntro() override;
