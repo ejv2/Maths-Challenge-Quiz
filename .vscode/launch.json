@@ -16,6 +16,17 @@
       "externalConsole": true
     },
     {
+      "name": "(Windows) Debug tests",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/test/RunTests.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false
+    },
+    {
       "name": "(gdb) Bash on Windows Launch",
       "type": "cppdbg",
       "request": "launch",
