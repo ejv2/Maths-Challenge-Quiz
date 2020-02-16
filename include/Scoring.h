@@ -40,7 +40,13 @@ struct GameStatus
 };
 
 void run_roundFailureCutscene();
+
+void handlePracticeWatermark(int difficulty);
 void displayResults(GameStatus state, int difficulty);
+
+std::string getAcceptanceString(int difficulty);
+std::tuple<std::string, std::string> getPromptString(int counter);
+
 void resultAcceptance(int difficulty);
 
 OverallResult getFinalResult(int points, int rounds);
