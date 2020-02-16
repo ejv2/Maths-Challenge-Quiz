@@ -5,6 +5,7 @@
 */
 
 #include <string>
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <chrono>
@@ -18,13 +19,11 @@ namespace util
 
 void stringLower(std::string *str)
 {
-    int len = str->length();
-    std::string string = *str;
+    std::string data = *str;
+    std::transform(data.begin(), data.end(), data.begin(),
+                   [](unsigned char c) { return std::tolower(c); });
 
-    for (int i = 0; i < len; i++)
-    {
-        str[i] = std::tolower(string[i]);
-    }
+    *str = data;
 }
 
 bool isValidNumber(std::string str)
