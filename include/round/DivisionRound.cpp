@@ -7,6 +7,7 @@
 #include "DivisionRound.h"
 #include "../Constants.h"
 #include "../Startup.h"
+#include "../Util.h"
 
 #include <iostream>
 #include <string>
@@ -112,13 +113,14 @@ inline std::string DivisionRound::getRoundName()
 
 inline std::string DivisionRound::getIntroText()
 {
-    return "Divide the numbers shown to gain points\nIn the case of a non-whole answer, you may truncate the decimal to a whole.";
+    return "Divide the numbers shown to gain points\nYou may truncate the answer to 2 decimal places or to a whole.";
 }
 
 bool DivisionRound::verifyAnswer(double answer)
 {
     return (answer == (this->currentQuestion[0] / this->currentQuestion[1]) ||
-            (answer == std::trunc(this->currentQuestion[0] / this->currentQuestion[1])));
+            (answer == util::roundDecimalPlaces(
+                           (this->currentQuestion[0] / this->currentQuestion[1]), 2)));
 }
 
 inline std::string DivisionRound::getOperator()
