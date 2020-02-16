@@ -12,11 +12,11 @@
 #include "Util.h"
 #include "Constants.h"
 
+#define MAX_TUTORIAL_QUESTIONS 12
+#define MIN_TUTORIAL_QUESTIONS 1
+
 namespace startup
 {
-
-const int tut_max = 12;
-const int tut_min = 1;
 
 std::vector<std::string> *parseCmdLine(char *argv[], int count)
 {
@@ -140,8 +140,8 @@ void runTutorial()
     std::cout << "Let's try out a simple tutorial\n";
     std::cout << "\n";
 
-    int randint1 = std::rand() % (tut_max - tut_min) + tut_min;
-    int randint2 = std::rand() % (tut_max - tut_min) + tut_min;
+    int randint1 = std::rand() % (MAX_TUTORIAL_QUESTIONS - MIN_TUTORIAL_QUESTIONS) + MIN_TUTORIAL_QUESTIONS;
+    int randint2 = std::rand() % (MAX_TUTORIAL_QUESTIONS - MIN_TUTORIAL_QUESTIONS) + MIN_TUTORIAL_QUESTIONS;
 
     std::string randstr1 = std::to_string(randint1);
     std::string randstr2 = std::to_string(randint2);
