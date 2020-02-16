@@ -11,6 +11,7 @@
 #include <chrono>
 #include <thread>
 #include <cctype>
+#include <math.h>
 
 #include "Startup.h"
 
@@ -72,6 +73,12 @@ void clearScreen()
 #else
     system("clear");
 #endif
+}
+
+double roundDecimalPlaces(double d0, int dp)
+{
+    double factor = (double)std::pow(10, dp);
+    return (int)(d0 * factor) / factor;
 }
 
 } // namespace util

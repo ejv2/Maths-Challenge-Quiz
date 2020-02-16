@@ -25,6 +25,7 @@ void exitProgram(int exitCode, std::string message);
 
 void clearScreen();
 
+double roundDecimalPlaces(double d0, int dp);
 } // namespace util
 
 #endif // End header
