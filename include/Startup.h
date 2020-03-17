@@ -20,16 +20,11 @@ struct startup_information
     bool first = false;
 };
 
-std::vector<std::string> *parseCmdLine(char *argv[], int count);
-void handleCmdLine(std::vector<std::string> *cmds);
-
 void handleStartQuestions(startup_information *info);
 
 void haltPreGame();
 
 void printWelcome();
-void printCopyright();
-void printHelp();
 
 } // namespace startup
 

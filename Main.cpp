@@ -14,6 +14,7 @@
 #include "include/Startup.h"
 #include "include/Util.h"
 #include "include/Scoring.h"
+#include "include/CommandLine.h"
 
 #include "include/round/Round.h"
 #include "include/round/BaseRound.h"
@@ -24,14 +25,15 @@ using namespace std;
 
 static PreviousRound prevRound;
 static scoring::GameStatus game_state;
+static cmd::cmd_information command_info;
 
 int main(int argc, char *argv[])
 {
     // Setup random behaviour seed based on system time
     util::setupRandomSeed();
 
-    vector<string> *parsedArgs = startup::parseCmdLine(argv, argc);
-    startup::handleCmdLine(parsedArgs);
+    if (cmd::handleCmdLine(argv, argc, &command_info))
+        return 0;
 
     startup::printWelcome();
 

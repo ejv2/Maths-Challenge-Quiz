@@ -13,6 +13,8 @@
 namespace util
 {
 
+std::string getSemanticVersion(int major, int minor, int build);
+
 void stringLower(std::string *str);
 
 bool isValidNumber(std::string str);

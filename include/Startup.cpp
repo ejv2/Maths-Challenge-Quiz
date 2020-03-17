@@ -18,25 +18,6 @@
 namespace startup
 {
 
-std::vector<std::string> *parseCmdLine(char *argv[], int count)
-{
-
-    std::vector<std::string> *vector = new std::vector<std::string>();
-
-    for (int i = 1; i < count; i++)
-    {
-    }
-
-    return vector;
-}
-
-void handleCmdLine(std::vector<std::string> *cmds)
-{
-
-    // Free the allocated startup options
-    delete cmds;
-}
-
 bool warnImpossibleDifficulty()
 {
     std::cout << "\nWARNING: Impossible difficulty selected\n";
@@ -223,20 +204,6 @@ void printWelcome()
 {
     std::cout << "Welcome to the Maths Challenge Quiz\n";
     std::cout << "Copyright 2019 Ethan Marshall\n\n";
-}
-
-void printCopyright()
-{
-    std::cout << "Maths Challenge Quiz is a copyrighted work by Ethan Marshall\n";
-    std::cout << "The program is licensed under the terms of the GPL V.3.0, meaning you have certain freedoms\n";
-    std::cout << "For more information, visit https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html \n\n";
-}
-
-void printHelp()
-{
-    std::cout << "Maths Challenge Quiz - Help Menu\n\n";
-    std::cout << "The Maths Challenge Quiz is a program designed to test a person's mathematical ability in a fun way\n";
-    std::cout << "This game can be quite complicated, so help can be found in the 'readme.md' file included in the install\n\n";
 }
 
 } // namespace startup

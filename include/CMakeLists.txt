@@ -4,6 +4,8 @@ add_library(includes STATIC
             Scoring.cpp
             Startup.h
             Startup.cpp
+            CommandLine.h
+            CommandLine.cpp
             Util.h
             Util.cpp)
 

@@ -18,6 +18,15 @@
 namespace util
 {
 
+std::string getSemanticVersion(int major, int minor, int build)
+{
+    std::string majorS = std::to_string(major);
+    std::string minorS = std::to_string(minor);
+    std::string buildS = std::to_string(build);
+
+    return majorS + "." + minorS + "." + buildS;
+}
+
 void stringLower(std::string *str)
 {
     std::string data = *str;
