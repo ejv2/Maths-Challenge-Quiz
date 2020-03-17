@@ -23,7 +23,7 @@ class BaseRound
 public:
     BaseRound();
     BaseRound(PreviousRound *previousRound, startup_information info);
-    ~BaseRound();
+    virtual ~BaseRound();
 
     virtual double askQuestion();
     virtual void handleAnswer(double answer);
