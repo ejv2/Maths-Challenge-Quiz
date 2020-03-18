@@ -53,6 +53,10 @@ bool BaseRound::questionsRequired()
 
 void BaseRound::runInterlude()
 {
+#if NO_ROUND_WAIT
+    util::clearScreen();
+    std::cout << "Interlude has been disabled in this copy of the game";
+#else
     util::sleep(3);
 
     util::clearScreen();
@@ -64,6 +68,7 @@ void BaseRound::runInterlude()
     std::cout << "Percentage of answers correct: " << std::floor(this->getPercentCorrect() * 100) << "%\n";
 
     util::sleep(5);
+#endif
 }
 
 void BaseRound::runIntro()

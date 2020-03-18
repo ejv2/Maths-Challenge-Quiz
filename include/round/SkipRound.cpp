@@ -101,6 +101,13 @@ inline std::string SkipRound::getOperator()
 
 void SkipRound::runSkip()
 {
+#if DISABLE_SKIP_ROUNDS
+    std::cout << "Skip rounds have been disabled in this copy of the game\n";
+    std::cout << "Questions resuming now...\n";
+    std::cout.flush();
+
+    util::sleep(2);
+#else
     this->currentCounterText = "";
 
     for (int i = SKIP_ROUND_TIME; i > 0; i--)
@@ -111,6 +118,7 @@ void SkipRound::runSkip()
     std::cout << "\nQuestions resuming now...";
     std::cout.flush();
     util::sleep(2);
+#endif
 }
 
 void SkipRound::printCounterText(int counterValue)
