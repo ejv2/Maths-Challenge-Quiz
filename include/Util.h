@@ -5,6 +5,7 @@
 */
 
 #include <string>
+#include <vector>
 #include <cstdlib>
 
 #ifndef UTIL_HEADER
@@ -16,6 +17,7 @@ namespace util
 std::string getSemanticVersion(int major, int minor, int build);
 
 void stringLower(std::string *str);
+std::vector<std::string> split(const std::string &s, char delimiter);
 
 bool isValidNumber(std::string str);
 
