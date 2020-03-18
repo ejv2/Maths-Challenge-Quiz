@@ -29,7 +29,6 @@ public:
     bool questionsRequired() override;
 
     void runIntro() override;
-    void runInterlude() override;
 
     int getSize() override;
 

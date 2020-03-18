@@ -164,18 +164,6 @@ void SpeedRound::runIntro()
     this->runCountdown();
 }
 
-void SpeedRound::runInterlude()
-{
-    util::clearScreen();
-
-    std::cout << "You have completed this round\n";
-    std::cout << "The next round will begin shortly...\n\n";
-
-    std::cout << "This round's points total: " << this->points << "\n";
-
-    util::sleep(5);
-}
-
 int SpeedRound::getSize()
 {
     return sizeof(SpeedRound);
