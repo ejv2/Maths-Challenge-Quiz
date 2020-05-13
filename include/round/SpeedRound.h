@@ -16,44 +16,44 @@ using namespace startup;
 namespace gameround
 {
 
-class SpeedRound : public BaseRound
-{
+    class SpeedRound : public BaseRound
+    {
 
-public:
-    SpeedRound(PreviousRound *prevround, startup_information info);
-    ~SpeedRound();
+    public:
+        SpeedRound(PreviousRound *prevround, startup_information info);
+        ~SpeedRound();
 
-    double askQuestion() override;
-    void handleAnswer(double answer) override;
+        double askQuestion() override;
+        void handleAnswer(double answer) override;
 
-    bool questionsRequired() override;
+        bool questionsRequired() override;
 
-    void runIntro() override;
+        void runIntro() override;
 
-    int getSize() override;
+        int getSize() override;
 
-private:
-    bool checkRoundValidity() override;
+    private:
+        bool checkRoundValidity() override;
 
-    inline std::string getRoundName() override;
-    inline std::string getIntroText() override;
+        inline std::string getRoundName() override;
+        inline std::string getIntroText() override;
 
-    bool verifyAnswer(double answer) override;
-    void creditAnswer();
+        bool verifyAnswer(double answer) override;
+        void creditAnswer();
 
-    inline std::string getOperator() override;
-    std::string getQuestionString() override;
+        inline std::string getOperator() override;
+        std::string getQuestionString() override;
 
-    void generateQuestion() override;
+        void generateQuestion() override;
 
-    int getMaxQuestions() override;
-    int getMaxQuestionValue() override;
+        int getMaxQuestions() override;
+        int getMaxQuestionValue() override;
 
-    void runCountdown();
-    std::string currentCountdownText;
+        void runCountdown();
+        std::string currentCountdownText;
 
-    double timediff;
-};
+        double timediff;
+    };
 
 } // namespace gameround
 

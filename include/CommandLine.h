@@ -10,18 +10,18 @@
 namespace cmd
 {
 
-struct cmd_information
-{
-};
+   struct cmd_information
+   {
+   };
 
-bool handleCmdLine(char *argv[], int count, cmd_information *info);
+   bool handleCmdLine(char *argv[], int count, cmd_information *info);
 
-void printBanner();
-void printVersion();
-void printCopyright();
-void printLicence();
-void printWarranty();
-void printHelp();
+   void printBanner();
+   void printVersion();
+   void printCopyright();
+   void printLicence();
+   void printWarranty();
+   void printHelp();
 
 } // namespace cmd
 

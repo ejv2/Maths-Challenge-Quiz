@@ -17,34 +17,34 @@
 namespace gameround
 {
 
-BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info)
-{
-#if FIX_ROUND
-    return new FIX_ROUND_TYPE(previousRound, info);
-#else
-    switch (randint)
+    BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info)
     {
+#if FIX_ROUND
+        return new FIX_ROUND_TYPE(previousRound, info);
+#else
+        switch (randint)
+        {
 
-    case 1:
-        return new ArithmeticRound(previousRound, info);
-        break;
-    case 2:
-        return new MultiplicationRound(previousRound, info);
-        break;
-    case 3:
-        return new DivisionRound(previousRound, info);
-        break;
-    case 4:
-        return new SpeedRound(previousRound, info);
-        break;
-    case 5:
-        return new SkipRound(previousRound, info);
-        break;
-    default:
-        return new ArithmeticRound(previousRound, info);
-        break;
-    }
+        case 1:
+            return new ArithmeticRound(previousRound, info);
+            break;
+        case 2:
+            return new MultiplicationRound(previousRound, info);
+            break;
+        case 3:
+            return new DivisionRound(previousRound, info);
+            break;
+        case 4:
+            return new SpeedRound(previousRound, info);
+            break;
+        case 5:
+            return new SkipRound(previousRound, info);
+            break;
+        default:
+            return new ArithmeticRound(previousRound, info);
+            break;
+        }
 #endif
-}
+    }
 
 } // namespace gameround

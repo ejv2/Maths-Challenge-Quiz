@@ -15,37 +15,37 @@ using namespace startup;
 namespace gameround
 {
 
-class SkipRound : public BaseRound
-{
+    class SkipRound : public BaseRound
+    {
 
-public:
-    SkipRound(PreviousRound *prevround, startup_information info);
-    ~SkipRound();
+    public:
+        SkipRound(PreviousRound *prevround, startup_information info);
+        ~SkipRound();
 
-    bool isRoundOver() override;
-    bool questionsRequired() override;
+        bool isRoundOver() override;
+        bool questionsRequired() override;
 
-    bool shouldPassRound() override;
+        bool shouldPassRound() override;
 
-    void runIntro() override;
-    void runInterlude() override;
+        void runIntro() override;
+        void runInterlude() override;
 
-    int getSize() override;
+        int getSize() override;
 
-private:
-    bool checkRoundValidity() override;
+    private:
+        bool checkRoundValidity() override;
 
-    inline std::string getRoundName() override;
-    inline std::string getIntroText() override;
-    inline std::string getOperator() override;
+        inline std::string getRoundName() override;
+        inline std::string getIntroText() override;
+        inline std::string getOperator() override;
 
-    void runSkip();
+        void runSkip();
 
-    std::string currentCounterText;
-    void printCounterText(int counterValue);
+        std::string currentCounterText;
+        void printCounterText(int counterValue);
 
-    bool skipEnded;
-};
+        bool skipEnded;
+    };
 
 } // namespace gameround
 

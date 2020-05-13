@@ -19,68 +19,68 @@
 namespace util
 {
 
-std::string getSemanticVersion(int major, int minor, int build)
-{
-    std::string majorS = std::to_string(major);
-    std::string minorS = std::to_string(minor);
-    std::string buildS = std::to_string(build);
-
-    return majorS + "." + minorS + "." + buildS;
-}
-
-void stringLower(std::string *str)
-{
-    std::string data = *str;
-    std::transform(data.begin(), data.end(), data.begin(),
-                   [](unsigned char c) { return std::tolower(c); });
-
-    *str = data;
-}
-
-std::vector<std::string> split(const std::string &s, char delimiter)
-{
-    std::vector<std::string> tokens;
-    std::string token;
-    std::istringstream tokenStream(s);
-    while (std::getline(tokenStream, token, delimiter))
+    std::string getSemanticVersion(int major, int minor, int build)
     {
-        tokens.push_back(token);
-    }
-    return tokens;
-}
+        std::string majorS = std::to_string(major);
+        std::string minorS = std::to_string(minor);
+        std::string buildS = std::to_string(build);
 
-bool isValidNumber(std::string str)
-{
-    try
+        return majorS + "." + minorS + "." + buildS;
+    }
+
+    void stringLower(std::string *str)
     {
-        int num = std::stoi(str);
-        return true;
+        std::string data = *str;
+        std::transform(data.begin(), data.end(), data.begin(),
+                       [](unsigned char c) { return std::tolower(c); });
+
+        *str = data;
     }
-    catch (std::invalid_argument)
+
+    std::vector<std::string> split(const std::string &s, char delimiter)
     {
-        return false;
+        std::vector<std::string> tokens;
+        std::string token;
+        std::istringstream tokenStream(s);
+        while (std::getline(tokenStream, token, delimiter))
+        {
+            tokens.push_back(token);
+        }
+        return tokens;
     }
-}
 
-void sleep(int seconds)
-{
-    std::this_thread::sleep_for(std::chrono::milliseconds(seconds * 1000));
-}
+    bool isValidNumber(std::string str)
+    {
+        try
+        {
+            int num = std::stoi(str);
+            return true;
+        }
+        catch (std::invalid_argument)
+        {
+            return false;
+        }
+    }
 
-void setupRandomSeed()
-{
-    std::srand(time(NULL));
-}
+    void sleep(int seconds)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(seconds * 1000));
+    }
 
-void exitProgram(int exitCode, std::string message)
-{
-    std::string exitMessage = (message == "") ? "Maths Challenge Quiz exiting..." : message;
+    void setupRandomSeed()
+    {
+        std::srand(time(NULL));
+    }
 
-    std::cout << std::endl;
-    std::cout << exitMessage;
-}
+    void exitProgram(int exitCode, std::string message)
+    {
+        std::string exitMessage = (message == "") ? "Maths Challenge Quiz exiting..." : message;
 
-/* ALERT - HACKY METHOD WARNING
+        std::cout << std::endl;
+        std::cout << exitMessage;
+    }
+
+    /* ALERT - HACKY METHOD WARNING
    
    This method is a quick, dirty method of clearing the screen that should never be used
    in a real application.
@@ -88,19 +88,19 @@ void exitProgram(int exitCode, std::string message)
    However, this is currently the best method available to me that does what I want
 
 */
-void clearScreen()
-{
+    void clearScreen()
+    {
 #ifdef COMP_WINDOWS
-    system("cls");
+        system("cls");
 #else
-    system("clear");
+        system("clear");
 #endif
-}
+    }
 
-double roundDecimalPlaces(double d0, int dp)
-{
-    double factor = (double)std::pow(10, dp);
-    return (int)(d0 * factor) / factor;
-}
+    double roundDecimalPlaces(double d0, int dp)
+    {
+        double factor = (double)std::pow(10, dp);
+        return (int)(d0 * factor) / factor;
+    }
 
 } // namespace util

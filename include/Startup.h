@@ -13,18 +13,18 @@
 namespace startup
 {
 
-struct startup_information
-{
-    std::string name = "";
-    int difficulty = 1;
-    bool first = false;
-};
+    struct startup_information
+    {
+        std::string name = "";
+        int difficulty = 1;
+        bool first = false;
+    };
 
-void handleStartQuestions(startup_information *info);
+    void handleStartQuestions(startup_information *info);
 
-void haltPreGame();
+    void haltPreGame();
 
-void printWelcome();
+    void printWelcome();
 
 } // namespace startup
 

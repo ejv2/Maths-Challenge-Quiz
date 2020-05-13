@@ -13,7 +13,7 @@
 namespace gameround
 {
 
-BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info);
+   BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info);
 
 } // namespace gameround
 
