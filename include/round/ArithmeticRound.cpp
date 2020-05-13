@@ -88,6 +88,33 @@ namespace gameround
         }
     }
 
+    void ArithmeticRound::handleFeedback()
+    {
+        int rng = (std::rand() % (5 - 1)) + 1;
+
+        switch (rng)
+        {
+        case 1:
+            BaseRound::handleFeedback();
+            break;
+        case 2:
+            std::cout << "Addition and subtraction: the fundamentals of mathematics. I guess you still didn't get it then?\n";
+            break;
+        case 3:
+            std::cout << "I'm sorry, was that too hard? Good luck in the speed round later then\n";
+            break;
+        case 4:
+            std::cout << "Try and see if you can calculate how many points I'm going to take off for that!\n";
+            break;
+        case 5:
+            std::cout << "I had a hen that could count her own eggs. She did it better than you could\n";
+            break;
+        case 6:
+            std::cout << "What ten things can you always count on? Clearly not you\n";
+            break;
+        }
+    }
+
     bool ArithmeticRound::questionsRequired()
     {
         return true;

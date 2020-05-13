@@ -87,6 +87,30 @@ namespace gameround
         }
     }
 
+    void MultiplicationRound::handleFeedback()
+    {
+        int rng = (std::rand() % (5 - 1)) + 1;
+
+        switch (rng)
+        {
+        case 1:
+            BaseRound::handleFeedback();
+            break;
+        case 2:
+            std::cout << "Bacteria dividing by binary fission do a better job than that\n";
+            break;
+        case 3:
+            std::cout << "People who get that wrong shouldn't be allowed to multiply - in more than one way\n";
+            break;
+        case 4:
+            std::cout << "Well done, you successfully multiplied my rage by 100\n";
+            break;
+        case 5:
+            std::cout << "It gives me a headache just trying to think down to your level\n";
+            break;
+        }
+    }
+
     bool MultiplicationRound::questionsRequired()
     {
         return true;
