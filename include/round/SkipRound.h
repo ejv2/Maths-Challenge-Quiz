@@ -45,7 +45,7 @@ namespace gameround
         void printCounterText(int counterValue);
 
         bool skipEnded;
-    };
+    }; // class SkipRound
 
 } // namespace gameround
 

@@ -74,7 +74,7 @@ namespace gameround
 
         virtual int getMaxQuestions();
         virtual int getMaxQuestionValue();
-    };
+    }; // class BaseRound
 
 } // namespace gameround
 

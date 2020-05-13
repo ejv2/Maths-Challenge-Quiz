@@ -47,7 +47,7 @@ namespace gameround
 
         int getMaxQuestions() override;
         int getMaxQuestionValue() override;
-    };
+    }; // class MultiplicationRound
 
 } // namespace gameround
 

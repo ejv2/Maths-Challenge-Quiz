@@ -53,7 +53,7 @@ namespace gameround
         std::string currentCountdownText;
 
         double timediff;
-    };
+    }; // class SpeedRound
 
 } // namespace gameround
 

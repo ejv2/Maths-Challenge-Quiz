@@ -49,7 +49,7 @@ namespace gameround
         int getMaxQuestionValue() override;
 
         std::string current_operator;
-    };
+    }; // class ArithmeticRound
 
 } // namespace gameround
 
