@@ -16,8 +16,8 @@ namespace cmd
 
     void printBanner()
     {
-        std::cout << "Maths Challenge Quiz\n";
-        std::cout << "====================\n\n";
+        std::cout << "Maths Challenge Quiz - (now out of beta)\n";
+        std::cout << "========================================\n\n";
 
         std::cout << "A short, command-line game for testing and competing over mathematical ability\n";
         std::cout << "Written by Ethan Marshall\n";
