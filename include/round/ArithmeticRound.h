@@ -53,4 +53,4 @@ namespace gameround
 
 } // namespace gameround
 
-#endif
+#endif // header arithmeticround.h

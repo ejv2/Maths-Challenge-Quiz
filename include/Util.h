@@ -32,4 +32,4 @@ namespace util
    double roundDecimalPlaces(double d0, int dp);
 } // namespace util
 
-#endif // End header
+#endif // header util.h

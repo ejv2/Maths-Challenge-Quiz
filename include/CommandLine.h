@@ -25,4 +25,4 @@ namespace cmd
 
 } // namespace cmd
 
-#endif
+#endif // header commandline.h

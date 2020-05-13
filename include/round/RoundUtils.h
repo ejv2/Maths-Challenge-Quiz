@@ -17,4 +17,4 @@ namespace gameround
 
 } // namespace gameround
 
-#endif
+#endif // header roundutils.h

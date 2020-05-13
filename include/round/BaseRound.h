@@ -78,4 +78,4 @@ namespace gameround
 
 } // namespace gameround
 
-#endif
+#endif // header baseround.h

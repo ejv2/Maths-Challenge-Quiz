@@ -49,4 +49,4 @@ namespace gameround
 
 } // namespace gameround
 
-#endif
+#endif // header skipround.h

@@ -28,4 +28,4 @@ namespace startup
 
 } // namespace startup
 
-#endif // End header
+#endif // header startup.h

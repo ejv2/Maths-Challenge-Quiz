@@ -55,4 +55,4 @@ namespace scoring
 
 } // namespace scoring
 
-#endif
+#endif // header scoring.h
