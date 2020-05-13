@@ -132,7 +132,7 @@ OF THE POSSIBILITY OF SUCH DAMAGES.\n";
     {
         bool shouldExit = false;
 
-        for (int i = 1; i < count; i++) // Start parsing at 1 to avoid executable name
+        for (int i = 1; i < count; i++)
         {
             shouldExit = shouldExit || performStartupAction(argv[i], info);
         }

@@ -103,7 +103,6 @@ namespace scoring
         std::string beg = "";
         std::string end = "";
 
-        // Beginning of prompt
         if (counter >= 10)
         {
             beg = "I'm bored, enter '";
