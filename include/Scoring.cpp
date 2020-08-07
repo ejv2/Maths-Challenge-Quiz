@@ -148,7 +148,9 @@ namespace scoring
 
     OverallResult getFinalResult(int points, int questions)
     {
-#if ENCOURAGING != true
+#if ENCOURAGING
+        return OverallResult::great;
+#else
         double dec_points = (double)points;
         double dec_qs = (double)questions;
 
@@ -183,9 +185,6 @@ namespace scoring
         {
             return OverallResult::awful;
         }
-
-#else
-        return OverallResult::great;
 #endif
     }
 
