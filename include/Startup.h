@@ -22,6 +22,8 @@ namespace startup
 
     void handleStartQuestions(startup_information *info);
 
+    void handleDebugWarning();
+
     void haltPreGame();
 
     void printWelcome();

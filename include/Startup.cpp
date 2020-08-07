@@ -192,6 +192,14 @@ namespace startup
         info->first = isFirst;
     }
 
+    void handleDebugWarning()
+    {
+        std::cout << "WARNING\n";
+        std::cout << "This copy of Maths Challenge Quiz has been compiled with the debug flag!\n";
+        std::cout << "This means that possible game-critical data will be outputted and a substandard experience can be expected\n";
+        std::cout << "If you didn't mean to obtain a debug build, please download the program again or contact the vendor for this copy of the program\n\n";
+    }
+
     void haltPreGame()
     {
         std::cout << "\nGame commencing in 5 seconds...\n";

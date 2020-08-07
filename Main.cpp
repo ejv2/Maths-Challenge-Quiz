@@ -34,6 +34,9 @@ int main(int argc, char *argv[])
 
     if (cmd::handleCmdLine(argv, argc, &command_info))
         return 0;
+        
+    if (DEBUG)
+        startup::handleDebugWarning();
 
     startup::printWelcome();
 
