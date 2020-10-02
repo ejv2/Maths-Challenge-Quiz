@@ -17,7 +17,7 @@ if (WIN32)
     add_compile_definitions(COMP_WINDOWS)
 endif (WIN32)
 
-add_subdirectory(include)
+add_subdirectory(src)
 
 add_executable(Maths-Challenge-Quiz Main.cpp)
 
