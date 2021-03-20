@@ -1,9 +1,9 @@
 # Maths Challenge Quiz
 
-[![Build Status](https://travis-ci.org/OverEngineeredCode/Maths-Challenge-Quiz.svg?branch=master)](https://travis-ci.org/OverEngineeredCode/Maths-Challenge-Quiz)
-![GitHub issues](https://img.shields.io/github/issues/OverEngineeredCode/Maths-Challenge-Quiz)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/OverEngineeredCode/Maths-Challenge-Quiz)
-![GitHub](https://img.shields.io/github/license/OverEngineeredCode/Maths-Challenge-Quiz)
+[![Build Status](https://travis-ci.org/ethanv2/Maths-Challenge-Quiz.svg?branch=master)](https://travis-ci.org/OverEngineeredCode/Maths-Challenge-Quiz)
+![GitHub issues](https://img.shields.io/github/issues/ethanv2/Maths-Challenge-Quiz)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/ethanv2/Maths-Challenge-Quiz)
+![GitHub](https://img.shields.io/github/license/ethanv2/Maths-Challenge-Quiz)
 
 ---
 
