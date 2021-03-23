@@ -4,20 +4,20 @@
    Licensed under the GPL V.3.0
 */
 
-#include <iostream>
-#include <cstring>
-#include <string>
 #include <cmath>
+#include <cstring>
+#include <iostream>
+#include <string>
 #include <vector>
 
+#include "include/CommandLine.h"
 #include "include/Constants.h"
+#include "include/Scoring.h"
 #include "include/Startup.h"
 #include "include/Util.h"
-#include "include/Scoring.h"
-#include "include/CommandLine.h"
 
-#include "include/round/Round.h"
 #include "include/round/BaseRound.h"
+#include "include/round/Round.h"
 #include "include/round/RoundUtils.h"
 
 using namespace gameround;
@@ -27,64 +27,61 @@ static PreviousRound prevRound;
 static scoring::GameStatus game_state;
 static cmd::cmd_information command_info;
 
-int main(int argc, char *argv[])
-{
-    // Setup random behaviour seed based on system time
-    util::setupRandomSeed();
+int main(int argc, char *argv[]) {
+  // Setup random behaviour seed based on system time
+  util::setupRandomSeed();
 
-    if (cmd::handleCmdLine(argv, argc, &command_info))
-        return 0;
-        
-    if (DEBUG)
-        startup::handleDebugWarning();
+  if (cmd::handleCmdLine(argv, argc, &command_info))
+    return 0;
 
-    startup::printWelcome();
+  if (DEBUG)
+    startup::handleDebugWarning();
 
-    startup::startup_information info;
-    startup::handleStartQuestions(&info);
+  startup::printWelcome();
 
-    startup::haltPreGame();
+  startup::startup_information info;
+  startup::handleStartQuestions(&info);
 
-    // Main game loop
-    while (true)
-    {
+  startup::haltPreGame();
 
-        // Construct round
-        int roundType = (std::rand() % (MAX_ROUND_TYPES - 1)) + 1;
-        BaseRound *currentRound = gameround::constructRound(roundType, &prevRound, info);
+  // Main game loop
+  while (true) {
 
-        // ==================== [START OF ROUND] ====================
+    // Construct round
+    int roundType = (std::rand() % (MAX_ROUND_TYPES - 1)) + 1;
+    BaseRound *currentRound =
+        gameround::constructRound(roundType, &prevRound, info);
 
-        while (!currentRound->isRoundOver())
-        {
+    // ==================== [START OF ROUND] ====================
 
-            double ans = currentRound->askQuestion();
-            currentRound->handleAnswer(ans);
-        }
+    while (!currentRound->isRoundOver()) {
 
-        // ==================== [END OF ROUND] ====================
-
-        // Fill in the previous round's information
-        currentRound->getRoundInfo(&prevRound);
-        currentRound->updateGameState(&game_state);
-
-        if (!currentRound->shouldPassRound())
-        {
-            scoring::run_roundFailureCutscene();
-            scoring::displayResults(game_state, info.difficulty);
-            scoring::resultAcceptance(info.difficulty);
-            break;
-        }
-
-        currentRound->runInterlude();
-
-        // Free the current round
-        delete currentRound;
-        std::memset(currentRound, 0, sizeof(currentRound->getSize()));
+      double ans = currentRound->askQuestion();
+      currentRound->handleAnswer(ans);
     }
 
-    // When we reach this point, the game is over
-    scoring::gameExiting();
+    // ==================== [END OF ROUND] ====================
 
-    return 0;
+    // Fill in the previous round's information
+    currentRound->getRoundInfo(&prevRound);
+    currentRound->updateGameState(&game_state);
+
+    if (!currentRound->shouldPassRound()) {
+      scoring::run_roundFailureCutscene();
+      scoring::displayResults(game_state, info.difficulty);
+      scoring::resultAcceptance(info.difficulty);
+      break;
+    }
+
+    currentRound->runInterlude();
+
+    // Free the current round
+    delete currentRound;
+    std::memset((void *)currentRound, 0, sizeof(currentRound->getSize()));
+  }
+
+  // When we reach this point, the game is over
+  scoring::gameExiting();
+
+  return 0;
 }
