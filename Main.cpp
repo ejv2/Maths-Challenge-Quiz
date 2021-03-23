@@ -28,60 +28,60 @@ static scoring::GameStatus game_state;
 static cmd::cmd_information command_info;
 
 int main(int argc, char *argv[]) {
-  // Setup random behaviour seed based on system time
-  util::setupRandomSeed();
+	// Setup random behaviour seed based on system time
+	util::setupRandomSeed();
 
-  if (cmd::handleCmdLine(argv, argc, &command_info))
-    return 0;
+	if (cmd::handleCmdLine(argv, argc, &command_info))
+		return 0;
 
-  if (DEBUG)
-    startup::handleDebugWarning();
+	if (DEBUG)
+		startup::handleDebugWarning();
 
-  startup::printWelcome();
+	startup::printWelcome();
 
-  startup::startup_information info;
-  startup::handleStartQuestions(&info);
+	startup::startup_information info;
+	startup::handleStartQuestions(&info);
 
-  startup::haltPreGame();
+	startup::haltPreGame();
 
-  // Main game loop
-  while (true) {
+	// Main game loop
+	while (true) {
 
-    // Construct round
-    int roundType = (std::rand() % (MAX_ROUND_TYPES - 1)) + 1;
-    BaseRound *currentRound =
-        gameround::constructRound(roundType, &prevRound, info);
+		// Construct round
+		int roundType = (std::rand() % (MAX_ROUND_TYPES - 1)) + 1;
+		BaseRound *currentRound =
+			gameround::constructRound(roundType, &prevRound, info);
 
-    // ==================== [START OF ROUND] ====================
+		// ==================== [START OF ROUND] ====================
 
-    while (!currentRound->isRoundOver()) {
+		while (!currentRound->isRoundOver()) {
 
-      double ans = currentRound->askQuestion();
-      currentRound->handleAnswer(ans);
-    }
+			double ans = currentRound->askQuestion();
+			currentRound->handleAnswer(ans);
+		}
 
-    // ==================== [END OF ROUND] ====================
+		// ==================== [END OF ROUND] ====================
 
-    // Fill in the previous round's information
-    currentRound->getRoundInfo(&prevRound);
-    currentRound->updateGameState(&game_state);
+		// Fill in the previous round's information
+		currentRound->getRoundInfo(&prevRound);
+		currentRound->updateGameState(&game_state);
 
-    if (!currentRound->shouldPassRound()) {
-      scoring::run_roundFailureCutscene();
-      scoring::displayResults(game_state, info.difficulty);
-      scoring::resultAcceptance(info.difficulty);
-      break;
-    }
+		if (!currentRound->shouldPassRound()) {
+			scoring::run_roundFailureCutscene();
+			scoring::displayResults(game_state, info.difficulty);
+			scoring::resultAcceptance(info.difficulty);
+			break;
+		}
 
-    currentRound->runInterlude();
+		currentRound->runInterlude();
 
-    // Free the current round
-    delete currentRound;
-    std::memset((void *)currentRound, 0, sizeof(currentRound->getSize()));
-  }
+		// Free the current round
+		delete currentRound;
+		std::memset((void *)currentRound, 0, sizeof(currentRound->getSize()));
+	}
 
-  // When we reach this point, the game is over
-  scoring::gameExiting();
+	// When we reach this point, the game is over
+	scoring::gameExiting();
 
-  return 0;
+	return 0;
 }
