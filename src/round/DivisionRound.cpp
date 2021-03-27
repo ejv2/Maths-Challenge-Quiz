@@ -127,7 +127,7 @@ std::string DivisionRound::getQuestionString() {
 
 void DivisionRound::generateQuestion() {
 
-	if (this->difficulty < 0) {
+	if (this->difficulty <= 0) {
 		this->currentQuestion[0] = 1;
 		this->currentQuestion[1] = 1;
 	} else {
