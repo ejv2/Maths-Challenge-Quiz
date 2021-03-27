@@ -4,9 +4,9 @@
    Licensed under the GPL V.3.0
 */
 
-#include "Round.h"
 #include "../Scoring.h"
 #include "../Startup.h"
+#include "Round.h"
 
 #include <string>
 
@@ -15,66 +15,64 @@ using namespace startup;
 #ifndef BASE_ROUND
 #define BASE_ROUND
 
-namespace gameround
-{
+namespace gameround {
 
-    class BaseRound
-    {
-    public:
-        BaseRound();
-        BaseRound(PreviousRound *previousRound, startup_information info);
-        virtual ~BaseRound();
+class BaseRound {
+  public:
+	BaseRound();
+	BaseRound(PreviousRound *previousRound, startup_information *info);
+	virtual ~BaseRound();
 
-        virtual double askQuestion();
-        virtual void handleAnswer(double answer);
+	virtual double askQuestion();
+	virtual void handleAnswer(double answer);
 
-        virtual bool isRoundOver();
-        virtual bool questionsRequired();
+	virtual bool isRoundOver();
+	virtual bool questionsRequired();
 
-        virtual void runIntro();
-        virtual void runInterlude();
+	virtual void runIntro();
+	virtual void runInterlude();
 
-        int getPoints();
-        double getPercentCorrect();
-        virtual bool shouldPassRound();
+	int getPoints();
+	double getPercentCorrect();
+	virtual bool shouldPassRound();
 
-        virtual int getSize();
+	virtual int getSize();
 
-        void getRoundInfo(PreviousRound *prevround);
-        void updateGameState(scoring::GameStatus *status);
+	void getRoundInfo(PreviousRound *prevround);
+	void updateGameState(scoring::GameStatus *status);
 
-    protected:
-        int difficulty;
+  protected:
+	int difficulty;
 
-        int points;
+	int points;
 
-        int amount_questions;
-        int current_question_number;
+	int amount_questions;
+	int current_question_number;
 
-        double currentQuestion[2];
+	double currentQuestion[2];
 
-        bool previousSkipRound = false;
-        bool invalidRound = false;
-        bool showInterlude = true;
+	bool previousSkipRound = false;
+	bool invalidRound = false;
+	bool showInterlude = true;
 
-        RoundType roundType;
+	RoundType roundType;
 
-        virtual bool checkRoundValidity();
+	virtual bool checkRoundValidity();
 
-        virtual inline std::string getRoundName();
-        virtual inline std::string getIntroText();
+	virtual inline std::string getRoundName();
+	virtual inline std::string getIntroText();
 
-        virtual bool verifyAnswer(double answer);
-        virtual void handleFeedback();
+	virtual bool verifyAnswer(double answer);
+	virtual void handleFeedback();
 
-        virtual inline std::string getOperator();
-        virtual std::string getQuestionString();
+	virtual inline std::string getOperator();
+	virtual std::string getQuestionString();
 
-        virtual void generateQuestion();
+	virtual void generateQuestion();
 
-        virtual int getMaxQuestions();
-        virtual int getMaxQuestionValue();
-    }; // class BaseRound
+	virtual int getMaxQuestions();
+	virtual int getMaxQuestionValue();
+}; // class BaseRound
 
 } // namespace gameround
 

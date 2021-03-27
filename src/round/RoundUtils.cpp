@@ -27,24 +27,24 @@ BaseRound *constructRound(int randint, PreviousRound *previousRound,
 	switch (randint) {
 
 	case 1:
-		return new ArithmeticRound(previousRound, *info);
+		return new ArithmeticRound(previousRound, info);
 		break;
 	case 2:
-		return new MultiplicationRound(previousRound, *info);
+		return new MultiplicationRound(previousRound, info);
 		break;
 	case 3:
-		return new DivisionRound(previousRound, *info);
+		return new DivisionRound(previousRound, info);
 		break;
 	case 4:
-		return new SpeedRound(previousRound, *info);
+		return new SpeedRound(previousRound, info);
 		break;
 	case 5:
-		return new SkipRound(previousRound, *info);
+		return new SkipRound(previousRound, info);
 		break;
 	case 6:
 		return new DilemmaRound(previousRound, info, state);
 	default:
-		return new ArithmeticRound(previousRound, *info);
+		return new ArithmeticRound(previousRound, info);
 		break;
 	}
 #endif
