@@ -3,6 +3,7 @@
 
 # Ignore build files
 build/
+.cache/
 
 # Ignore all executables
 *.exe
