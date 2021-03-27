@@ -4,16 +4,18 @@
    Licensed under the GPL V.3.0
 */
 
-#include "BaseRound.h"
+#include "../Scoring.h"
 #include "../Startup.h"
+#include "BaseRound.h"
 
 #ifndef ROUND_UTILS_HEADER
 #define ROUND_UTILS_HEADER
 
-namespace gameround
-{
+namespace gameround {
 
-   BaseRound *constructRound(int randint, PreviousRound *previousRound, startup::startup_information info);
+BaseRound *constructRound(int randint, PreviousRound *previousRound,
+						  startup::startup_information *info,
+						  scoring::GameStatus state);
 
 } // namespace gameround
 

@@ -11,6 +11,7 @@ add_library(round-includes STATIC
             round/DivisionRound.cpp
             round/SpeedRound.cpp
             round/SkipRound.cpp
+            round/DilemmaRound.cpp
             round/RoundUtils.cpp)
 
 target_include_directories(includes
