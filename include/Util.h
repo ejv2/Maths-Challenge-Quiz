@@ -4,32 +4,31 @@
    Licensed under the GPL V.3.0
 */
 
+#include <cstdlib>
 #include <string>
 #include <vector>
-#include <cstdlib>
 
 #ifndef UTIL_HEADER
 #define UTIL_HEADER
 
-namespace util
-{
+namespace util {
 
-   std::string getSemanticVersion(int major, int minor, int build);
+std::string getSemanticVersion(int major, int minor, int build);
 
-   void stringLower(std::string *str);
-   std::vector<std::string> split(const std::string &s, char delimiter);
+void stringLower(std::string *str);
+std::vector<std::string> split(const std::string &s, char delimiter);
 
-   bool isValidNumber(std::string str);
+bool isValidNumber(std::string str);
 
-   void sleep(int seconds);
+void sleep(int seconds);
 
-   void setupRandomSeed();
+void setupRandomSeed();
 
-   void exitProgram(int exitCode, std::string message);
+void exitProgram(int exitCode, std::string message);
 
-   void clearScreen();
+void clearScreen();
 
-   double roundDecimalPlaces(double d0, int dp);
+double roundDecimalPlaces(double d0, int dp);
 } // namespace util
 
 #endif // header util.h

@@ -9,49 +9,42 @@
 #ifndef SCORING_HEADER
 #define SCORING_HEADER
 
-namespace scoring
-{
+namespace scoring {
 
-    enum OverallResult
-    {
-        awful = 0,
-        bad = 1,
-        ok = 2,
-        good = 3,
-        great = 4,
-        perfect = 5
+enum OverallResult {
+	awful = 0,
+	bad = 1,
+	ok = 2,
+	good = 3,
+	great = 4,
+	perfect = 5
 
-    };
+};
 
-    const std::string resultMessages[6] = {"Awful",
-                                           "Bad",
-                                           "Ok",
-                                           "Good",
-                                           "Great",
-                                           "Perfect"};
+const std::string resultMessages[6] = {"Awful", "Bad",	 "Ok",
+									   "Good",	"Great", "Perfect"};
 
-    struct GameStatus
-    {
-        int rounds_completed = 0;
-        int overall_points = 0;
-        int questions_answered = 0;
+struct GameStatus {
+	int rounds_completed = 0;
+	int overall_points = 0;
+	int questions_answered = 0;
 
-        double percent_correct;
-    };
+	double percent_correct;
+};
 
-    void run_roundFailureCutscene();
+void run_roundFailureCutscene();
 
-    void handlePracticeWatermark(int difficulty);
-    void displayResults(GameStatus state, int difficulty);
+void handlePracticeWatermark(int difficulty);
+void displayResults(GameStatus state, int difficulty);
 
-    std::string getAcceptanceString(int difficulty);
-    std::tuple<std::string, std::string> getPromptString(int counter);
+std::string getAcceptanceString(int difficulty);
+std::tuple<std::string, std::string> getPromptString(int counter);
 
-    void resultAcceptance(int difficulty);
+void resultAcceptance(int difficulty);
 
-    OverallResult getFinalResult(int points, int rounds);
+OverallResult getFinalResult(int points, int rounds);
 
-    void gameExiting();
+void gameExiting();
 
 } // namespace scoring
 

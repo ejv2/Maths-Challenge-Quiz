@@ -4,29 +4,27 @@
    Licensed under the GPL V.3.0
 */
 
-#include <vector>
 #include <string>
+#include <vector>
 
 #ifndef STARTUP_HEADER
 #define STARTUP_HEADER
 
-namespace startup
-{
+namespace startup {
 
-    struct startup_information
-    {
-        std::string name = "";
-        int difficulty = 1;
-        bool first = false;
-    };
+struct startup_information {
+	std::string name = "";
+	int difficulty = 1;
+	bool first = false;
+};
 
-    void handleStartQuestions(startup_information *info);
+void handleStartQuestions(startup_information *info);
 
-    void handleDebugWarning();
+void handleDebugWarning();
 
-    void haltPreGame();
+void haltPreGame();
 
-    void printWelcome();
+void printWelcome();
 
 } // namespace startup
 
