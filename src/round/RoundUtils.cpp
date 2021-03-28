@@ -22,7 +22,7 @@ BaseRound *constructRound(int randint, PreviousRound *previousRound,
 						  startup::startup_information *info,
 						  scoring::GameStatus state) {
 #if FIX_ROUND
-	return new FIX_ROUND_TYPE(previousRound, &info);
+	return new FIX_ROUND_TYPE(previousRound, info);
 #else
 	switch (randint) {
 
