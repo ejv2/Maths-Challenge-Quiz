@@ -66,6 +66,8 @@ int main(int argc, char *argv[]) {
 		currentRound->getRoundInfo(&prevRound);
 		currentRound->updateGameState(&game_state);
 
+		currentRound->haltPostRound();
+
 		if (!currentRound->shouldPassRound()) {
 			scoring::run_roundFailureCutscene();
 			scoring::displayResults(game_state, info.difficulty);

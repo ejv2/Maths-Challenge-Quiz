@@ -65,6 +65,10 @@ void SkipRound::runInterlude() {
 	util::clearScreen();
 }
 
+void SkipRound::haltPostRound() {
+	return;
+}
+
 int SkipRound::getSize() {
 	return sizeof(SkipRound);
 }

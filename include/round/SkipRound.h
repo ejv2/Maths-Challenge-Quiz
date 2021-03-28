@@ -27,6 +27,7 @@ class SkipRound : public BaseRound {
 
 	void runIntro() override;
 	void runInterlude() override;
+	void haltPostRound() override;
 
 	int getSize() override;
 

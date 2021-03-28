@@ -32,6 +32,8 @@ class BaseRound {
 	virtual void runIntro();
 	virtual void runInterlude();
 
+	virtual void haltPostRound();
+
 	int getPoints();
 	double getPercentCorrect();
 	virtual bool shouldPassRound();
