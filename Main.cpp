@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unistd.h>
 
 #include "include/CommandLine.h"
 #include "include/Constants.h"
@@ -30,6 +31,12 @@ static cmd::cmd_information command_info;
 int main(int argc, char *argv[]) {
 	// Setup random behaviour seed based on system time
 	util::setupRandomSeed();
+
+	// Quit attempts at cheating using pipes
+	if (!isatty(STDIN_FILENO)) {
+		std::cout << "Standard input must come from a terminal device\n";
+		return -1;
+	}
 
 	if (cmd::handleCmdLine(argv, argc, &command_info))
 		return 0;
