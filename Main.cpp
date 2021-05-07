@@ -9,7 +9,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
+#ifdef linux
 #include <unistd.h>
+#endif
 
 #include "include/CommandLine.h"
 #include "include/Constants.h"
@@ -32,11 +35,13 @@ int main(int argc, char *argv[]) {
 	// Setup random behaviour seed based on system time
 	util::setupRandomSeed();
 
-	// Quit attempts at cheating using pipes
+#ifdef linux
+	// Quit attempts at cheating using pipes (only a problem on *Nix)
 	if (!isatty(STDIN_FILENO)) {
 		std::cout << "Standard input must come from a terminal device\n";
 		return -1;
 	}
+#endif
 
 	if (cmd::handleCmdLine(argv, argc, &command_info))
 		return 0;
