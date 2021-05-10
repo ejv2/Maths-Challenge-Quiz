@@ -113,10 +113,11 @@ void resultAcceptance(int difficulty) {
 
 	std::string input = " ";
 	std::string acceptanceString = "";
+	std::string alternateAcceptanceString = "I do not accept my result";
 
 	int counter = 0;
 
-	while (input != acceptanceString) {
+	while (input != acceptanceString && input != alternateAcceptanceString) {
 
 		counter++;
 
@@ -128,6 +129,12 @@ void resultAcceptance(int difficulty) {
 		std::cout << std::get<0>(promptString) << acceptanceString
 				  << std::get<1>(promptString);
 		std::getline(std::cin, input);
+	}
+
+	if (input == alternateAcceptanceString) {
+		util::clearScreen();
+		std::cout << "You probably should have done better then\n";
+		util::sleep(3);
 	}
 
 	util::clearScreen();
