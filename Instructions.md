@@ -30,7 +30,7 @@ To navigate your text, use the arrow keys. To type, press any key on your keyboa
 
 In the game, there are 6 difficulty levels. Each of these has special properties and behaviors.
 
-**Practice:** *Select with a negative number* Difficulty 0 will set every calculation to use only the number 1. For example, 1+1 and 1*1. *This mode is for tests and practice only! It will not give you a legitimate score, and some behaviours may be altered. See "Practice mode"*.
+**Practice:** *Select with a negative number* Difficulty 0 will set every calculation to use only the number 1. For example, 1+1 and 1\*1. *This mode is for tests and practice only! It will not give you a legitimate score, and some behaviours may be altered. See "Practice mode"*.
 
 **Easy:** *Select with 1* Easy mode will give you simple to work out calculations, some of which may be members of the multiplication tables learnt at school. This mode is recommended for beginners to new players, but not for experienced ones.
 
@@ -89,7 +89,7 @@ You will be required to answer a question in under a set amount of time to gain 
 
 * **Great** *Between 1-2 seconds* 2 points **awarded**
 
-* **OK** *Between 2-3 seconds** 1 points **awarded**
+* **OK** *Between 2-3 seconds* 1 points **awarded**
 
 * **Bad** *Between 3-4 seconds* 0 points **awarded**
 
