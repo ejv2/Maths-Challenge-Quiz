@@ -11,6 +11,8 @@ The Maths Challenge Quiz is a short, hobby command line game for testing a perso
 
 The game was originally written in a programming language designed for schools called *Small Basic*, a somewhat annoying Visual Basic derivative. I liked some of the parts of the game, so I decided to port it to C++. This is the result.
 
+The original version of the game is available in the "historic/" directory, in source code format.
+
 ## General usage
 
 ### Installation/Use

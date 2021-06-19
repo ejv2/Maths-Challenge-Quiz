@@ -10,7 +10,7 @@ For instance, you were limited to subroutine-based programming (technically not 
 
 So, the most challenging thing about the original version was, actually, the language itself. The most challenging thing about this version is getting rid of all the fluff and rubbish from the original.
 
-I've kept as true as possible to what the original looked like, but the idea with this version is to add more features that simply were not possible with the original SB copy.
+I've kept as true as possible to what the original looked like, but the idea with this version is to add more features that simply were not possible with the original SB copy. If you wish to play the original to see what it was like, a copy of the SB source is available in the "historic/" directory.
 
 What follows is a modified version of the original *README* file, updated for the modern game. It contains relatively up-to-date instructions on how to play the game.
 

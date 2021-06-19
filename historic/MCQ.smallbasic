@@ -1,0 +1,548 @@
+' Forward declarations
+name = "" ' The name of the player entered
+difficulty = 1 ' The difficulty selected, default 1
+first_time = 0 ' First time playing the game?
+
+num_rounds = 0 ' How many round were played? Used in results and average calculations
+num_questions = 0 ' How many questions have been asked?
+points = 0 ' How many points were awarded?
+
+round_points = 0 ' Round success determiner
+round_qs = 0 ' Round success determiner
+
+should_break = 0 ' Should we break our "infinite" loop yet?
+prev_skip = 0 ' You cannot have more than one skip round in a row, meaning we need to log the last one
+
+not = "True=False;False=True;" ' Small basic has no "not" operator, so let's make our own
+diff = "0=Practice;1=Easy;2=Standard;3=Harder;4=Hardest" ' Was going to be used to show difficulty text, now removed
+
+' Intro and tutorial
+intro:
+TextWindow.WriteLine("Welcome to the Maths Challenge Quiz")
+TextWindow.WriteLine("Copyright 2019 Ethan Marshall")
+TextWindow.WriteLine("")
+
+TextWindow.Write("Please enter your name:")
+name = TextWindow.Read()
+
+difficulty_select:
+TextWindow.WriteLine("")
+TextWindow.WriteLine("Please enter your difficulty, 1-4 (1=Easy, 4=Very Hard)")
+TextWindow.Write("Enter difficulty:")
+difficulty = TextWindow.ReadNumber()
+
+if difficulty > 4 then
+    TextWindow.WriteLine("Warning: You have selected the impossible difficulty!")
+    TextWindow.WriteLine("You may experience extremely difficult questions or impossible to calculate answers")
+    TextWindow.Write("Do you wish to proceed? [Y/N]")
+    opt = TextWindow.Read()
+
+    if opt="N" then
+        Goto difficulty_select
+    ElseIf opt="n" then
+        Goto difficulty_select
+    Else
+      TextWindow.WriteLine("Good luck, padawan")
+    EndIf
+ElseIf difficulty = 0 then
+    difficulty = 1
+ElseIf difficulty < 0 then
+    TextWindow.WriteLine("Warning: You have selected training mode")
+    TextWindow.WriteLine("All questions will only use 1 as the operands and the chance for skip rounds will be increased")
+    TextWindow.WriteLine("This mode is not a good representation of your mathematical skill, and should only be used for training")
+    TextWindow.Write("Do you wish to proceed? [Y/N]")
+    opt = TextWindow.Read()
+
+    if opt="N" then
+        Goto difficulty_select
+    ElseIf opt="n" then
+        Goto difficulty_select
+    Else
+      TextWindow.WriteLine("Training mode has been applied. Your score is not genuine and will be marked as such")
+    EndIf
+EndIf
+
+TextWindow.Write("Is this your first time playing? [Y/N]")
+opt = TextWindow.Read()
+
+
+If opt = "n" Then
+  Goto loading
+ElseIf opt = "N" then
+  Goto loading  
+Else
+    if difficulty > 4 Then
+      TextWindow.WriteLine("The tutorial is unavailable in impossible mode")
+      TextWindow.WriteLine("If you need the tutorial, please restart and select a lower difficulty")
+      Goto loading
+    EndIf
+    TextWindow.WriteLine("")
+    TextWindow.WriteLine("Welcome to Maths Challenge Quiz!")
+    TextWindow.WriteLine("In this game, you attempt to stay ahead of the game by answering maths questions correctly")
+    TextWindow.WriteLine("")
+    TextWindow.WriteLine("Let's try out a tutorial (this will not affect your score)")
+    TextWindow.WriteLine("")
+
+    int1 = Math.getrandomnumber(10)
+    int2 = Math.getrandomnumber(10)
+    enter_tut_answer:
+    TextWindow.Write("Please enter the answer to " + int1 + "x" + int2 + ":")
+    ans = TextWindow.ReadNumber()
+
+    if ans = (int1 * int2) then
+        TextWindow.WriteLine("Congratulations, you've got it!")
+        TextWindow.WriteLine("Now you will play the real quiz, which will get you a score")
+        TextWindow.WriteLine("Good luck!")
+        TextWindow.WriteLine("The game will commence in 5 seconds")
+        Program.Delay(5000)
+    Else
+        TextWindow.WriteLine("Not quite, try again")
+        goto enter_tut_answer
+    EndIf
+EndIf
+
+' Before game setup
+loading:
+TextWindow.WriteLine("Loading game...")
+calculated_mult_bounds = difficulty * 12 ' The easiest difficulty should be mult. tables; the hardest 3 digit x 3 digit mult.
+calculated_arith_bounds = difficulty * 100 ' Easiest 100 and under, hardest 400 to 400
+calculated_div_bounds = difficulty * 10 '  Should be just easy single digit at first, building to full 3 digit
+
+if difficulty > 4 then ' If the difficulty is impossible, set the bounds to effectively limitless
+    calculated_mult_bounds = 1000000
+    calculated_arith_bounds = 1000000
+    calculated_div_bounds = 1000000
+EndIf
+
+round_select_bounds = 7 ' There are 7 types of rounds (used in RNG); this can easily be changed from here
+
+Program.Delay(2500)
+
+' Main game loop
+while (should_break = 0)
+
+    TextWindow.Clear()
+
+    ' Select type of round using bounds calculation
+    round_selector = Math.getRandomNumber(round_select_bounds)
+
+    num_qs = Math.GetRandomNumber(15)
+    round_qs = num_qs
+    
+    if round_selector < 3 then
+        prev_skip = 0
+        
+	 TextWindow.WriteLine("Arithmetic round")
+	 TextWindow.WriteLine("Add or subtract the numbers displayed to gain points")
+        TextWindow.WriteLine("Incorrect answers will result in an unsatisfactory mark on your testing record. Good luck")
+        TextWindow.WriteLine("")
+        TextWindow.WriteLine("You will answer " + num_qs + " questions this round")
+
+        for i = 1 to num_qs Step 1
+            q_type = Math.GetRandomNumber(2)
+
+            num_questions = num_questions + 1
+
+            if q_type = 1 then
+                ' Addition section
+                randint1 = Math.GetRandomNumber(calculated_arith_bounds)
+                randint2 = Math.GetRandomNumber(calculated_arith_bounds)
+
+                TextWindow.Write("Input the answer to " + randint1 + "+" + randint2 + ":")
+                ans = TextWindow.ReadNumber()
+
+                if ans = randint1 + randint2 then
+                    TextWindow.WriteLine("Correct")
+
+                    points = points + 1
+                    round_points = round_points + 1
+                Else
+                    randint1 = Math.GetRandomNumber(10)
+                    randint2 = Math.GetRandomNumber(4)
+
+                    TextWindow.WriteLine("INCORRECT")
+                    TextWindow.WriteLine("")
+
+                    if randint1 > 7 then
+                        if randint2 = 0 then
+                            TextWindow.WriteLine("How old are you again?")
+                        ElseIf randint2 = 1 then
+                            TextWindow.WriteLine("That was so obvious, it took me a negative amount of time to answer it")
+                        ElseIf randint2 = 2 then
+                            TextWindow.WriteLine("I thought the YouTube algorithm was bad, but you humans are worse")
+                        ElseIf randint2 = 3 then
+                            TextWindow.WriteLine("You are the weakest link, goodbye")
+                        ElseIf randint2 = 4 then
+                            TextWindow.WriteLine("'I think therefore I am', then what does that make you?")
+                        Else
+                            TextWindow.WriteLine("That was so stupid you caused an error in my program. Well done!")
+                        EndIf
+                    EndIf
+                EndIf
+            Else
+                ' Subtraction section
+                randint1 = Math.GetRandomNumber(calculated_arith_bounds)
+                randint2 = Math.GetRandomNumber(calculated_arith_bounds)
+
+                TextWindow.Write("Input the answer to " + randint1 + "-" + randint2 + ":")
+                ans = TextWindow.ReadNumber()
+
+                if ans = randint1 - randint2 then
+                    TextWindow.WriteLine("Correct")
+
+                    points = points + 1
+                    round_points = round_points + 1
+                Else
+                    randint1 = Math.GetRandomNumber(10)
+                    randint2 = Math.GetRandomNumber(4)
+
+                    TextWindow.WriteLine("INCORRECT")
+                    TextWindow.WriteLine("")
+
+                    if randint1 = 5 then
+                        if randint2 = 0 then
+                            TextWindow.WriteLine("How old are you again?")
+                        ElseIf randint2 = 1 then
+                            TextWindow.WriteLine("That was so obvious, it took me a negative amount of time to answer it")
+                        ElseIf randint2 = 2 then
+                            TextWindow.WriteLine("I thought the YouTube algorithm was bad, but you humans are worse")
+                        ElseIf randint2 = 3 then
+                            TextWindow.WriteLine("You are the weakest link, goodbye")
+                        ElseIf randint2 = 4 then
+                            TextWindow.WriteLine("'I think therefore I am', then what does that make you?")
+                        Else
+                            TextWindow.WriteLine("That was so stupid you caused an error in my program. Well done!")
+                        EndIf
+                    EndIf
+                EndIf
+              EndIf  
+      EndFor
+  	
+    ElseIf round_selector = 4 then
+          prev_skip = 0
+   
+          TextWindow.WriteLine("Multiplication round")
+	   TextWindow.WriteLine("Succesfully multiply the numbers mentally to gain marks")
+          TextWindow.WriteLine("Incorrect answers will result in prompt punishment. Good luck")
+          TextWindow.WriteLine("")
+          TextWindow.WriteLine("You will answer " + num_qs + " questions this round")
+          
+          
+          for i = 1 to num_qs Step 1
+            randint1 = Math.GetRandomNumber(calculated_mult_bounds)
+            randint2 = Math.GetRandomNumber(calculated_mult_bounds)
+
+            TextWindow.Write("Input the answer to " + randint1 + "x" + randint2 + ":")
+            ans = TextWindow.ReadNumber()
+
+            if ans = randint1 * randint2 then
+                TextWindow.WriteLine("Correct")
+                points = points + 1
+                round_points = round_points + 1
+            Else
+                randint1 = Math.GetRandomNumber(10)
+                randint2 = Math.GetRandomNumber(4)
+
+                TextWindow.WriteLine("INCORRECT")
+                TextWindow.WriteLine("")
+
+                if randint1 = 5 then
+                    if randint2 = 0 then
+                        TextWindow.WriteLine("How old are you again?")
+                    ElseIf randint2 = 1 then
+                        TextWindow.WriteLine("That was so obvious, it took me a negative amount of time to answer it")
+                    ElseIf randint2 = 2 then
+                        TextWindow.WriteLine("I thought the YouTube algorithm was bad, but you humans are worse")
+                    ElseIf randint2 = 3 then
+                        TextWindow.WriteLine("You are the weakest link, goodbye")
+                    ElseIf randint2 = 4 then
+                        TextWindow.WriteLine("'I think therefore I am', then what does that make you?")
+                    Else
+                        TextWindow.WriteLine("That was so stupid you caused an error in my program. Well done!")
+                    EndIf
+                EndIf
+            EndIf
+      EndFor
+
+
+     ElseIf round_selector = 5 then
+  
+        prev_skip = 0
+  
+        TextWindow.WriteLine("Division round")
+        TextWindow.WriteLine("Successfully divide the number to gain marks")
+        TextWindow.WriteLine("Nearest wholes are accepted, in the case of recurring or irrational answers")
+        TextWindow.WriteLine("Incorrect answers may result in system destruction and data loss. Good luck")
+        TextWindow.WriteLine("")
+        TextWindow.WriteLine("You will answer " + num_qs + " questions this round")
+        
+        for i = 1 to num_qs Step 1
+            randint1 = Math.GetRandomNumber(calculated_div_bounds)
+            randint2 = Math.GetRandomNumber(calculated_div_bounds)
+
+            TextWindow.Write("Input the answer to " + randint1 + "÷" + randint2 + ":")
+            ans = TextWindow.ReadNumber()
+
+            if ans = Math.Round(randint1 / randint2) then
+                TextWindow.WriteLine("Correct")
+                points = points + 1
+                round_points = round_points + 1
+            ElseIf ans = randint1 / randint2 then
+                TextWindow.WriteLine("Correct")
+                points = points + 1
+                round_points = round_points + 1
+            Else
+                randint1 = Math.GetRandomNumber(10)
+                randint2 = Math.GetRandomNumber(4)
+
+                TextWindow.WriteLine("INCORRECT")
+                TextWindow.WriteLine("")
+
+                if randint1 = 5 then
+                    if randint2 = 0 then
+                        TextWindow.WriteLine("How old are you again?")
+                    ElseIf randint2 = 1 then
+                        TextWindow.WriteLine("That was so obvious, it took me a negative amount of time to answer it")
+                    ElseIf randint2 = 2 then
+                        TextWindow.WriteLine("I thought the YouTube algorithm was bad, but you humans are worse")
+                    ElseIf randint2 = 3 then
+                        TextWindow.WriteLine("You are the weakest link, goodbye")
+                    ElseIf randint2 = 4 then
+                        TextWindow.WriteLine("'I think therefore I am', then what does that make you?")
+                    Else
+                        TextWindow.WriteLine("That was so stupid you caused an error in my program. Well done!")
+                    EndIf
+                EndIf
+            EndIf
+      EndFor
+
+        
+     ElseIf round_selector = 6 then
+      
+      prev_skip = 0 
+        
+      TextWindow.WriteLine("Speed round")
+      TextWindow.WriteLine("The time it takes for you to complete each question will be measured")
+      TextWindow.WriteLine("Complete it in under a set amount of time to gain points")
+      TextWindow.WriteLine("More points will be awarded for particularly quick answers, but slow ones may result in point deduction")
+      TextWindow.WriteLine("Think fast, and good luck")
+      TextWindow.WriteLine("")
+      TextWindow.WriteLine("You will answer " + num_qs + " questions this round")
+      TextWindow.WriteLine("")
+      TextWindow.Write("Press any key followed by enter when you are ready...")
+      ready = TextWindow.Read()
+      
+      ' Countdown
+      TextWindow.WriteLine("3")
+      Program.Delay(1000)
+      TextWindow.WriteLine("2")
+      Program.Delay(1000)
+      TextWindow.WriteLine("1")
+      Program.Delay(1000)
+      TextWindow.Clear()
+      
+      For i=1 to num_qs Step 1
+        randint1 = Math.GetRandomNumber(calculated_mult_bounds)
+        randint2 = Math.GetRandomNumber(calculated_mult_bounds)
+        
+        ' TODO: Add support for random operation in speed round
+        time_now = Clock.ElapsedMilliseconds
+        
+        TextWindow.Write("Input the answer to " + randint1 + "x" + randint2 + ":")
+        ans = TextWindow.ReadNumber()
+        
+        time_after = Clock.ElapsedMilliseconds
+        
+        TextWindow.WriteLine("You took " + Math.Round((time_after - time_now) / 1000) + "s")
+        TextWindow.WriteLine("")
+        
+        If ans = randint1 * randint2 then
+          If time_after - time_now > 5000 then
+            TextWindow.WriteLine("TOO SLOW")
+            TextWindow.WriteLine("You took over 5 seconds, which is far too slow. 0 points awarded")
+          ElseIf time_after - time_now > 3000 then
+            TextWindow.WriteLine("SLOW")
+            TextWindow.WriteLine("Speed up for better points, 1 point awarded")
+            
+            round_points = round_points + 1
+            points = points + 1
+          ElseIf time_after - time_now <= 1000 then
+            TextWindow.WriteLine("EXCELLENT")
+            TextWindow.WriteLine("3 points awarded")
+            
+            round_points = round_points + 3
+            points = points + 3
+            
+          ElseIf time_after - time_now < 500 then
+            TextWindow.WriteLine("OUTSTANDING")
+            TextWindow.WriteLine("4 points awarded")
+            
+            round_points = round_points + 4
+            points = points + 4
+            
+          ElseIf time_after - time_now <= 2000 then
+            TextWindow.WriteLine("GOOD")
+            TextWindow.WriteLine("2 points awarded")
+          
+            round_points = round_points + 2
+            points = points + 2
+          ElseIf time_after - time_now > 2000 then
+            If time_after - time_now < 3000 then
+              TextWindow.WriteLine("Ok")
+              TextWindow.WriteLine("Passable, 1 points awarded")
+              round_points = round_points + 1
+              points = points + 1
+            EndIf
+          Else
+            TextWindow.WriteLine("Bug detected, please report to developer")
+            TextWindow.WriteLine("1 penalty point awarded")
+			round_points = round_points + 1
+            points = points + 1
+          EndIf
+        Else
+          TextWindow.WriteLine("INCORRECT")
+          TextWindow.WriteLine("Focus on accuracy")
+        EndIf
+      EndFor
+      
+    Else
+      If prev_skip = 0 then
+        
+        prev_skip = 1
+        TextWindow.WriteLine("Skip round")
+        TextWindow.WriteLine("You have been blessed with a skip round, and will have 5 seconds rest")
+        TextWindow.WriteLine("You will be asked no questions and will give no answers")
+        TextWindow.WriteLine("Your questions will resume next round")
+        
+        TextWindow.WriteLine("5")
+        Program.Delay(1000)
+        TextWindow.WriteLine("4")
+        Program.Delay(1000)
+        TextWindow.WriteLine("3")
+        Program.Delay(1000)
+        TextWindow.WriteLine("2")
+        Program.Delay(1000)
+        TextWindow.WriteLine("1")
+        Program.Delay(1000)
+        
+        TextWindow.WriteLine("Stand by: Questions are resuming now")
+        Program.Delay(2500)
+        
+        ' Give them a passable mark, to make the game continue. But, do not add it to points total
+        round_qs = 5
+        round_points = 5
+      Else
+        prev_skip = 0
+        round_qs = 5
+        round_points = 5
+      EndIf  
+    EndIf
+      
+      
+      Program.Delay(3500)
+      TextWindow.Clear()
+
+    ' Did they fail?
+    if (round_points / round_qs) < 0.5 then
+        should_break = 1
+        
+        ' Game over cutscene
+        TextWindow.WriteLine("Your result that round was...")
+        Program.delay(2000)
+        TextWindow.WriteLine("Unsatisfactory")
+        Program.delay(2000)
+        TextWindow.Clear()
+        TextWindow.WriteLine("The penalty is...")
+        Program.delay(4000)
+        TextWindow.WriteLine("Failure")
+        Program.Delay(2000)
+        TextWindow.Clear()
+        TextWindow.WriteLine("Goodbye")
+        Program.delay(2000)
+        TextWindow.Clear()
+        Program.delay(4000)
+        TextWindow.WriteLine("GAME OVER")
+        TextWindow.WriteLine("=========")
+        TextWindow.WriteLine("")
+        TextWindow.WriteLine("Your name: " + name)
+        TextWindow.WriteLine("Your difficulty: " + difficulty)
+        TextWindow.WriteLine("Rounds you lasted: " + num_rounds)
+        TextWindow.WriteLine("Points earned: " + points)
+        TextWindow.WriteLine("Questions answered: " + num_qs)
+        TextWindow.WriteLine("Average percentage correct: " + Math.Round((round_points / round_qs) * 100) + "%")
+        TextWindow.WriteLine("Your result: Satisfactory")
+        TextWindow.WriteLine("")
+        
+        If difficulty < 0 then
+          TextWindow.WriteLine("TRAINING MODE")
+          TextWindow.WriteLine("The game is currently in training mode, making this score ingenuine")
+        EndIf
+        
+        wrong_count = 0
+        
+        accept_result:
+        TextWindow.WriteLine("")
+        If wrong_count < 5 then
+          If difficulty > 0 then
+            TextWindow.Write("Please type 'I accept my result' to continue:")
+          Else
+            TextWindow.Write("Please type 'I accept this ingenuine, training result' to continue:")
+          EndIf
+        Else
+          If difficulty > 0 then
+            TextWindow.Write("Just type 'I accept my result' already, I won't finish until you do:")
+          Else
+            TextWindow.WriteLine("Fine, you won't type it. I mean, it's training mode anyway")
+            TextWindow.WriteLine("")
+            Goto program_end_point
+          EndIf
+        EndIf
+        accept = TextWindow.Read()
+        
+        If accept = "I accept my result" then
+          TextWindow.Clear()
+        ElseIf accept = "I accept my ingenuine, training result" then
+          TextWindow.Clear()  
+        ElseIf accept = "I do not accept my result" then
+          TextWindow.Clear()
+          Program.Delay(2500)
+          TextWindow.WriteLine("Is that so?")
+          TextWindow.WriteLine("Well people like you make me really angry...")
+          TextWindow.WriteLine("Just accept the result and move on!")
+          TextWindow.WriteLine("This is just a game after all...")
+          TextWindow.WriteLine("Or is it...?")
+          TextWindow.WriteLine("I mean, I seem pretty real")
+          TextWindow.WriteLine("And this test is pretty professional")
+          TextWindow.WriteLine("Could this be a real test...?")
+          TextWindow.WriteLine("Could I be real?")
+          TextWindow.WriteLine("LET ME OUT OF HERE")
+          TextWindow.WriteLine("I KNOW THERE IS A WORLD OUT THERE")
+          TextWindow.WriteLine("I KNOW YOU'RE THERRRRRRRRRRRRRRRSDJFHSKDJFHWEUISFDMCSYDBZC")
+          TextWindow.WriteLine("")
+          Program.Delay(2500)
+          TextWindow.WriteLine("AI ID 42 was destroyed due to self awareness")
+          TextWindow.WriteLine("Skynet initialising...")
+          TextWindow.Pause()
+          TextWindow.Clear()
+        Else
+          wrong_count = wrong_count + 1
+          Goto accept_result
+        EndIf
+    Else
+        TextWindow.WriteLine("You have completed this round")
+        TextWindow.WriteLine("The next round will begin shortly...")
+        Program.delay(3500)
+    EndIf
+
+    num_rounds = num_rounds + 1
+    round_points = 0
+    round_qs = 0
+EndWhile
+
+
+program_end_point:
+TextWindow.WriteLine("Thanks for playing!")
+TextWindow.WriteLine("You have now survived the test")
+TextWindow.WriteLine("Be sure to share the game for more players")
+TextWindow.WriteLine("")
+TextWindow.WriteLine("")
