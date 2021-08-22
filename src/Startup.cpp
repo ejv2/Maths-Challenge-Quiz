@@ -72,12 +72,26 @@ void handleDifficultyEnter(startup_information *info) {
 
 	while (!success) {
 		std::string difficulty;
-		std::cout << "Enter your difficulty, 1-4 (1=Easy, 4=Very hard)\n";
+		std::cout << "Enter your difficulty (1-4, ? for help)\n";
 		std::cout << "Enter difficulty:";
 		std::getline(std::cin, difficulty);
 
 		if (difficulty.empty()) {
 			std::cout << "Please enter a valid difficulty\n\n";
+			continue;
+		}
+
+		if (difficulty == "?") {
+			std::cout << "Difficulty levels:\n"
+			 	     "==================\n"
+				     "		[< 1]: Practice mode: All questions only contain the number one\n"
+				     "		[ 1 ]: Easy mode: Should be able to complete using mental maths alone\n"
+				     "		[ 2 ]: Normal mode: Should be able to complete most using mental maths alone\n"
+				     "		[ 3 ]: Hard mode: You may need a calculator\n"
+				     "		[ 4 ]: Very hard mode: You WILL need a calculator\n"
+				     "		[> 4]: Impossible mode: You may need a supercomputer/more memory\n\n"
+				     "Scores gained in practice mode are not legitimate and will be marked as such.\n"
+				     "Success in impossible mode is not a thing.\n";
 			continue;
 		}
 
