@@ -2,6 +2,7 @@
 # Copyright 2019 - Ethan Marshall
 
 # Ignore build files
+mcq
 build/
 .cache/
 
@@ -30,7 +31,6 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 Testing
-Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
