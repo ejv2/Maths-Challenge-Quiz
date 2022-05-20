@@ -11,7 +11,7 @@
 	"mathematical ability\nIt is open source and free for all, forever.\n"
 
 #define VERSION_MAJOR 1
-#define VERSION_MINOR 0
+#define VERSION_MINOR 1
 #define BUILD 0
 
 // Build configuration
