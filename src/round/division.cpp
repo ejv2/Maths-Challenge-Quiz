@@ -5,9 +5,9 @@
 */
 
 #include "DivisionRound.hpp"
-#include "../Constants.hpp"
-#include "../Startup.hpp"
-#include "../Util.hpp"
+#include "../const.hpp"
+#include "../startup.hpp"
+#include "../util.hpp"
 
 #include <iostream>
 #include <math.h>

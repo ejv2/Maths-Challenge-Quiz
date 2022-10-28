@@ -5,8 +5,8 @@
 */
 
 #include "ArithmeticRound.hpp"
-#include "../Constants.hpp"
-#include "../Startup.hpp"
+#include "../const.hpp"
+#include "../startup.hpp"
 
 #include <iostream>
 #include <string>

@@ -4,9 +4,9 @@
    Licensed under the GPL V.3.0
 */
 
-#include "../Startup.hpp"
+#include "../startup.hpp"
 #include "BaseRound.hpp"
-#include "Scoring.hpp"
+#include "scoring.hpp"
 
 using namespace startup;
 

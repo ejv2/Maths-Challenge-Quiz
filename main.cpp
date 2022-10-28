@@ -14,11 +14,11 @@
 #include <unistd.h>
 #endif
 
-#include "include/CommandLine.hpp"
-#include "include/Constants.hpp"
-#include "include/Scoring.hpp"
-#include "include/Startup.hpp"
-#include "include/Util.hpp"
+#include "include/cmdline.hpp"
+#include "include/const.hpp"
+#include "include/scoring.hpp"
+#include "include/startup.hpp"
+#include "include/util.hpp"
 
 #include "include/round/BaseRound.hpp"
 #include "include/round/Round.hpp"

@@ -7,11 +7,11 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "Constants.hpp"
+#include "const.hpp"
 #include "DilemmaRound.hpp"
-#include "Scoring.hpp"
-#include "Startup.hpp"
-#include "Util.hpp"
+#include "scoring.hpp"
+#include "startup.hpp"
+#include "util.hpp"
 
 using namespace startup;
 

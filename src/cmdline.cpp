@@ -7,9 +7,9 @@
 #include <iostream>
 #include <string>
 
-#include "CommandLine.hpp"
-#include "Constants.hpp"
-#include "Util.hpp"
+#include "cmdline.hpp"
+#include "const.hpp"
+#include "util.hpp"
 
 namespace cmd {
 

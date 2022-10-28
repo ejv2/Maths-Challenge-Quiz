@@ -12,9 +12,9 @@
 #include "SkipRound.hpp"
 #include "SpeedRound.hpp"
 
-#include "../Constants.hpp"
-#include "../Scoring.hpp"
-#include "../Startup.hpp"
+#include "../const.hpp"
+#include "../scoring.hpp"
+#include "../startup.hpp"
 
 namespace gameround {
 

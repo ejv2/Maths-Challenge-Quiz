@@ -4,7 +4,7 @@
    Licensed under the GPL V.3.0
 */
 
-#include "../Startup.hpp"
+#include "../startup.hpp"
 #include "BaseRound.hpp"
 
 using namespace startup;
