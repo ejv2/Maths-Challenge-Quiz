@@ -1,11 +1,11 @@
 # UNIX-style makefile provided for convenience when used on *NIX platforms
 .POSIX:
 
-SRC = main.cpp src/util.cpp src/scoring.cpp src/round/SkipRound.cpp \
-      src/round/MultiplicationRound.cpp src/round/RoundUtils.cpp \
-      src/round/BaseRound.cpp src/round/DivisionRound.cpp \
-      src/round/SpeedRound.cpp src/round/DilemmaRound.cpp \
-      src/round/ArithmeticRound.cpp src/startup.cpp src/cmdline.cpp
+SRC = main.cpp src/util.cpp src/scoring.cpp src/round/skip.cpp \
+      src/round/multiplication.cpp src/round/utils.cpp \
+      src/round/base.cpp src/round/division.cpp \
+      src/round/speed.cpp src/round/dilemma.cpp \
+      src/round/arithmetic.cpp src/startup.cpp src/cmdline.cpp
 HDR = include/Scoring.hpp include/Util.hpp include/round/DilemmaRound.hpp \
       include/round/MultiplicationRound.hpp include/round/ArithmeticRound.hpp \
       include/round/DivisionRound.hpp include/round/SkipRound.hpp \
