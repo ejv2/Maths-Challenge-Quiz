@@ -8,7 +8,7 @@
 #include <stdexcept>
 
 #include "const.hpp"
-#include "DilemmaRound.hpp"
+#include "dilemma.hpp"
 #include "scoring.hpp"
 #include "startup.hpp"
 #include "util.hpp"

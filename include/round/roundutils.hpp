@@ -6,7 +6,7 @@
 
 #include "../scoring.hpp"
 #include "../startup.hpp"
-#include "BaseRound.hpp"
+#include "base.hpp"
 
 #ifndef ROUND_UTILS_HEADER
 #define ROUND_UTILS_HEADER

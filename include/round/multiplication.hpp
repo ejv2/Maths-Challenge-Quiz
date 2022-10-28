@@ -5,20 +5,20 @@
 */
 
 #include "../startup.hpp"
-#include "BaseRound.hpp"
+#include "base.hpp"
 
 using namespace startup;
 
-#ifndef ARITHMETIC_ROUND
-#define ARITHMETIC_ROUND
+#ifndef MULTIPLICATION_ROUND
+#define MULTIPLICATION_ROUND
 
 namespace gameround {
 
-class ArithmeticRound : public BaseRound {
+class MultiplicationRound : public BaseRound {
 
   public:
-	ArithmeticRound(PreviousRound *prevround, startup_information *info);
-	~ArithmeticRound();
+	MultiplicationRound(PreviousRound *prevround, startup_information *info);
+	~MultiplicationRound();
 
 	double askQuestion() override;
 	void handleAnswer(double answer) override;
@@ -45,10 +45,8 @@ class ArithmeticRound : public BaseRound {
 
 	int getMaxQuestions() override;
 	int getMaxQuestionValue() override;
-
-	std::string current_operator;
-}; // class ArithmeticRound
+}; // class MultiplicationRound
 
 } // namespace gameround
 
-#endif // header arithmeticround.h
+#endif // header multiplicationround.h

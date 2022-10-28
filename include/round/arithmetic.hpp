@@ -5,25 +5,20 @@
 */
 
 #include "../startup.hpp"
-#include "BaseRound.hpp"
-#include "scoring.hpp"
+#include "base.hpp"
 
 using namespace startup;
 
-#ifndef DILEMMA_ROUND
-#define DILEMMA_ROUND
+#ifndef ARITHMETIC_ROUND
+#define ARITHMETIC_ROUND
 
 namespace gameround {
 
-class DilemmaRound : public BaseRound {
+class ArithmeticRound : public BaseRound {
 
   public:
-	DilemmaRound(PreviousRound *prevround, startup_information *info,
-				 scoring::GameStatus state);
-	~DilemmaRound();
-
-	bool isRoundOver() override;
-	bool shouldPassRound() override;
+	ArithmeticRound(PreviousRound *prevround, startup_information *info);
+	~ArithmeticRound();
 
 	double askQuestion() override;
 	void handleAnswer(double answer) override;
@@ -31,26 +26,29 @@ class DilemmaRound : public BaseRound {
 	bool questionsRequired() override;
 
 	void runIntro() override;
-	void runInterlude() override;
 
 	int getSize() override;
 
   private:
-	bool wasValidResponse = true;
-	bool hasAsked = false;
-
-	int initialPoints = 0;
-	int decision = 0;
-
-	startup_information *info;
+	bool checkRoundValidity() override;
 
 	inline std::string getRoundName() override;
 	inline std::string getIntroText() override;
+
+	bool verifyAnswer(double answer) override;
+	void handleFeedback() override;
+
 	inline std::string getOperator() override;
+	std::string getQuestionString() override;
+
+	void generateQuestion() override;
 
 	int getMaxQuestions() override;
-}; // class DilemmaRound
+	int getMaxQuestionValue() override;
+
+	std::string current_operator;
+}; // class ArithmeticRound
 
 } // namespace gameround
 
-#endif // header dilemmaround.h
+#endif // header arithmeticround.h

@@ -4,7 +4,7 @@
    Licensed under the GPL V.3.0
 */
 
-#include "DivisionRound.hpp"
+#include "division.hpp"
 #include "../const.hpp"
 #include "../startup.hpp"
 #include "../util.hpp"

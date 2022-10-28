@@ -4,13 +4,13 @@
    Licensed under the GPL V.3.0
 */
 
-#include "ArithmeticRound.hpp"
-#include "BaseRound.hpp"
-#include "DilemmaRound.hpp"
-#include "DivisionRound.hpp"
-#include "MultiplicationRound.hpp"
-#include "SkipRound.hpp"
-#include "SpeedRound.hpp"
+#include "arithmetic.hpp"
+#include "base.hpp"
+#include "dilemma.hpp"
+#include "division.hpp"
+#include "multiplication.hpp"
+#include "skip.hpp"
+#include "speed.hpp"
 
 #include "../const.hpp"
 #include "../scoring.hpp"

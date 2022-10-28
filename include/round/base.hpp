@@ -6,7 +6,7 @@
 
 #include "../scoring.hpp"
 #include "../startup.hpp"
-#include "Round.hpp"
+#include "round.hpp"
 
 #include <string>
 

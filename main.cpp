@@ -20,9 +20,9 @@
 #include "include/startup.hpp"
 #include "include/util.hpp"
 
-#include "include/round/BaseRound.hpp"
-#include "include/round/Round.hpp"
-#include "include/round/RoundUtils.hpp"
+#include "include/round/base.hpp"
+#include "include/round/round.hpp"
+#include "include/round/roundutils.hpp"
 
 using namespace gameround;
 using namespace std;

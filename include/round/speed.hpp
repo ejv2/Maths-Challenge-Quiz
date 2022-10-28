@@ -5,20 +5,21 @@
 */
 
 #include "../startup.hpp"
-#include "BaseRound.hpp"
+#include "base.hpp"
+#include <time.h>
 
 using namespace startup;
 
-#ifndef DIVISION_ROUND
-#define DIVISION_ROUND
+#ifndef SPEED_ROUND
+#define SPEED_ROUND
 
 namespace gameround {
 
-class DivisionRound : public BaseRound {
+class SpeedRound : public BaseRound {
 
   public:
-	DivisionRound(PreviousRound *prevround, startup_information *info);
-	~DivisionRound();
+	SpeedRound(PreviousRound *prevround, startup_information *info);
+	~SpeedRound();
 
 	double askQuestion() override;
 	void handleAnswer(double answer) override;
@@ -36,6 +37,7 @@ class DivisionRound : public BaseRound {
 	inline std::string getIntroText() override;
 
 	bool verifyAnswer(double answer) override;
+	void creditAnswer();
 
 	inline std::string getOperator() override;
 	std::string getQuestionString() override;
@@ -44,8 +46,13 @@ class DivisionRound : public BaseRound {
 
 	int getMaxQuestions() override;
 	int getMaxQuestionValue() override;
-}; // class DivisionRound
+
+	void runCountdown();
+	std::string currentCountdownText;
+
+	double timediff;
+}; // class SpeedRound
 
 } // namespace gameround
 
-#endif // header divisionround.h
+#endif // header speedround.h

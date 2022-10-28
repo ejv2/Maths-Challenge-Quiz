@@ -4,12 +4,12 @@
    Licensed under the GPL V.3.0
 */
 
-#include "BaseRound.hpp"
+#include "base.hpp"
 #include "../const.hpp"
 #include "../scoring.hpp"
 #include "../startup.hpp"
 #include "../util.hpp"
-#include "Round.hpp"
+#include "round.hpp"
 
 #include <iostream>
 #include <math.h>
