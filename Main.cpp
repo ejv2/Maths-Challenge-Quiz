@@ -14,15 +14,15 @@
 #include <unistd.h>
 #endif
 
-#include "include/CommandLine.h"
-#include "include/Constants.h"
-#include "include/Scoring.h"
-#include "include/Startup.h"
-#include "include/Util.h"
+#include "include/CommandLine.hpp"
+#include "include/Constants.hpp"
+#include "include/Scoring.hpp"
+#include "include/Startup.hpp"
+#include "include/Util.hpp"
 
-#include "include/round/BaseRound.h"
-#include "include/round/Round.h"
-#include "include/round/RoundUtils.h"
+#include "include/round/BaseRound.hpp"
+#include "include/round/Round.hpp"
+#include "include/round/RoundUtils.hpp"
 
 using namespace gameround;
 using namespace std;

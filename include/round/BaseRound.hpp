@@ -4,9 +4,9 @@
    Licensed under the GPL V.3.0
 */
 
-#include "../Scoring.h"
-#include "../Startup.h"
-#include "Round.h"
+#include "../Scoring.hpp"
+#include "../Startup.hpp"
+#include "Round.hpp"
 
 #include <string>
 

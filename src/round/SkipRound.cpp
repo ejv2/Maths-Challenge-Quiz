@@ -4,10 +4,10 @@
    Licensed under the GPL V.3.0
 */
 
-#include "SkipRound.h"
-#include "../Constants.h"
-#include "../Startup.h"
-#include "../Util.h"
+#include "SkipRound.hpp"
+#include "../Constants.hpp"
+#include "../Startup.hpp"
+#include "../Util.hpp"
 
 #include <iostream>
 #include <string>

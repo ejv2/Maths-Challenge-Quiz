@@ -9,9 +9,9 @@
 #include <string>
 #include <tuple>
 
-#include "Constants.h"
-#include "Scoring.h"
-#include "Util.h"
+#include "Constants.hpp"
+#include "Scoring.hpp"
+#include "Util.hpp"
 
 #define QUICK_PRINT(msg)                                                       \
 	std::cout << msg << "\n";                                                  \

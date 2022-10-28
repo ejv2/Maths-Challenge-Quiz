@@ -4,9 +4,9 @@
    Licensed under the GPL V.3.0
 */
 
-#include "MultiplicationRound.h"
-#include "../Constants.h"
-#include "../Startup.h"
+#include "MultiplicationRound.hpp"
+#include "../Constants.hpp"
+#include "../Startup.hpp"
 
 #include <iostream>
 #include <string>

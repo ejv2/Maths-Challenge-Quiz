@@ -14,7 +14,7 @@
 #include <string>
 #include <thread>
 
-#include "Startup.h"
+#include "Startup.hpp"
 
 namespace util {
 

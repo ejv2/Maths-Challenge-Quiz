@@ -4,17 +4,17 @@
    Licensed under the GPL V.3.0
 */
 
-#include "ArithmeticRound.h"
-#include "BaseRound.h"
-#include "DilemmaRound.h"
-#include "DivisionRound.h"
-#include "MultiplicationRound.h"
-#include "SkipRound.h"
-#include "SpeedRound.h"
+#include "ArithmeticRound.hpp"
+#include "BaseRound.hpp"
+#include "DilemmaRound.hpp"
+#include "DivisionRound.hpp"
+#include "MultiplicationRound.hpp"
+#include "SkipRound.hpp"
+#include "SpeedRound.hpp"
 
-#include "../Constants.h"
-#include "../Scoring.h"
-#include "../Startup.h"
+#include "../Constants.hpp"
+#include "../Scoring.hpp"
+#include "../Startup.hpp"
 
 namespace gameround {
 

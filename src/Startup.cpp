@@ -8,9 +8,9 @@
 #include <string>
 #include <vector>
 
-#include "Constants.h"
-#include "Startup.h"
-#include "Util.h"
+#include "Constants.hpp"
+#include "Startup.hpp"
+#include "Util.hpp"
 
 #define MAX_TUTORIAL_QUESTIONS 12
 #define MIN_TUTORIAL_QUESTIONS 1

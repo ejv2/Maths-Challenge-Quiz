@@ -4,12 +4,12 @@
    Licensed under the GPL V.3.0
 */
 
-#include "BaseRound.h"
-#include "../Constants.h"
-#include "../Scoring.h"
-#include "../Startup.h"
-#include "../Util.h"
-#include "Round.h"
+#include "BaseRound.hpp"
+#include "../Constants.hpp"
+#include "../Scoring.hpp"
+#include "../Startup.hpp"
+#include "../Util.hpp"
+#include "Round.hpp"
 
 #include <iostream>
 #include <math.h>

@@ -4,9 +4,9 @@
    Licensed under the GPL V.3.0
 */
 
-#include "ArithmeticRound.h"
-#include "../Constants.h"
-#include "../Startup.h"
+#include "ArithmeticRound.hpp"
+#include "../Constants.hpp"
+#include "../Startup.hpp"
 
 #include <iostream>
 #include <string>

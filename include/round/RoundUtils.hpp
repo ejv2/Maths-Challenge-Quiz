@@ -4,9 +4,9 @@
    Licensed under the GPL V.3.0
 */
 
-#include "../Scoring.h"
-#include "../Startup.h"
-#include "BaseRound.h"
+#include "../Scoring.hpp"
+#include "../Startup.hpp"
+#include "BaseRound.hpp"
 
 #ifndef ROUND_UTILS_HEADER
 #define ROUND_UTILS_HEADER

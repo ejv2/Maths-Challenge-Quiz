@@ -4,8 +4,8 @@
    Licensed under the GPL V.3.0
 */
 
-#include "../Startup.h"
-#include "BaseRound.h"
+#include "../Startup.hpp"
+#include "BaseRound.hpp"
 
 using namespace startup;
 

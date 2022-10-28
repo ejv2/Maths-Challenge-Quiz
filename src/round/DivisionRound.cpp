@@ -4,10 +4,10 @@
    Licensed under the GPL V.3.0
 */
 
-#include "DivisionRound.h"
-#include "../Constants.h"
-#include "../Startup.h"
-#include "../Util.h"
+#include "DivisionRound.hpp"
+#include "../Constants.hpp"
+#include "../Startup.hpp"
+#include "../Util.hpp"
 
 #include <iostream>
 #include <math.h>
