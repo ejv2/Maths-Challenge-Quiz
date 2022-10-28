@@ -10,14 +10,14 @@ endif (WIN32)
 
 add_subdirectory(src)
 
-add_executable(Maths-Challenge-Quiz main.cpp)
+add_executable(mcq main.cpp)
 
-target_link_libraries(Maths-Challenge-Quiz
+target_link_libraries(mcq
     PRIVATE 
         includes
 )
 
-target_link_libraries(Maths-Challenge-Quiz
+target_link_libraries(mcq
     PRIVATE 
         round-includes
 )
