@@ -1,18 +1,18 @@
 add_library(includes STATIC
-            Scoring.cpp
-            Startup.cpp
-            CommandLine.cpp
-            Util.cpp)
+            scoring.cpp
+            startup.cpp
+            cmdline.cpp
+            util.cpp)
 
 add_library(round-includes STATIC
-            round/BaseRound.cpp
-            round/ArithmeticRound.cpp
-            round/MultiplicationRound.cpp
-            round/DivisionRound.cpp
-            round/SpeedRound.cpp
-            round/SkipRound.cpp
-            round/DilemmaRound.cpp
-            round/RoundUtils.cpp)
+            round/base.cpp
+            round/arithmetic.cpp
+            round/multiplication.cpp
+            round/division.cpp
+            round/speed.cpp
+            round/skip.cpp
+            round/dilemma.cpp
+            round/utils.cpp)
 
 target_include_directories(includes
     PUBLIC

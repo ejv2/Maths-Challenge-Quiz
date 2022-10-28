@@ -19,7 +19,7 @@ endif (WIN32)
 
 add_subdirectory(src)
 
-add_executable(Maths-Challenge-Quiz Main.cpp)
+add_executable(Maths-Challenge-Quiz main.cpp)
 
 target_link_libraries(Maths-Challenge-Quiz
     PRIVATE 
