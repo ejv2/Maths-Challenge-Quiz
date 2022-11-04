@@ -33,7 +33,6 @@ class SkipRound : public BaseRound {
 
   private:
 	bool checkRoundValidity() override;
-	bool skipRound() override;
 
 	inline std::string getRoundName() override;
 	inline std::string getIntroText() override;

@@ -120,10 +120,6 @@ bool BaseRound::checkRoundValidity() {
 	return true;
 }
 
-bool BaseRound::skipRound() {
-	return false;
-}
-
 void BaseRound::generateQuestion() {
 	this->currentQuestion[0] = 1;
 	this->currentQuestion[1] = 1;

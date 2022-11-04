@@ -74,10 +74,6 @@ bool SkipRound::checkRoundValidity() {
 	return !this->previousSkipRound;
 }
 
-bool SkipRound::skipRound() {
-	return true;
-}
-
 inline std::string SkipRound::getRoundName() {
 	return "Skip round";
 }
