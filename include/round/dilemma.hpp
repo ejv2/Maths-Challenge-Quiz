@@ -27,10 +27,7 @@ class DilemmaRound : public BaseRound {
 
 	double askQuestion() override;
 	void handleAnswer(double answer) override;
-
 	bool questionsRequired() override;
-
-	void runIntro() override;
 	void runInterlude() override;
 
 	int getSize() override;
@@ -44,8 +41,6 @@ class DilemmaRound : public BaseRound {
 
 	startup_information *info;
 
-	inline std::string getRoundName() override;
-	inline std::string getIntroText() override;
 	inline std::string getOperator() override;
 
 	int getMaxQuestions() override;

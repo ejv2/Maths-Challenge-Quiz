@@ -93,10 +93,12 @@ void BaseRound::haltPostRound() {
 }
 
 void BaseRound::runIntro() {
-	std::cout << "[INSERT ROUND NAME HERE]\n";
-	std::cout << "[INSERT ROUND DESCRIPTION HERE]\n";
-	std::cout << "You will answer " << this->amount_questions
-			  << " questions this round\n";
+	std::cout << this->name << std::endl;
+	std::cout << this->description << std::endl;
+	if (this->amount_questions > 0) {
+		std::cout << "You will answer " << this->amount_questions
+				  << " questions this round\n";
+	}
 	std::cout << "Good luck!\n\n";
 }
 
@@ -138,14 +140,6 @@ void BaseRound::updateGameState(scoring::GameStatus *status) {
 
 int BaseRound::getSize() {
 	return sizeof(BaseRound);
-}
-
-inline std::string BaseRound::getRoundName() {
-	return "[INSERT ROUND NAME HERE]";
-}
-
-inline std::string BaseRound::getIntroText() {
-	return "[INSERT DESCRIPTION HERE]";
 }
 
 bool BaseRound::verifyAnswer(double answer) {

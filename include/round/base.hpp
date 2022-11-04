@@ -57,9 +57,6 @@ class BaseRound {
 	bool showInterlude = true;
 
 	virtual bool checkRoundValidity();
-	virtual inline std::string getRoundName();
-	virtual inline std::string getIntroText();
-
 	virtual bool verifyAnswer(double answer);
 	virtual void handleFeedback();
 

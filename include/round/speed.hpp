@@ -23,19 +23,11 @@ class SpeedRound : public BaseRound {
 
 	double askQuestion() override;
 	void handleAnswer(double answer) override;
-
 	bool questionsRequired() override;
-
-	void runIntro() override;
 
 	int getSize() override;
 
   private:
-	bool checkRoundValidity() override;
-
-	inline std::string getRoundName() override;
-	inline std::string getIntroText() override;
-
 	bool verifyAnswer(double answer) override;
 	void creditAnswer();
 

@@ -18,6 +18,11 @@ using namespace startup;
 namespace gameround {
 DilemmaRound::DilemmaRound(startup_information *info,
 						   scoring::GameStatus state) {
+	this->name = "Dilemma Round";
+	this->description =
+		"Avast! A dilemma approaches...\nRise to the challenge for handsome "
+		"reward, but fail to do so and it will cost you\n";
+
 	this->info = info;
 
 	this->difficulty = info->difficulty;
@@ -31,15 +36,6 @@ DilemmaRound::DilemmaRound(startup_information *info,
 }
 
 DilemmaRound::~DilemmaRound() {
-}
-
-inline std::string DilemmaRound::getRoundName() {
-	return "Dilemma Round";
-}
-
-inline std::string DilemmaRound::getIntroText() {
-	return "Avast! A dilemma approaches...\nRise to the challenge for handsome "
-		   "reward, but fail to do so and it will cost you\n";
 }
 
 inline std::string DilemmaRound::getOperator() {
@@ -105,11 +101,6 @@ void DilemmaRound::handleAnswer(double answer) {
 
 		return;
 	}
-}
-
-void DilemmaRound::runIntro() {
-	std::cout << this->getRoundName() << "\n";
-	std::cout << this->getIntroText() << "\n\n";
 }
 
 void DilemmaRound::runInterlude() {

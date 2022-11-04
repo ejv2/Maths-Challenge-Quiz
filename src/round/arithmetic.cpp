@@ -16,6 +16,12 @@ using namespace startup;
 namespace gameround {
 
 ArithmeticRound::ArithmeticRound(startup_information *info) {
+	this->name = "Arithmetic Round";
+	this->description =
+		"Add or subtract the displayed numbers to gain points\nInaccurate "
+		"answers will result in an unsatisfactory mark on your official "
+		"testing record";
+
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
 	this->points = 0;
@@ -107,30 +113,8 @@ bool ArithmeticRound::questionsRequired() {
 	return true;
 }
 
-void ArithmeticRound::runIntro() {
-	std::cout << this->getRoundName() << "\n";
-	std::cout << this->getIntroText() << "\n";
-	std::cout << "You will answer " << this->amount_questions
-			  << " questions this round\n";
-	std::cout << "Good luck!\n\n";
-}
-
 int ArithmeticRound::getSize() {
 	return sizeof(ArithmeticRound);
-}
-
-bool ArithmeticRound::checkRoundValidity() {
-	return true;
-}
-
-inline std::string ArithmeticRound::getRoundName() {
-	return "Arithmetic round";
-}
-
-inline std::string ArithmeticRound::getIntroText() {
-	return "Add or subtract the displayed numbers to gain points\nInaccurate "
-		   "answers will result in an unsatisfactory mark on your official "
-		   "testing record";
 }
 
 bool ArithmeticRound::verifyAnswer(double answer) {

@@ -18,6 +18,10 @@ using namespace startup;
 namespace gameround {
 
 DivisionRound::DivisionRound(startup_information *info) {
+	this->name = "Division Round";
+	this->description =
+		"Divide the numbers shown to gain points\nYou may truncate the "
+		"answer to 2 decimal places or to a whole.";
 
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
@@ -79,29 +83,8 @@ bool DivisionRound::questionsRequired() {
 	return true;
 }
 
-void DivisionRound::runIntro() {
-	std::cout << this->getRoundName() << "\n";
-	std::cout << this->getIntroText() << "\n";
-	std::cout << "You will answer " << this->amount_questions
-			  << " questions this round\n";
-	std::cout << "Good luck!\n\n";
-}
-
 int DivisionRound::getSize() {
 	return sizeof(DivisionRound);
-}
-
-bool DivisionRound::checkRoundValidity() {
-	return true;
-}
-
-inline std::string DivisionRound::getRoundName() {
-	return "Division round";
-}
-
-inline std::string DivisionRound::getIntroText() {
-	return "Divide the numbers shown to gain points\nYou may truncate the "
-		   "answer to 2 decimal places or to a whole.";
 }
 
 bool DivisionRound::verifyAnswer(double answer) {

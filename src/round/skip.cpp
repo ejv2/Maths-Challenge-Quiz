@@ -17,14 +17,19 @@ using namespace startup;
 namespace gameround {
 
 SkipRound::SkipRound(startup_information *info, bool previousSkip) {
+	this->name = "Skip Round";
+	this->description =
+		"You have been blessed with a skip round\nYou will not be asked any "
+		"questions for 10 seconds\nRegular questions will resume next "
+		"round.";
+
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
 	this->points = 0;
 
 	this->currentQuestion[0] = 1;
 	this->currentQuestion[1] = 1;
-
-	this->amount_questions = std::rand() % this->getMaxQuestions() + 1;
+	this->amount_questions = 0;
 
 	this->skipEnded = false;
 	this->previousSkipRound = previousSkip;
@@ -53,11 +58,6 @@ bool SkipRound::shouldPassRound() {
 	return true;
 }
 
-void SkipRound::runIntro() {
-	std::cout << this->getRoundName() << "\n";
-	std::cout << this->getIntroText() << "\n\n";
-}
-
 void SkipRound::runInterlude() {
 	util::clearScreen();
 }
@@ -72,16 +72,6 @@ int SkipRound::getSize() {
 
 bool SkipRound::checkRoundValidity() {
 	return !this->previousSkipRound;
-}
-
-inline std::string SkipRound::getRoundName() {
-	return "Skip round";
-}
-
-inline std::string SkipRound::getIntroText() {
-	return "You have been blessed with a skip round\nYou will not be asked any "
-		   "questions for 10 seconds\nRegular questions will resume next "
-		   "round.";
 }
 
 inline std::string SkipRound::getOperator() {

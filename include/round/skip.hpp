@@ -25,7 +25,6 @@ class SkipRound : public BaseRound {
 
 	bool shouldPassRound() override;
 
-	void runIntro() override;
 	void runInterlude() override;
 	void haltPostRound() override;
 
@@ -33,9 +32,6 @@ class SkipRound : public BaseRound {
 
   private:
 	bool checkRoundValidity() override;
-
-	inline std::string getRoundName() override;
-	inline std::string getIntroText() override;
 	inline std::string getOperator() override;
 
 	void runSkip();

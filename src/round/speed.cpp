@@ -18,6 +18,12 @@ using namespace startup;
 namespace gameround {
 
 SpeedRound::SpeedRound(startup_information *info) {
+	this->name = "Speed Round";
+	this->description =
+		"You will be asked regular multiplication questions, but the speed "
+		"at which you answer will be measured.\nPoints will be awarded for "
+		"fast answers, but slow answers may result in deduction.";
+
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
 	this->points = 0;
@@ -28,6 +34,7 @@ SpeedRound::SpeedRound(startup_information *info) {
 	this->amount_questions = std::rand() % this->getMaxQuestions() + 1;
 
 	this->runIntro();
+	this->runCountdown();
 }
 
 SpeedRound::~SpeedRound() {
@@ -137,36 +144,8 @@ void SpeedRound::runCountdown() {
 	util::clearScreen();
 }
 
-void SpeedRound::runIntro() {
-	std::cout << this->getRoundName() << "\n";
-	std::cout << this->getIntroText() << "\n";
-	std::cout << "You will answer " << this->amount_questions
-			  << " questions this round\n";
-	std::cout << "Good luck!\n\n";
-
-	std::cout << "Press enter when you are ready to play...";
-	std::cin.get();
-	std::cout << "\n";
-
-	this->runCountdown();
-}
-
 int SpeedRound::getSize() {
 	return sizeof(SpeedRound);
-}
-
-bool SpeedRound::checkRoundValidity() {
-	return true;
-}
-
-inline std::string SpeedRound::getRoundName() {
-	return "Speed round";
-}
-
-inline std::string SpeedRound::getIntroText() {
-	return "You will be asked regular multiplication questions, but the speed "
-		   "at which you answer will be measured.\nPoints will be awarded for "
-		   "fast answers, but slow answers may result in deduction.";
 }
 
 bool SpeedRound::verifyAnswer(double answer) {

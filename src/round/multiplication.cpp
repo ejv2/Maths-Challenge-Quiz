@@ -16,6 +16,11 @@ using namespace startup;
 namespace gameround {
 
 MultiplicationRound::MultiplicationRound(startup_information *info) {
+	this->name = "Multiplication Round";
+	this->description =
+		"Multiply the numbers shown to gain points.\nIncorrect answers will "
+		"result in permanent data loss and system destruction";
+
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
 	this->points = 0;
@@ -101,29 +106,8 @@ bool MultiplicationRound::questionsRequired() {
 	return true;
 }
 
-void MultiplicationRound::runIntro() {
-	std::cout << this->getRoundName() << "\n";
-	std::cout << this->getIntroText() << "\n";
-	std::cout << "You will answer " << this->amount_questions
-			  << " questions this round\n";
-	std::cout << "Good luck!\n\n";
-}
-
 int MultiplicationRound::getSize() {
 	return sizeof(MultiplicationRound);
-}
-
-bool MultiplicationRound::checkRoundValidity() {
-	return true;
-}
-
-inline std::string MultiplicationRound::getRoundName() {
-	return "Multiplication round";
-}
-
-inline std::string MultiplicationRound::getIntroText() {
-	return "Multiply the numbers shown to gain points.\nIncorrect answers will "
-		   "result in permanent data loss and system destruction";
 }
 
 bool MultiplicationRound::verifyAnswer(double answer) {
