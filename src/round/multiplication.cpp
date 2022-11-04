@@ -15,10 +15,7 @@ using namespace startup;
 
 namespace gameround {
 
-MultiplicationRound::MultiplicationRound(PreviousRound *prevround,
-										 startup_information *info) {
-	this->roundType = RoundType::multiplication;
-
+MultiplicationRound::MultiplicationRound(startup_information *info) {
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
 	this->points = 0;

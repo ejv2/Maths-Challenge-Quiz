@@ -17,9 +17,7 @@ using namespace startup;
 
 namespace gameround {
 
-SpeedRound::SpeedRound(PreviousRound *prevround, startup_information *info) {
-	this->roundType = RoundType::speed;
-
+SpeedRound::SpeedRound(startup_information *info) {
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
 	this->points = 0;

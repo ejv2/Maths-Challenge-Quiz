@@ -17,7 +17,7 @@ namespace gameround {
 class SkipRound : public BaseRound {
 
   public:
-	SkipRound(PreviousRound *prevround, startup_information *info);
+	SkipRound(startup_information *info, bool prevSkip);
 	~SkipRound();
 
 	bool isRoundOver() override;
@@ -33,6 +33,7 @@ class SkipRound : public BaseRound {
 
   private:
 	bool checkRoundValidity() override;
+	bool skipRound() override;
 
 	inline std::string getRoundName() override;
 	inline std::string getIntroText() override;

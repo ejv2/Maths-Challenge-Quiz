@@ -18,7 +18,7 @@ namespace gameround {
 class DilemmaRound : public BaseRound {
 
   public:
-	DilemmaRound(PreviousRound *prevround, startup_information *info,
+	DilemmaRound(startup_information *info,
 				 scoring::GameStatus state);
 	~DilemmaRound();
 

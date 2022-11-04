@@ -16,10 +16,8 @@
 using namespace startup;
 
 namespace gameround {
-DilemmaRound::DilemmaRound(PreviousRound *prevround, startup_information *info,
+DilemmaRound::DilemmaRound(startup_information *info,
 						   scoring::GameStatus state) {
-	this->roundType = RoundType::dilemma;
-
 	this->info = info;
 
 	this->difficulty = info->difficulty;

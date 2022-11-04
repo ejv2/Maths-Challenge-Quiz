@@ -17,7 +17,7 @@ namespace gameround {
 class DivisionRound : public BaseRound {
 
   public:
-	DivisionRound(PreviousRound *prevround, startup_information *info);
+	DivisionRound(startup_information *info);
 	~DivisionRound();
 
 	double askQuestion() override;

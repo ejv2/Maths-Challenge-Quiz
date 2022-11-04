@@ -18,7 +18,7 @@ using namespace startup;
 
 namespace gameround {
 
-BaseRound::BaseRound(PreviousRound *previousRound, startup_information *info) {
+BaseRound::BaseRound(startup_information *info) {
 }
 
 BaseRound::BaseRound() {
@@ -120,6 +120,10 @@ bool BaseRound::checkRoundValidity() {
 	return true;
 }
 
+bool BaseRound::skipRound() {
+	return false;
+}
+
 void BaseRound::generateQuestion() {
 	this->currentQuestion[0] = 1;
 	this->currentQuestion[1] = 1;
@@ -134,11 +138,6 @@ void BaseRound::updateGameState(scoring::GameStatus *status) {
 	status->percent_correct =
 		((double)status->overall_points / (double)status->questions_answered) *
 		100;
-}
-
-void BaseRound::getRoundInfo(PreviousRound *prevround) {
-	prevround->previousType = this->roundType;
-	prevround->previousSkip = (this->roundType == RoundType::skip);
 }
 
 int BaseRound::getSize() {

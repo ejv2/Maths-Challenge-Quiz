@@ -27,7 +27,7 @@
 using namespace gameround;
 using namespace std;
 
-static PreviousRound prevRound;
+static bool previousSkip = false;
 static scoring::GameStatus game_state;
 static cmd::cmd_information command_info;
 
@@ -58,24 +58,23 @@ int main(int argc, char *argv[]) {
 
 	// Main game loop
 	while (true) {
-
 		// Construct round
 		int roundType = (std::rand() % (MAX_ROUND_TYPES - 1)) + 1;
 		BaseRound *currentRound =
-			gameround::constructRound(roundType, &prevRound, &info, game_state);
+			gameround::constructRound(roundType, previousSkip, &info, game_state);
 
-		// ==================== [START OF ROUND] ====================
-
+		// Run current rount
 		while (!currentRound->isRoundOver()) {
-
 			double ans = currentRound->askQuestion();
 			currentRound->handleAnswer(ans);
 		}
 
-		// ==================== [END OF ROUND] ====================
-
 		// Fill in the previous round's information
-		currentRound->getRoundInfo(&prevRound);
+		if (roundType == RoundType::skip) {
+			previousSkip = true;
+		} else {
+			previousSkip = false;
+		}
 		currentRound->updateGameState(&game_state);
 
 		currentRound->haltPostRound();

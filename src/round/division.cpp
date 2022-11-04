@@ -17,9 +17,7 @@ using namespace startup;
 
 namespace gameround {
 
-DivisionRound::DivisionRound(PreviousRound *prevround,
-							 startup_information *info) {
-	this->roundType = RoundType::division;
+DivisionRound::DivisionRound(startup_information *info) {
 
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;

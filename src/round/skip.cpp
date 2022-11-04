@@ -16,9 +16,7 @@ using namespace startup;
 
 namespace gameround {
 
-SkipRound::SkipRound(PreviousRound *prevround, startup_information *info) {
-	this->roundType = RoundType::skip;
-
+SkipRound::SkipRound(startup_information *info, bool previousSkip) {
 	this->difficulty = info->difficulty;
 	this->current_question_number = 1;
 	this->points = 0;
@@ -29,8 +27,7 @@ SkipRound::SkipRound(PreviousRound *prevround, startup_information *info) {
 	this->amount_questions = std::rand() % this->getMaxQuestions() + 1;
 
 	this->skipEnded = false;
-
-	this->previousSkipRound = prevround->previousSkip;
+	this->previousSkipRound = previousSkip;
 	this->invalidRound = !this->checkRoundValidity();
 
 	if (!invalidRound) {
@@ -75,6 +72,10 @@ int SkipRound::getSize() {
 
 bool SkipRound::checkRoundValidity() {
 	return !this->previousSkipRound;
+}
+
+bool SkipRound::skipRound() {
+	return true;
 }
 
 inline std::string SkipRound::getRoundName() {

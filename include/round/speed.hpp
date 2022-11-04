@@ -18,7 +18,7 @@ namespace gameround {
 class SpeedRound : public BaseRound {
 
   public:
-	SpeedRound(PreviousRound *prevround, startup_information *info);
+	SpeedRound(startup_information *info);
 	~SpeedRound();
 
 	double askQuestion() override;

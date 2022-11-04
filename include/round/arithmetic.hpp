@@ -17,7 +17,7 @@ namespace gameround {
 class ArithmeticRound : public BaseRound {
 
   public:
-	ArithmeticRound(PreviousRound *prevround, startup_information *info);
+	ArithmeticRound(startup_information *info);
 	~ArithmeticRound();
 
 	double askQuestion() override;

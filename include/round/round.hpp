@@ -9,21 +9,7 @@
 
 namespace gameround {
 
-enum RoundType {
-	arithmetic = 1,
-	multiplication = 2,
-	division = 3,
-	speed = 4,
-	skip = 5,
-	dilemma = 6
-};
-
 enum OperandType { add = 0, sub = 1, mult = 2, div = 3 };
-
-struct PreviousRound {
-	int previousType = arithmetic;
-	bool previousSkip = false;
-};
 
 } // namespace gameround
 

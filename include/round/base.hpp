@@ -20,7 +20,7 @@ namespace gameround {
 class BaseRound {
   public:
 	BaseRound();
-	BaseRound(PreviousRound *previousRound, startup_information *info);
+	BaseRound(startup_information *info);
 	virtual ~BaseRound();
 
 	virtual double askQuestion();
@@ -39,11 +39,10 @@ class BaseRound {
 	virtual bool shouldPassRound();
 
 	virtual int getSize();
-
-	void getRoundInfo(PreviousRound *prevround);
 	void updateGameState(scoring::GameStatus *status);
 
   protected:
+	std::string name, description;
 	int difficulty;
 
 	int points;
@@ -57,9 +56,8 @@ class BaseRound {
 	bool invalidRound = false;
 	bool showInterlude = true;
 
-	RoundType roundType;
-
 	virtual bool checkRoundValidity();
+	virtual bool skipRound();
 
 	virtual inline std::string getRoundName();
 	virtual inline std::string getIntroText();
