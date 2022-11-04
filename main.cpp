@@ -90,7 +90,6 @@ int main(int argc, char *argv[]) {
 
 		// Free the current round
 		delete currentRound;
-		std::memset((void *)currentRound, 0, sizeof(currentRound->getSize()));
 	}
 
 	// When we reach this point, the game is over
