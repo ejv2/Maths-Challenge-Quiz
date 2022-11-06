@@ -30,7 +30,7 @@ bool warnImpossibleDifficulty() {
 	std::cout << "Do you wish to continue? [Y/N]";
 	std::getline(std::cin, choice);
 
-	util::stringLower(&choice);
+	util::stringLower(choice);
 
 	if (choice == "y") {
 		std::cout << "Good luck, padawan\n\n";
@@ -55,7 +55,7 @@ bool warnTrainingDifficulty() {
 	std::cout << "Do you wish to continue? [Y/N]";
 	std::getline(std::cin, choice);
 
-	util::stringLower(&choice);
+	util::stringLower(choice);
 
 	if (choice == "y") {
 		std::cout << "Training mode has been applied for this round, and your "
@@ -175,7 +175,7 @@ bool askFirstTime() {
 	std::cout << "Is this your first time playing? [Y/N]";
 	std::getline(std::cin, input);
 
-	util::stringLower(&input);
+	util::stringLower(input);
 
 	if (input == "y") {
 		runTutorial();

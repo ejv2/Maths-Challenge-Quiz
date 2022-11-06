@@ -26,12 +26,10 @@ std::string getSemanticVersion(int major, int minor, int build) {
 	return majorS + "." + minorS + "." + buildS;
 }
 
-void stringLower(std::string *str) {
-	std::string data = *str;
-	std::transform(data.begin(), data.end(), data.begin(),
-				   [](unsigned char c) { return std::tolower(c); });
-
-	*str = data;
+void stringLower(std::string &str) {
+	for (long i = 0; i < str.length(); i++) {
+		str[i] = std::tolower(str[i]);
+	}
 }
 
 std::vector<std::string> split(const std::string &s, char delimiter) {
