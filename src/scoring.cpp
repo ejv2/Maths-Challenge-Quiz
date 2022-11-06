@@ -91,7 +91,7 @@ std::string getAcceptanceString(int difficulty) {
 	}
 }
 
-std::tuple<std::string, std::string> getPromptString(int counter) {
+void getPromptString(int counter, std::string &pref, std::string &suff) {
 	std::string beg = "";
 	std::string end = "";
 
@@ -106,7 +106,8 @@ std::tuple<std::string, std::string> getPromptString(int counter) {
 		end = "' to continue:";
 	}
 
-	return std::make_tuple(beg, end);
+	pref = beg;
+	suff = end;
 }
 
 void resultAcceptance(int difficulty) {
@@ -123,11 +124,9 @@ void resultAcceptance(int difficulty) {
 
 		acceptanceString = getAcceptanceString(difficulty);
 
-		std::tuple<std::string, std::string> promptString =
-			getPromptString(counter);
-
-		std::cout << std::get<0>(promptString) << acceptanceString
-				  << std::get<1>(promptString);
+		std::string begin, end;
+		getPromptString(counter, begin, end);
+		std::cout << begin << acceptanceString << end;
 		std::getline(std::cin, input);
 	}
 
